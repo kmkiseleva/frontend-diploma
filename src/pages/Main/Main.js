@@ -1,13 +1,15 @@
 import React from "react";
-import Header from "../../components/Header/Header";
 import "./main.css";
+import Header from "../../components/Header/Header";
+import About from "../../components/About/About";
+import Information from "../../components/Information/Information";
 
 export default function Main() {
   return (
     <>
-      <div className="wrapper">
-        <Header />
-      </div>
+      <Header />
+      <About />
+      <Information />
     </>
   );
 }

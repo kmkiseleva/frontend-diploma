@@ -1,0 +1,46 @@
+.information {
+  background-image: url("../../img/banner_second.jpg");
+  background-repeat: no-repeat;
+  padding: 60px 0;
+  color: #fff;
+  margin-bottom: 152px;
+  padding-right: 268px;
+}
+
+.information__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.information__button {
+  width: 325px;
+  height: 60px;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: #fff;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  cursor: pointer;
+}
+
+.information__list {
+  display: flex;
+}
+
+.information__item {
+  margin-right: 215px;
+  text-align: center;
+}
+
+.information__item:last-child {
+  margin-right: 0;
+}
+
+.item__text {
+  width: 226px;
+  height: 72px;
+  margin-top: 40px;
+}

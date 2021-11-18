@@ -5,9 +5,15 @@ import NavBar from "../NavBar/NavBar";
 
 export default function Header() {
   return (
-    <header className="header">
-      <div className="header__container"><Logo /></div>
-      <div className="header__container"><NavBar /></div>     
-    </header>
+    <div className="wrapper">
+      <header className="header">
+        <div className="header__container">
+          <Logo />
+        </div>
+        <div className="header__container">
+          <NavBar />
+        </div>
+      </header>
+    </div>
   );
 }

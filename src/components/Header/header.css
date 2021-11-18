@@ -1,3 +1,8 @@
+.wrapper {
+  background-image: url("../../img/banner_first.jpg");
+  height: 500px;
+}
+
 .header {
   display: flex;
   flex-wrap: wrap;
