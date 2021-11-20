@@ -43,6 +43,11 @@
   justify-content: flex-start;
 }
 
+.footer__socials {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .footer__button {
   box-sizing: border-box;
   width: 170px;

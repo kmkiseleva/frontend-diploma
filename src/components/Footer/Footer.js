@@ -2,11 +2,17 @@ import React from "react";
 import "./footer.css";
 import { Button, Form, Input } from "antd";
 import Contact from "./Contact/Contact";
+import Social from "./Social/Social";
 import btnUp from "./svg/btnUp.svg";
 import call from "./svg/call.svg";
 import mail from "./svg/mail.svg";
 import skype from "./svg/skype.svg";
 import geo from "./svg/geo.svg";
+import youtube from "./svg/youtube.svg";
+import linkedIn from "./svg/linkedIn.svg";
+import gPlus from "./svg/gPlus.svg";
+import fb from "./svg/fb.svg";
+import twitter from "./svg/twitter.svg";
 
 export default function Footer() {
   return (
@@ -47,6 +53,13 @@ export default function Footer() {
             </Button>
           </Form>
           <div className="footer__title">Подписывайтесь на нас</div>
+          <ul className="footer__socials">
+            <Social socialIcon={youtube} socialAlt="youtube" />
+            <Social socialIcon={linkedIn} socialAlt="linkedIn" />
+            <Social socialIcon={gPlus} socialAlt="gPlus" />
+            <Social socialIcon={fb} socialAlt="fb" />
+            <Social socialIcon={twitter} socialAlt="twitter" />
+          </ul>
         </section>
       </div>
       <div className="footer__bottom">
