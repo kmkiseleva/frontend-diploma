@@ -1,7 +1,12 @@
 import React from "react";
 import "./footer.css";
 import { Button, Form, Input } from "antd";
+import Contact from "./Contact/Contact";
 import btnUp from "./svg/btnUp.svg";
+import call from "./svg/call.svg";
+import mail from "./svg/mail.svg";
+import skype from "./svg/skype.svg";
+import geo from "./svg/geo.svg";
 
 export default function Footer() {
   return (
@@ -9,7 +14,28 @@ export default function Footer() {
       <div className="footer__top">
         <section>
           <div className="footer__title">Свяжитесь с нами</div>
-          <ul className="footer__connect"></ul>
+          <ul className="footer__contacts">
+            <Contact
+              contactIcon={call}
+              contactAlt="call"
+              contactText="8 (800) 000 00 00"
+            />
+            <Contact
+              contactIcon={mail}
+              contactAlt="iconMail"
+              contactText="inbox@mail.ru"
+            />
+            <Contact
+              contactIcon={skype}
+              contactAlt="iconSkype"
+              contactText="tu.train.tickets"
+            />
+            <Contact
+              contactIcon={geo}
+              contactAlt="iconGeo"
+              contactText="г. Москва, ул. Московская 27-35, 555 555"
+            />
+          </ul>
         </section>
         <section>
           <div className="footer__title">Подписка</div>

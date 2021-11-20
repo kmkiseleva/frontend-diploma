@@ -75,6 +75,7 @@
 }
 
 .footer__bottom {
+  margin-top: 50px;
   padding: 0 255px;
   display: flex;
   box-sizing: border-box;
