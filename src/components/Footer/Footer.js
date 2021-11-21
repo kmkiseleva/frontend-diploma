@@ -1,6 +1,5 @@
 import React from "react";
 import "./footer.css";
-import { Button, Form, Input } from "antd";
 import Contact from "./Contact/Contact";
 import Social from "./Social/Social";
 import btnUp from "./svg/btnUp.svg";
@@ -46,12 +45,12 @@ export default function Footer() {
         <section>
           <div className="footer__title">Подписка</div>
           <div className="footer__subtitle">Будьте в курсе событий</div>
-          <Form className="footer__subscription">
-            <Input placeholder="e-mail" className="footer__mailInput" />
-            <Button className="footer__button" htmlType="submit">
+          <form className="footer__subscription">
+            <input placeholder="e-mail" className="footer__mailInput" />
+            <button className="footer__button" htmlType="submit">
               Отправить
-            </Button>
-          </Form>
+            </button>
+          </form>
           <div className="footer__title">Подписывайтесь на нас</div>
           <ul className="footer__socials">
             <Social socialIcon={youtube} socialAlt="youtube" />
@@ -64,7 +63,7 @@ export default function Footer() {
       </div>
       <div className="footer__bottom">
         <div className="footer__logo">Лого</div>
-        <Button
+        <button
           shape="circle"
           className="footer__btnUp"
           onClick={() =>
@@ -75,7 +74,7 @@ export default function Footer() {
           }
         >
           <img src={btnUp} alt={btnUp} />
-        </Button>
+        </button>
         <span>2018 Web</span>
       </div>
     </footer>

@@ -35,6 +35,13 @@ li {
   list-style: none;
 }
 
+button:hover {
+  background-color: #ffca62;
+  color: #2d2b2f;
+}
+
 button:active {
   transform: scale(0.95);
+  background-color: #ffffff;
+  color: #2d2b2f;
 }

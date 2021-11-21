@@ -110,6 +110,10 @@
   cursor: pointer;
 }
 
+.footer__btnUp:hover {
+  background-color: transparent;
+}
+
 .footer__btnUp img {
   position: absolute;
   top: 0;
@@ -125,110 +129,3 @@
   font-weight: 300;
   color: #e5e5e5;
 }
-
-/* .top {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: flex-start;
-}
-
-.topSection {
-  display: flex;
-  flex-direction: column;
-}
-
-.subscriptionForm {
-  display: flex;
-  flex-direction: row;
-}
-
-.emailInput {
-  margin-right: 30px;
-  padding: 10px 20px;
-  box-sizing: border-box;
-  width: 447px;
-  height: 60px;
-  font-size: 24px;
-  line-height: 28px;
-  background: #ffffff;
-  border: 0;
-  border-radius: 3px;
-
-  &::placeholder {
-    color: #e5e5e5;
-  }
-}
-
-.btn {
-  box-sizing: border-box;
-  width: 170px;
-  height: 60px;
-  font-size: 24px;
-  line-height: 28px;
-  text-transform: uppercase;
-  color: #e5e5e5;
-  background-color: transparent;
-  border: 1px solid #ffffff;
-  border-radius: 3px;
-
-  &:hover,
-  &:focus {
-    color: #2d2b2f;
-    background-color: #ffca62;
-    border: 0;
-  }
-
-  &:active {
-    color: #2d2b2f;
-    background-color: #ffffff;
-  }
-}
-
-.connectBlockContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.socials__imageContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-.bottom {
-  padding: 0 255px;
-  display: flex;
-  box-sizing: border-box;
-  height: 100px;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border-top: solid 1px $footer-border;
-
-  .date {
-    font-size: 24px;
-    line-height: 28px;
-    font-weight: 300;
-    color: #e5e5e5;
-  }
-
-  .upBtn {
-    position: relative;
-    width: 36px;
-    height: 36px;
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-
-    & img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-} */
