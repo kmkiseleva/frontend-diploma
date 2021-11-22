@@ -24,6 +24,7 @@
 .about__text {
   font-size: 24px;
   font-weight: 400;
+  white-space: pre-line;
 }
 
 p {
