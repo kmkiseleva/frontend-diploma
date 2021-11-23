@@ -6,7 +6,7 @@ import info3 from "../../img/info3.png";
 
 export default function Information() {
   return (
-    <section className="information" id={"information"}>
+    <section className="information" id="information">
       <div className="information__container">
         <div className="information__header">
           <h2 className="information__title">Как это работает</h2>

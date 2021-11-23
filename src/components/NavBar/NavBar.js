@@ -1,12 +1,16 @@
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import { HashLink as NavLink } from 'react-router-hash-link';
+import smoothscroll from 'smoothscroll-polyfill';
 import "./navBar.css";
+
+smoothscroll.polyfill();
 
 export default function NavBar() {
   return (
     <nav className="header__navbar">
       <ul>
         <li>
-          <NavLink
+          <NavLink smooth
             to="/#about"
             className="navbar__link"
             activeClassName="navbar_active"
@@ -15,7 +19,7 @@ export default function NavBar() {
           </NavLink>
         </li>
         <li>
-          <NavLink
+          <NavLink smooth
             to="/#information"
             className="navbar__link"
             activeClassName="navbar_active"
@@ -24,7 +28,7 @@ export default function NavBar() {
           </NavLink>
         </li>
         <li>
-          <NavLink
+          <NavLink smooth
             to="/#reviews"
             className="navbar__link"
             activeClassName="navbar_active"
@@ -33,7 +37,7 @@ export default function NavBar() {
           </NavLink>
         </li>
         <li>
-          <NavLink
+          <NavLink smooth
             to="/#contacts"
             className="navbar__link"
             activeClassName="navbar_active"
