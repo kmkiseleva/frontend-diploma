@@ -6,11 +6,12 @@ span {
   padding: 100px 258px;
   margin: 0 auto;
   width: 100%;
-  height: 650px;
   background: #fff;
 }
 
 .reviews__slides {
+  width: 100%;
+  height: 300px;
   margin-top: 80px;
   display: flex;
   position: relative;
@@ -24,9 +25,11 @@ span {
   color: #292929;
 }
 
-.review__card:nth-child(odd) {
+.review__card {
   display: flex;
-  flex-direction: row;
+}
+
+.review__card:nth-child(odd) {
   margin-right: 50px;
 }
 
@@ -38,14 +41,13 @@ span {
 }
 
 .review {
-  width: 350px;
-  height: 150px;
+  max-width: 400px;
+  min-height: 150px;
   text-align: start;
 }
 
 .review__text {
   margin-top: 24px;
-
   font-size: 24px;
   line-height: 28px;
   font-weight: 200;
@@ -95,6 +97,21 @@ span {
 
 .carousel.carousel-slider .control-arrow {
   display: none;
+}
+
+.carousel.carousel-slider {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.carousel .slider-wrapper {
+  order: 1;
+  margin-bottom: 40px !important;
+}
+
+.carousel .control-dots {
+  position: static !important;
+  order: 2;
 }
 
 .carousel .control-dots .dot {
