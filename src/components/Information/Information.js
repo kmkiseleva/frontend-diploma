@@ -1,8 +1,8 @@
 import React from "react";
 import "./information.css";
-import info1 from "../../img/info1.png";
-import info2 from "../../img/info2.png";
-import info3 from "../../img/info3.png";
+import info1 from "./img/info1.png";
+import info2 from "./img/info2.png";
+import info3 from "./img/info3.png";
 
 export default function Information() {
   return (

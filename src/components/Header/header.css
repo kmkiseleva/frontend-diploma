@@ -1,6 +1,7 @@
 .wrapper {
-  background-image: url("../../img/banner_first.jpg");
-  height: 500px;
+  background-image: url("./img/header_first.png");
+  height: 985px;
+  border-bottom: 8px solid #ffa800;
 }
 
 .header {
@@ -8,7 +9,22 @@
   flex-wrap: wrap;
 }
 
-.header__container {
+.header__top {
   width: 100%;
   background: rgba(0, 0, 0, 0.6);
+}
+
+.header__maintitle {
+  width: 506px;
+  height: 170px;
+  margin-left: 379px;
+  margin-top: 440px;
+  color: #ffffff;
+  font-size: 72px;
+  font-weight: 100;
+  line-height: 84px;
+}
+
+.maintitle_bold {
+  font-weight: 700;
 }
