@@ -41,6 +41,10 @@ li {
   list-style: none;
 }
 
+button {
+  cursor: pointer;
+}
+
 button:hover {
   background-color: #ffca62;
   color: #2d2b2f;

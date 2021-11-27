@@ -14,10 +14,16 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
+.header__content {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
 .header__maintitle {
   width: 506px;
   height: 170px;
-  margin-left: 379px;
+  margin-left: 350px;
   margin-top: 440px;
   color: #ffffff;
   font-size: 72px;
