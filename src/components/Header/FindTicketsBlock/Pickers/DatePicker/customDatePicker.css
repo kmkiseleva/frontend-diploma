@@ -59,6 +59,10 @@
   height: 60px;
 }
 
+.input__item:first-child {
+  margin-right: 33px;
+}
+
 .input__header {
   padding: 6px 18px;
   min-width: 325px;

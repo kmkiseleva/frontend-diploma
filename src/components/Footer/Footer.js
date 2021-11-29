@@ -1,5 +1,6 @@
 import React from "react";
 import "./footer.css";
+import { Input } from "antd";
 import Contact from "./Contact/Contact";
 import Social from "./Social/Social";
 import btnUp from "./svg/btnUp.svg";
@@ -46,7 +47,7 @@ export default function Footer() {
           <div className="footer__title">Подписка</div>
           <div className="footer__subtitle">Будьте в курсе событий</div>
           <form className="footer__subscription">
-            <input placeholder="e-mail" className="footer__mailInput" />
+            <Input placeholder="e-mail" className="footer__mailInput" />
             <button className="footer__button" htmlType="submit">
               Отправить
             </button>
