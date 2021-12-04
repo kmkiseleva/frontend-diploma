@@ -1,0 +1,11 @@
+.selection__container {
+  min-height: 2000px;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: 258px;
+}
+
+.selection__sidebar {
+  width: 360px;
+  margin-right: 86px;
+}

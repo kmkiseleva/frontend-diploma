@@ -32,6 +32,10 @@
   color: rgba(255, 168, 0, 1);
 }
 
+.ant-picker-footer {
+  display: none;
+}
+
 .date__title {
   padding-left: 7px;
   font-size: 30px;
