@@ -19,7 +19,7 @@
   background-color: #ffa800;
 }
 
-.progressBar__item:before {
+.progressBar__item:not(:last-child):before {
   position: absolute;
   z-index: 2;
   top: 0;
@@ -32,7 +32,7 @@
   border-bottom: 50px solid transparent;
 }
 
-.progressBar__item:after {
+.progressBar__item:not(:last-child):after {
   position: absolute;
   width: 0;
   height: 0;
@@ -45,7 +45,7 @@
   border-bottom: 50px solid transparent;
 }
 
-.item-active:after {
+.item-active:not(:last-child):after {
   border-left: 35px solid #ffa800;
 }
 
