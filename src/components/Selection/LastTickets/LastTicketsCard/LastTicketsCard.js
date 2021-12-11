@@ -3,25 +3,30 @@ import wifi from "./img/wifi.png";
 import express from "./img/express.png";
 import cup from "./img/cup.png";
 import rub from "./img/rub.png";
+import { capitalize } from './../../../../utils/capitalize';
 
-export default function LastTicketsCard() {
+export default function LastTicketsCard(
+  {haveWifi, isExpress, airCond, minPrice, departureFromCity, departureFromStation,
+    departureToCity, departureToStation}) {
+      const cityA = departureFromCity;
+      const cityB = departureToCity;
   return (
     <div className="lastCard__container">
       <div className="lastCard__direction">
-        <div className="direction__from">Санкт-Петербург</div>
-        <div className="direction__to">Самара</div>
+        <div className="direction__from">{capitalize(cityA)}</div>
+        <div className="direction__to">{capitalize(cityB)}</div>
       </div>
       <div className="lastCard__stations">
-        <div className="stations__from">Курский вокзал</div>
-        <div className="stations__to">Московский вокзал</div>
+        <div className="stations__from">{departureFromStation}</div>
+        <div className="stations__to">{departureToStation}</div>
       </div>
       <div className="lastCard__footer">
         <div className="footer__options">
           <div className="option__img">
-            <img src={wifi} alt="wifi" />
+            {haveWifi && <img src={wifi} alt="wifi" />}
           </div>
           <div className="option__img">
-            <img src={express} alt="express" />
+            {isExpress && <img src={express} alt="express" />}            
           </div>
           <div className="option__img">
             <img src={cup} alt="cup" />
@@ -30,7 +35,7 @@ export default function LastTicketsCard() {
         <div className="footer__price">
           <span className="price__from">от</span>
           <span className="price">
-            2 500 <img className="price__img" src={rub} alt="rub" />
+            {minPrice} <img className="price__img" src={rub} alt="rub" />
           </span>
         </div>
       </div>
