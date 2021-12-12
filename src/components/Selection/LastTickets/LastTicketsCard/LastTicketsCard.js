@@ -1,15 +1,22 @@
 import "./lastTicketsCard.css";
-import wifi from "./img/wifi.png";
-import express from "./img/express.png";
-import cup from "./img/cup.png";
+import wifi from "./img/service_wifi.svg";
+import express from "./img/service_express.svg";
+import ac from "./img/service_ac.svg";
 import rub from "./img/rub.png";
-import { capitalize } from './../../../../utils/capitalize';
+import { capitalize } from "./../../../../utils/capitalize";
 
-export default function LastTicketsCard(
-  {haveWifi, isExpress, airCond, minPrice, departureFromCity, departureFromStation,
-    departureToCity, departureToStation}) {
-      const cityA = departureFromCity;
-      const cityB = departureToCity;
+export default function LastTicketsCard({
+  haveWifi,
+  isExpress,
+  airCond,
+  minPrice,
+  departureFromCity,
+  departureFromStation,
+  departureToCity,
+  departureToStation,
+}) {
+  const cityA = departureFromCity;
+  const cityB = departureToCity;
   return (
     <div className="lastCard__container">
       <div className="lastCard__direction">
@@ -23,13 +30,13 @@ export default function LastTicketsCard(
       <div className="lastCard__footer">
         <div className="footer__options">
           <div className="option__img">
-            {haveWifi && <img src={wifi} alt="wifi" />}
+            {!haveWifi && <img src={wifi} alt="wifi" />}
           </div>
           <div className="option__img">
-            {isExpress && <img src={express} alt="express" />}            
+            {!isExpress && <img src={express} alt="express" />}
           </div>
           <div className="option__img">
-            <img src={cup} alt="cup" />
+            {!airCond && <img src={ac} alt="ac" />}
           </div>
         </div>
         <div className="footer__price">

@@ -4,3 +4,43 @@
   background: #3e3c41;
   margin-bottom: 94px;
 }
+
+.selector__datePickers {
+  padding-top: 43px;
+  padding-left: 28px;
+  height: 281px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.datePickers__title {
+  font-size: 30px;
+  line-height: 35px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.selector__seatsFilter {
+  height: 354px;
+  border-bottom: 1px solid #e5e5e5;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #ffffff;
+  padding-top: 29px;
+  padding-left: 65px;
+  padding-right: 34px;
+}
+
+.seatsFilter__list {
+  width: 100%;
+}
+
+.selector__price {
+  height: 187px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.selector__timeTo {
+  height: 96px;
+  border-bottom: 1px solid #e5e5e5;
+}
