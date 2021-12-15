@@ -5,10 +5,13 @@ import seat from "./FilterSeats/img/seat.svg";
 import lux from "./FilterSeats/img/lux.svg";
 import wifi from "./FilterSeats/img/wifi.svg";
 import express from "./FilterSeats/img/express.svg";
+import forward from "./FilterTime/img/forward.svg";
+import back from "./FilterTime/img/back.svg";
 
 import DatePickerInput from "./DatePicker/DatePickerInput";
 import FilterSeats from "./FilterSeats/FilterSeats";
 import FilterPrice from "./FilterPrice/FilterPrice";
+import FilterTime from "./FilterTime/FilterTime";
 
 export default function SideSelector() {
   return (
@@ -32,8 +35,12 @@ export default function SideSelector() {
       <div className="selector__price">
         <FilterPrice minPrice={1500} maxPrice={7000} />
       </div>
-      <div className="selector__timeTo"></div>
-      <div className="selector__timeBack"></div>
+      <div className="selector__timeTo">
+        <FilterTime icon={forward} title="Туда" />
+      </div>
+      <div className="selector__timeBack">
+        <FilterTime icon={back} title="Обратно" />
+      </div>
     </div>
   );
 }

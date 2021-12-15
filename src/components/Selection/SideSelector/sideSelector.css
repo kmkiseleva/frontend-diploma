@@ -1,6 +1,6 @@
 .sideSelector__container {
   width: 360px;
-  height: 1012px;
+  min-height: 1012px;
   background: #3e3c41;
   margin-bottom: 94px;
 }
@@ -36,11 +36,11 @@
 }
 
 .selector__price {
-  height: 187px;
+  min-height: 187px;
   border-bottom: 1px solid #e5e5e5;
 }
 
 .selector__timeTo {
-  height: 96px;
+  min-height: 96px;
   border-bottom: 1px solid #e5e5e5;
 }
