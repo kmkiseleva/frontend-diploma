@@ -13,7 +13,6 @@
 .wrapper__success {
   background-image: url("./img/header_success.png");
   height: 834px;
-  border-bottom: 8px solid #ffa800;
 }
 
 .header {
