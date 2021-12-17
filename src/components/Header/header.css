@@ -1,6 +1,18 @@
-.wrapper {
-  background-image: url("./img/header_first.png");
+.wrapper__main {
+  background-image: url("./img/header_main.png");
   height: 985px;
+  border-bottom: 8px solid #ffa800;
+}
+
+.wrapper__select {
+  background-image: url("./img/header_select.png");
+  height: 596px;
+  border-bottom: 8px solid #ffa800;
+}
+
+.wrapper__success {
+  background-image: url("./img/header_success.png");
+  height: 834px;
   border-bottom: 8px solid #ffa800;
 }
 
@@ -33,4 +45,13 @@
 
 .maintitle_bold {
   font-weight: 700;
+}
+
+.success__title {
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 84px;
+  color: #ffffff;
+  padding-left: 257px;
+  padding-top: 350px;
 }

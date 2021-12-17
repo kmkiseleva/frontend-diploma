@@ -1,12 +1,11 @@
-import React from "react";
 import "./header.css";
 import NavBar from "./NavBar/NavBar";
 import Logo from "./Logo/Logo";
 import FindTicketsBlock from "./FindTicketsBlock/FindTicketsBlock";
 
-export default function Header() {
+export default function HeaderMain() {
   return (
-    <div className="wrapper">
+    <div className="wrapper__main">
       <header className="header">
         <div className="header__top">
           <Logo />

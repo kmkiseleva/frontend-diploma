@@ -13,7 +13,7 @@ export default function DatePickerInput({ defaultValue, getDate }) {
   return (
     <ConfigProvider locale={ru_RU}>
       <DatePicker
-        className="input__item"
+        className="input__sideItem"
         onChange={getDate}
         defaultValue={defaultValue}
         format={dateFormat}
