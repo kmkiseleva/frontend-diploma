@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import SelectionPage from "./pages/SelectionPage/SelectionPage";
+import ConfirmPage from "./pages/ConfirmPage/ConfirmPage";
 import SuccessfulPage from "./pages/SuccessfulPage/SuccessfulPage";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/selectionPage" component={SelectionPage} />
         <Route exact path="/successfulPage" component={SuccessfulPage} />
+        <Route exact path="/ConfirmPage" component={ConfirmPage} />
       </Switch>
       <Footer />
     </Router>

@@ -1,0 +1,214 @@
+.confirm__container {
+  padding-left: 259px;
+  padding-right: 257px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.confirm__sidebar {
+  width: 361px;
+  height: 1279px;
+  background: #3e3c41;
+  color: #fff;
+  margin-right: 85px;
+}
+
+.confirm__main {
+  display: flex;
+  flex-direction: column;
+}
+
+.confirm__ticket {
+  width: 959px;
+  height: 449px;
+  margin-bottom: 45px;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.ticket__title {
+  font-size: 30px;
+  line-height: 35px;
+  color: #292929;
+  height: 95px;
+  border-bottom: 1px solid #928f94;
+  padding-left: 30px;
+  padding-top: 30px;
+}
+
+.confirm__passengers {
+  width: 961px;
+  height: 750px;
+  margin-bottom: 45px;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.passengers__title {
+  font-size: 30px;
+  line-height: 35px;
+  color: #292929;
+  height: 100px;
+  padding-top: 32px;
+  padding-left: 32px;
+  border-bottom: 1px solid #928f94;
+}
+
+.passengers__info {
+  display: flex;
+}
+
+.passengers__names {
+  width: 678px;
+  height: 650px;
+  border-right: 1px dashed #e5e5e5;
+}
+
+.names__card {
+  height: calc(650px / 3);
+  border-bottom: 1px dashed #e5e5e5;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.card__img {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  color: #292929;
+  width: 100px;
+}
+
+.card__img span {
+  padding-top: 17px;
+}
+
+.card__details {
+  margin-left: 45px;
+}
+
+.details__initials {
+  font-size: 18px;
+  line-height: 21px;
+  color: #292929;
+  margin-bottom: 7px;
+}
+
+.details__sex,
+.details__birthday,
+.details__passport {
+  font-size: 18px;
+  line-height: 21px;
+  color: #928f94;
+  margin-bottom: 5px;
+}
+
+.passengers__price {
+  width: 283px;
+  font-size: 30px;
+  line-height: 35px;
+  color: #292929;
+  padding-left: 25px;
+  padding-top: 521px;
+  padding-right: 25px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.passengers__price span {
+  font-weight: bold;
+  padding-left: 20px;
+}
+
+.passengers__price img {
+  margin-top: -5px;
+  margin-left: 5px;
+}
+
+.passengers__price button {
+  width: 233px;
+  height: 39px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #292929;
+  border-radius: 5px;
+  border: 1px solid #292929;
+  background-color: transparent;
+}
+
+.confirm__pay {
+  width: 961px;
+  height: 244px;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  margin-bottom: 123px;
+}
+
+.pay__title {
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 35px;
+  color: #292929;
+  height: 98px;
+  border-bottom: 1px solid #928f94;
+  padding-top: 30px;
+  padding-left: 33px;
+}
+
+.pay__way {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.pay__way p {
+  font-size: 24px;
+  line-height: 28px;
+  color: #292929;
+  width: 680px;
+  height: 146px;
+  border-right: 1px dashed #e5e5e5;
+  padding-top: 44px;
+  padding-left: 33px;
+}
+
+.pay__way div {
+  padding-top: 86px;
+  padding-left: 25px;
+}
+
+.pay__way button {
+  width: 233px;
+  height: 39px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #292929;
+  border-radius: 5px;
+  border: 1px solid #292929;
+  background-color: transparent;
+}
+
+.confirm__button {
+  width: 323px;
+  height: 60px;
+  background: #ffa800;
+  border-radius: 5px;
+  margin-bottom: 181px;
+  margin-left: auto;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  border: none;
+}
