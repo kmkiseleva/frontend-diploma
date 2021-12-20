@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Rate } from "antd";
 import { StarOutlined } from "@ant-design/icons";
 import HeaderSuccess from "./../../components/Header/HeaderSuccess";
-import rub from "./img/rub.png";
+import rub from "../../img/rub.png";
 import icon1 from "./img/icon1.svg";
 import icon2 from "./img/icon2.svg";
 import icon3 from "./img/icon3.svg";

@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import getRoute from "./fetchRoutes";
 import lastTickets from "./fetchLastTickets";
 
 const store = configureStore({
   reducer: {
-    lastTickets
+    getRoute,
+    lastTickets,
   },
 });
 

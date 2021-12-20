@@ -9,3 +9,7 @@
   width: 360px;
   margin-right: 86px;
 }
+
+.selection__main {
+  min-width: 960px;
+}
