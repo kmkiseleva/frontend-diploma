@@ -1,16 +1,16 @@
 .wrapper__main {
-  background-image: url("./img/header_main.png");
+  background-image: url("../../img/header_main.png");
   height: 985px;
   border-bottom: 8px solid #ffa800;
 }
 
 .wrapper__select {
-  background-image: url("./img/header_select.png");
+  background-image: url("../../img/header_select.png");
   height: 596px;
 }
 
 .wrapper__success {
-  background-image: url("./img/header_success.png");
+  background-image: url("../../img/header_success.png");
   height: 834px;
 }
 

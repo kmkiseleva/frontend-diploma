@@ -11,21 +11,21 @@ const initialState = {
 };
 
 export const fetchRoutes = (options) => async (dispatch, getState) => {
-  // const {
-  //   departureId,
-  //   arrivalId,
-  //   dateForward,
-  //   dateReturn,
-  //   limit = 5,
-  //   sort = "price_min",
-  // } = options;
+  const {
+    departureId,
+    arrivalId,
+    dateForward,
+    dateBackward,
+    limit = 5,
+    sort = "price_min",
+  } = options;
 
   // let reqURL = `process.env.REACT_APP_ROUTES_URL?from_city_id=${departureId}&to_city_id=${arrivalId}&limit=${limit}&sort=${sort}`;
 
   // if (dateForward) {
   //   reqURL += `&date_start=${dateForward}`;
-  //   if (dateReturn) {
-  //     reqURL += `&date_end=${dateReturn}`;
+  //   if (dateBackward) {
+  //     reqURL += `&date_end=${dateBackward}`;
   //   }
   // }
 

@@ -1,4 +1,4 @@
-import { createSlice,} from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   items: [],
@@ -33,7 +33,13 @@ const lastTickets = createSlice({
       state.items = [];
     },
     fetchStart(state, action) {
-      return { ...state, items: [], loading: true, error: null, status: "pending" };
+      return {
+        ...state,
+        items: [],
+        loading: true,
+        error: null,
+        status: "pending",
+      };
     },
     fetchError(state, action) {
       const { error } = action.payload;
@@ -45,5 +51,6 @@ const lastTickets = createSlice({
   },
 });
 
-export const { put, clean, fetchStart, fetchError, fetchSuccess } = lastTickets.actions;
+export const { put, clean, fetchStart, fetchError, fetchSuccess } =
+  lastTickets.actions;
 export default lastTickets.reducer;

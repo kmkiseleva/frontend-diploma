@@ -35,6 +35,37 @@
   height: 60px;
 }
 
+.input__dropDown::before,
+.input__dropDown::after {
+  position: absolute;
+  top: -30px;
+  left: calc(50% - 15px);
+  content: "";
+  border: 15px solid transparent;
+  border-bottom: 15px solid lightgrey;
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+      /* Safari Only CSS here */
+      top: -29px;
+    }
+  }
+}
+
+.input__dropDown::after {
+  position: absolute;
+  top: -28px;
+  left: calc(50% - 14px);
+  content: "";
+  border: 14px solid transparent;
+  border-bottom: 14px solid white;
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+      /* Safari Only CSS here */
+      top: -27px;
+    }
+  }
+}
+
 .ant-picker-cell .ant-picker-cell-inner {
   box-sizing: border-box;
   border: 1px solid transparent;

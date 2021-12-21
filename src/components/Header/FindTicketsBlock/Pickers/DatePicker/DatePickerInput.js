@@ -9,16 +9,26 @@ moment.locale("ru");
 const dateFormat = "DD/MM/YY";
 const placeholder = "ДД/ММ/ГГ";
 
-export default function DatePickerInput({ defaultValue, getDate }) {
+export default function DatePickerInput({
+  defaultValue,
+  getDate,
+  disableDate,
+  dateType,
+}) {
+  // регулирование выборки дней (исключение предыдущих)
+  const disabledDate = (current) =>
+    current && current < disableDate.startOf("day");
+
   return (
     <ConfigProvider locale={ru_RU}>
       <DatePicker
         className="input__item"
-        // dropdownClassName={s.dropDown}
-        onChange={getDate}
-        defaultValue={defaultValue}
+        dropdownClassName="input__dropDown"
+        onChange={(value) => getDate(value, dateType)}
+        value={defaultValue}
         format={dateFormat}
         placeholder={placeholder}
+        disabledDate={disabledDate}
         allowClear
       />
     </ConfigProvider>

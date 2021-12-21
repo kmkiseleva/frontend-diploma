@@ -1,17 +1,16 @@
 import "./destinationPicker.css";
 import { Button } from "antd";
 import DestinationPickerInput from "./DestinationPickerInput";
-import { ReactComponent as SwapBtn } from "../img/swapBtn.svg";
+import { ReactComponent as SwapBtn } from "../../../../../img/swapBtn.svg";
 
 export default function DestinationPicker() {
   return (
     <div className="destination__container">
       <span className="destination__title">Направление</span>
       <div className="destination__input">
-        <DestinationPickerInput placeholder="Откуда" />
+        <DestinationPickerInput placeholder="Откуда" point="departure" />
         <Button
           shape="circle"
-          s
           className="destination__button"
           onClick={() => {}}
         >
