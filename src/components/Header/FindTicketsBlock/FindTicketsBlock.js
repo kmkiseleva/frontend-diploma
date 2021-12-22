@@ -2,7 +2,7 @@ import "./findTicketsBlock.css";
 import React, { useMemo } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRoutes } from "../../../store/fetchRoutes";
+// import { fetchRoutes } from "../../../store/fetchRoutes";
 import DestinationPicker from "../../Pickers/DestinationPicker/DestinationPicker";
 import CustomDatePicker from "../../Pickers/DatePicker/CustomDatePicker";
 
@@ -16,19 +16,19 @@ export default function FindTicketsBlock() {
   const dateForward = useSelector((state) => state.dateForward);
   const dateBackward = useSelector((state) => state.dateBackward);
 
-  const params = useMemo(
-    () => ({
-      departureId,
-      arrivalId,
-      dateForward,
-      dateBackward,
-    }),
-    [departureId, arrivalId, dateForward, dateBackward]
-  );
+  // const params = useMemo(
+  //   () => ({
+  //     departureId,
+  //     arrivalId,
+  //     dateForward,
+  //     dateBackward,
+  //   }),
+  //   [departureId, arrivalId, dateForward, dateBackward]
+  // );
 
   const findTickets = () => {
-    dispatch(fetchRoutes(params));
-    history.push("/select");
+    // dispatch(fetchRoutes(params));
+    history.push("/selectionPage");
   };
 
   return (
