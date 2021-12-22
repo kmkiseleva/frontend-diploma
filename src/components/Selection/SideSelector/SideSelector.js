@@ -8,7 +8,7 @@ import express from "./FilterSeats/img/express.svg";
 import forward from "./FilterTime/img/forward.svg";
 import back from "./FilterTime/img/back.svg";
 
-import DatePickerInput from "./DatePicker/DatePickerInput";
+// import DatePickerInput from "../../Pickers/DatePicker/DatePickerInput";
 import FilterSeats from "./FilterSeats/FilterSeats";
 import FilterPrice from "./FilterPrice/FilterPrice";
 import FilterTime from "./FilterTime/FilterTime";
@@ -18,9 +18,9 @@ export default function SideSelector() {
     <div className="sideSelector__container">
       <div className="selector__datePickers">
         <div className="datePickers__title">Дата поездки</div>
-        <DatePickerInput />
+        {/* <DatePickerInput /> */}
         <div className="datePickers__title">Дата возвращения</div>
-        <DatePickerInput />
+        {/* <DatePickerInput /> */}
       </div>
       <div className="selector__seatsFilter">
         <ul className="seatsFilter__list">

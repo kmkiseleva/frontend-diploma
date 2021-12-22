@@ -8,19 +8,22 @@ import { BehaviorSubject, Observable, of } from "rxjs";
 //   fetch$,
 //   ResponseOptions,
 // } from "../../../utils/throttling";
-import { ReactComponent as GeoIcon } from "../../../../../img/geoIcon.svg";
+import { ReactComponent as GeoIcon } from "../../../img/geoIcon.svg";
 
 export default function DestinationPickerInput({
+  className,
+  point,
   defaultValue,
   onSelect,
-  point,
 }) {
   const [loading, setLoading] = useState(false);
+  const [options, setOptions] = useState([]);
   const [value, setValue] = useState(defaultValue);
-  const term$ = useMemo(
-    () => new BehaviorSubject(defaultValue),
-    [defaultValue]
-  );
+
+  // const term$ = useMemo(
+  //   () => new BehaviorSubject(defaultValue),
+  //   [defaultValue]
+  // );
   // const results$ = useMemo(
   //   () => term$.pipe(autocomplete(1000, (term): Observable => fetch$(term))),
   //   [term$]
@@ -33,19 +36,20 @@ export default function DestinationPickerInput({
 
   return (
     <AutoComplete
+      className={className}
+      notFoundContent="введите название города..."
       backfill
       dropdownMatchSelectWidth
       defaultOpen={false}
       value={value}
-      // options={options}
+      options={options}
       filterOption={(inputValue, option) =>
         option?.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
       }
       // onSelect={(payload) => returnSelectedCity(payload, options, point)}
-      onChange={(payload) => {
-        term$.next(payload);
-      }}
-      notFoundContent="введите название города"
+      // onChange={(payload) => {
+      //   term$.next(payload);
+      // }}
     >
       <Input
         className="destination__autocomplete"

@@ -3,8 +3,8 @@ import DatePickerInput from "./DatePickerInput";
 import { useEffect, useMemo, useState } from "react";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
-import { setDateForward } from "../../../../../store/dateForward";
-import { setDateBackward } from "../../../../../store/dateBackward";
+import { setDateForward } from "../../../store/dateForward";
+import { setDateBackward } from "../../../store/dateBackward";
 
 export default function CustomDatePicker({ pickerPlace }) {
   const dispatch = useDispatch();

@@ -1,10 +1,10 @@
 import "./findTicketsBlock.css";
-import React, { memo, useEffect, useMemo } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import React, { useMemo } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRoutes } from "../../../store/fetchRoutes";
-import DestinationPicker from "./Pickers/DestinationPicker/DestinationPicker";
-import CustomDatePicker from "./Pickers/DatePicker/CustomDatePicker";
+import DestinationPicker from "../../Pickers/DestinationPicker/DestinationPicker";
+import CustomDatePicker from "../../Pickers/DatePicker/CustomDatePicker";
 
 export default function FindTicketsBlock() {
   const history = useHistory();
@@ -15,10 +15,6 @@ export default function FindTicketsBlock() {
   const arrivalId = useSelector((state) => state.arrival.city._id);
   const dateForward = useSelector((state) => state.dateForward);
   const dateBackward = useSelector((state) => state.dateBackward);
-
-  // const location = useLocation();
-  // const { pathname } = location;
-  // const splitLocation = pathname.replace(appURL, "").split("/")[1];
 
   const params = useMemo(
     () => ({
