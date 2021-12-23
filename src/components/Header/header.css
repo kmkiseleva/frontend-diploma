@@ -53,3 +53,46 @@
   padding-left: 257px;
   padding-top: 350px;
 }
+
+.headerSelect__content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.headerSelect__pickersBlock {
+  width: 1490px;
+  height: 322px;
+  margin-top: 111px;
+  padding-top: 28px;
+  padding-left: 40px;
+  background: rgba(41, 41, 41, 0.69);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.headerSelect__pickers {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.headerSelect__button {
+  width: 100%;
+  text-align: end;
+  padding-right: 40px;
+}
+
+.headerSelect__button button {
+  width: 323px;
+  height: 60px;
+  background: #ffa800;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #292929;
+}
