@@ -19,6 +19,31 @@
 
 .informationBlock__header {
   height: 128px;
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  align-items: center;
+}
+
+.back {
+  justify-content: end;
+}
+
+.informationBlock__button {
+  margin-left: 10px;
+}
+
+.button__chooseTrain {
+  width: 325px;
+  height: 60px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #292929;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #292929;
 }
 
 .informationBlock__train {
@@ -105,13 +130,90 @@
   color: #292929;
 }
 
+.type__types {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.type__block {
+  text-align: center;
+}
+
+.type__block .active {
+  color: #ffa800;
+}
+
+.type__block img {
+  margin-bottom: 18px;
+}
+
+.type__name {
+  font-size: 24px;
+  line-height: 28px;
+  color: #928f94;
+}
+
 .carriageBlock__header {
   height: 37px;
   background: rgba(255, 168, 0, 0.44);
+  padding-left: 33px;
+  padding-right: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carriageBlock__carriages {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #2d2b2f;
+}
+
+.carriageBlock__carriages span {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.active-carriage {
+  color: #ffffff;
+}
+
+.carriageBlock__subtitle {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #292929;
 }
 
 .carriageBlock__details {
   height: 161px;
+  margin-bottom: 67px;
+}
+
+.carriage__number {
+  width: 190px;
+  height: 100%;
+  background: #ffd98f;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #292929;
+  padding-top: 20px;
+}
+
+.carriage__number span {
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 84px;
+  color: #292929;
+}
+
+.carriageBlock__insideImg {
+  padding-left: 21px;
 }
 
 .seatsPage__informationTypeBlock {
