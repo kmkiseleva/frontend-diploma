@@ -1,0 +1,7 @@
+.popups__container {
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  justify-content: space-between;
+  align-items: center;
+}
