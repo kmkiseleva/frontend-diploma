@@ -1,0 +1,37 @@
+.informationBlock__type {
+  height: 216px;
+  padding-top: 27px;
+  padding-left: 20px;
+}
+
+.type__title {
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 35px;
+  color: #292929;
+}
+
+.type__types {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.type__block {
+  text-align: center;
+}
+
+.type__block .active {
+  color: #ffa800;
+}
+
+.type__block img {
+  margin-bottom: 18px;
+}
+
+.type__name {
+  font-size: 24px;
+  line-height: 28px;
+  color: #928f94;
+}

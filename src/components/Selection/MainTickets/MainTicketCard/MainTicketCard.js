@@ -1,9 +1,9 @@
 import "./mainTicketCard.css";
 import train from "./img/train.png";
-import arrowLight from "./img/arrow_light.png";
-import arrowDark from "./img/arrow_dark.png";
-import arrowTo from "./img/arrow_to.png";
-import arrowFrom from "./img/arrow_from.png";
+import arrowLight from "../../../../img/arrow_light.png";
+import arrowDark from "../../../../img/arrow_dark.png";
+import arrowTo from "../../../../img/arrow_to.png";
+import arrowBack from "../../../../img/arrow_back.png";
 import rub from "./img/rub.png";
 import wifi from "./img/wifi.png";
 import express from "./img/express.png";
@@ -55,7 +55,7 @@ export default function MainTicketCard() {
           <div className="row__direction">
             <div className="direction__time">9 : 42</div>
             <div className="direction__arrow">
-              <img src={arrowFrom} alt="arrow" />
+              <img src={arrowBack} alt="arrow" />
             </div>
           </div>
           <div className="row__point">
