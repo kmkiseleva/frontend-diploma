@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./footer.css";
 import { Input } from "antd";
 import Contact from "./Contact/Contact";
@@ -14,7 +15,25 @@ import gPlus from "./svg/gPlus.svg";
 import fb from "./svg/fb.svg";
 import twitter from "./svg/twitter.svg";
 
+import { fetchSubscribe } from "../../store/fetchSubscribe";
+
 export default function Footer() {
+  const dispatch = useDispatch();
+  const status = useSelector((state) => state.subscription.status);
+  const [userEmail, setUserEmail] = useState("");
+
+  useEffect(() => {
+    if (status === "success") {
+      console.log("Вы успешно подписались на нашу рассылку");
+    }
+  }, [status]);
+
+  const onSubsribe = (e) => {
+    e.preventDefault();
+    dispatch(fetchSubscribe(userEmail));
+    setUserEmail("");
+  };
+
   return (
     <footer className="footer" id="contacts">
       <div className="footer__top">
@@ -46,8 +65,22 @@ export default function Footer() {
         <section>
           <div className="footer__title">Подписка</div>
           <div className="footer__subtitle">Будьте в курсе событий</div>
-          <form className="footer__subscription">
-            <Input placeholder="e-mail" className="footer__mailInput" />
+          <form
+            className="footer__subscription"
+            id="subscription"
+            name="subscription"
+            onSubmit={(e) => onSubsribe(e)}
+          >
+            <Input
+              type="email"
+              name="email"
+              inputMode="email"
+              placeholder="e-mail"
+              className="footer__mailInput"
+              value={userEmail}
+              required
+              onChange={(e) => setUserEmail(e.target.value)}
+            />
             <button className="footer__button" htmlType="submit">
               Отправить
             </button>

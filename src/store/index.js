@@ -5,6 +5,7 @@ import dateForward from "./dateForward";
 import dateBackward from "./dateBackward";
 import arrival from "./arrival";
 import departure from "./departure";
+import subscription from "./fetchSubscribe";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     dateBackward,
     arrival,
     departure,
+    subscription,
   },
 });
 
