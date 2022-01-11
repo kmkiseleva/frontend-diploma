@@ -4,12 +4,11 @@ import Footer from "./components/Footer/Footer";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import SelectionPage from "./pages/SelectionPage/SelectionPage";
 import SelectSeatsPage from "./pages/SelectSeatsPage/SelectSeatsPage";
-import PassengersPage from './pages/PassengersPage/PassengersPage';
+import PassengersPage from "./pages/PassengersPage/PassengersPage";
 import ConfirmPage from "./pages/ConfirmPage/ConfirmPage";
 import SuccessfulPage from "./pages/SuccessfulPage/SuccessfulPage";
 
 import Popups from "./components/Popups/Popups";
-
 
 function App() {
   return (

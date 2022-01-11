@@ -53,5 +53,6 @@ const subscription = createSlice({
   },
 });
 
-export const { fetchStart, fetchError, fetchSuccess } = subscription.actions;
+export const { fetchStart, fetchError, fetchSuccess, setStatusIdle } =
+  subscription.actions;
 export default subscription.reducer;

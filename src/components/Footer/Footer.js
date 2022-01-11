@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./footer.css";
-import { Input } from "antd";
+import { Input, message } from "antd";
+import PopupInfo from "../Popups/PopupInfo";
 import Contact from "./Contact/Contact";
 import Social from "./Social/Social";
 import btnUp from "./svg/btnUp.svg";
@@ -15,16 +16,31 @@ import gPlus from "./svg/gPlus.svg";
 import fb from "./svg/fb.svg";
 import twitter from "./svg/twitter.svg";
 
-import { fetchSubscribe } from "../../store/fetchSubscribe";
+import { fetchSubscribe, setStatusIdle } from "../../store/fetchSubscribe";
 
 export default function Footer() {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.subscription.status);
   const [userEmail, setUserEmail] = useState("");
+  const [popupActive, setPopupActive] = useState(false);
 
   useEffect(() => {
+    if (status === "pending") {
+      message
+        .loading({
+          content: "loading...",
+          key: "pending",
+          duration: 0,
+        })
+        .then();
+    }
+
+    if (status === "success" || status === "error") {
+      message.destroy("pending");
+    }
+
     if (status === "success") {
-      console.log("Вы успешно подписались на нашу рассылку");
+      setPopupActive(true);
     }
   }, [status]);
 
@@ -32,6 +48,11 @@ export default function Footer() {
     e.preventDefault();
     dispatch(fetchSubscribe(userEmail));
     setUserEmail("");
+  };
+
+  const userOkay = () => {
+    setPopupActive(false);
+    dispatch(setStatusIdle());
   };
 
   return (
@@ -111,6 +132,12 @@ export default function Footer() {
         </button>
         <span>2018 Web</span>
       </div>
+      {popupActive && (
+        <PopupInfo
+          message={"Вы успешно подписались на нашу рассылку!"}
+          action={userOkay}
+        />
+      )}
     </footer>
   );
 }
