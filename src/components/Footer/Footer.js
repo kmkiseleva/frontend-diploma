@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./footer.css";
-import { Input, message } from "antd";
+import { Input, message, Modal } from "antd";
 import PopupInfo from "../Popups/PopupInfo";
 import Contact from "./Contact/Contact";
 import Social from "./Social/Social";
@@ -133,10 +133,25 @@ export default function Footer() {
         <span>2018 Web</span>
       </div>
       {popupActive && (
-        <PopupInfo
-          message={"Вы успешно подписались на нашу рассылку!"}
-          action={userOkay}
-        />
+        <Modal
+          closable={false}
+          centered
+          footer={null}
+          visible={popupActive}
+          bodyStyle={{
+            height: "418px",
+            width: "666px",
+            background: "#FBFBFB",
+            border: "1px solid #C4C4C4",
+            boxShadow: "0 2px 2px rgba(0, 0, 0, 0.25)",
+            padding: "0",
+          }}
+        >
+          <PopupInfo
+            message={"Вы успешно подписались на нашу рассылку!"}
+            action={userOkay}
+          />
+        </Modal>
       )}
     </footer>
   );
