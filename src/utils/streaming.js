@@ -13,6 +13,8 @@ import { capitalize } from "./capitalize";
 
 // Here we convert server response into antd-autocomplete-compatible array
 export const refineResponseOptions = (responseArray) => {
+  console.log(responseArray);
+
   if (Array.isArray(responseArray)) {
     return responseArray.map((el) =>
       (({ name, _id }) => ({
@@ -37,8 +39,10 @@ export const autocomplete = (time, selector) => (source$) =>
 
 // This is a function for getting list of suggestions from the server
 export const fetch$ = (term) =>
-  fromFetch(`${process.env.REACT_APP_CITIES_URL}?name=${term}`).pipe(
+  fromFetch(`${process.env.REACT_APP_BASE_URL}routes/cities?name=${term}`).pipe(
     switchMap((response) => {
+      console.log(response);
+
       if (response.ok) {
         // OK return data
         return response.json();
