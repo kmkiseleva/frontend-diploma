@@ -1,5 +1,5 @@
 .block__container {
-  max-width: 729px;
+  width: 729px;
   height: 574px;
   background-color: rgba(41, 41, 41, 0.8);
   font-weight: 300;
@@ -15,13 +15,13 @@
 }
 
 .block__destination {
-  max-width: 685px;
+  width: 100%;
   height: 110px;
   margin-top: 70px;
 }
 
 .block__date {
-  max-width: 685px;
+  width: 100%;
   height: 110px;
   margin-top: 30px;
   margin-bottom: 80px;

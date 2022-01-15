@@ -49,15 +49,17 @@ export default function DestinationPicker({ className }) {
     <div className="destination__container">
       <span className="destination__title">Направление</span>
       <div className="destination__input">
-        {departurePicker}
-        <Button
-          shape="circle"
-          className="destination__button"
-          onClick={swapPoints}
-        >
-          <SwapBtn />
-        </Button>
-        {arrivalPicker}
+        <div className="departure__picker">{departurePicker}</div>
+        <div className="swap__button">
+          <Button
+            shape="circle"
+            className="destination__button"
+            onClick={swapPoints}
+          >
+            <SwapBtn />
+          </Button>
+        </div>
+        <div>{arrivalPicker}</div>
       </div>
     </div>
   );
