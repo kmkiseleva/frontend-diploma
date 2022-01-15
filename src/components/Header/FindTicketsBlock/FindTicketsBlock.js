@@ -1,14 +1,21 @@
 import "./findTicketsBlock.css";
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import DestinationPicker from "../../Pickers/DestinationPicker/DestinationPicker";
 import CustomDatePicker from "../../Pickers/DatePicker/CustomDatePicker";
 
+import { fetchRoutes } from "../../../store/fetchRoutes";
+
 export default function FindTicketsBlock() {
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const params = useSelector((state) => state.params);
 
   const findTickets = () => {
-    history.push("/selectionPage");
+    dispatch(fetchRoutes(params));
+    history.push("/selection");
   };
 
   return (

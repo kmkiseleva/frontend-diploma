@@ -1,52 +1,118 @@
 import { createSlice } from "@reduxjs/toolkit";
+import moment from "moment";
 
 const initialState = {
   status: "idle",
+  error: "",
   data: {
     counter: 0,
     items: [],
   },
-  loading: false,
-  error: null,
 };
+
+const substractYY = (str) =>
+  moment(str, "YYYY-MM-DD").subtract(1, "years").format("YYYY-MM-DD");
 
 export const fetchRoutes = (options) => async (dispatch, getState) => {
-  // const {
-  //   departureId,
-  //   arrivalId,
-  //   dateForward,
-  //   dateBackward,
-  //   limit = 5,
-  //   sort = "price_min",
-  // } = options;
+  const {
+    cityDeparture: { _id: departureId },
+    cityArrival: { _id: arrivalId },
+    dateOutbound,
+    dateReturn,
+    limit = 5,
+    sort = "price_min",
+    offset,
+    filters: {
+      have_first_class = false,
+      have_second_class = false,
+      have_third_class = false,
+      have_fourth_class = false,
+      have_wifi = false,
+      is_express = false,
+      price_from,
+      price_to,
+      start_departure_hour_from = 0,
+      start_departure_hour_to = 0,
+      start_arrival_hour_from = 0,
+      start_arrival_hour_to = 0,
+      end_departure_hour_from = 0,
+      end_departure_hour_to = 0,
+      end_arrival_hour_from = 0,
+      end_arrival_hour_to = 0,
+    },
+  } = options;
 
-  // let reqURL = `process.env.REACT_APP_ROUTES_URL?from_city_id=${departureId}&to_city_id=${arrivalId}&limit=${limit}&sort=${sort}`;
+  let reqURL = `${process.env.REACT_APP_BASE_URL}routes?from_city_id=${departureId}&to_city_id=${arrivalId}&limit=${limit}&sort=${sort}`;
 
-  // if (dateForward) {
-  //   reqURL += `&date_start=${dateForward}`;
-  //   if (dateBackward) {
-  //     reqURL += `&date_end=${dateBackward}`;
-  //   }
-  // }
+  if (dateOutbound) {
+    // temporary reduce YY by one
+    reqURL += `&date_start=${substractYY(dateOutbound)}`;
+    if (start_departure_hour_from) {
+      reqURL += `&start_departure_hour_from=${start_departure_hour_from}`;
+    }
+    if (start_departure_hour_to) {
+      reqURL += `&start_departure_hour_to=${start_departure_hour_to}`;
+    }
+    if (start_arrival_hour_from) {
+      reqURL += `&start_arrival_hour_from=${start_arrival_hour_from}`;
+    }
+    if (start_arrival_hour_to) {
+      reqURL += `&start_arrival_hour_to=${start_arrival_hour_to}`;
+    }
+    if (dateReturn) {
+      // temporary reduce YY by one
+      reqURL += `&date_end=${substractYY(dateReturn)}`;
+      if (end_departure_hour_from) {
+        reqURL += `&end_departure_hour_from=${end_departure_hour_from}`;
+      }
+      if (end_departure_hour_to) {
+        reqURL += `&end_departure_hour_to=${end_departure_hour_to}`;
+      }
+      if (end_arrival_hour_from) {
+        reqURL += `&end_arrival_hour_from=${end_arrival_hour_from}`;
+      }
+      if (end_arrival_hour_to) {
+        reqURL += `&end_arrival_hour_to=${end_arrival_hour_to}`;
+      }
+    }
+  }
+
+  if (offset) {
+    reqURL += `&offset=${offset}`;
+  }
+
+  // FILTERS
+  reqURL += `&have_first_class=${have_first_class}`;
+  reqURL += `&have_second_class=${have_second_class}`;
+  reqURL += `&have_third_class=${have_third_class}`;
+  reqURL += `&have_fourth_class=${have_fourth_class}`;
+  reqURL += `&have_wifi=${have_wifi}`;
+  reqURL += `&is_express=${is_express}`;
+
+  if (price_from) {
+    reqURL += `&price_from=${price_from}`;
+  }
+  if (price_to) {
+    reqURL += `&price_to=${price_to}`;
+  }
 
   dispatch(fetchStart());
-  // try {
-  //   const response = await fetch(reqURL);
+  try {
+    const response = await fetch(reqURL);
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
 
-  //   if (!response.ok) {
-  //     throw new Error(response.statusText);
-  //   }
-
-  //   const data = await response.json();
-  //   dispatch(getRouteSet(data));
-  //   dispatch(fetchSuccess());
-  // } catch (e) {
-  //   dispatch(fetchError(e.message));
-  // }
+    const data = await response.json();
+    dispatch(getRouteSet(data));
+    dispatch(fetchSuccess());
+  } catch (e) {
+    dispatch(fetchError(e.message));
+  }
 };
 
-const getRoute = createSlice({
-  name: "getRoute",
+const getRoutes = createSlice({
+  name: "getRoutes",
   initialState,
   reducers: {
     getRouteSet(state, action) {
@@ -56,12 +122,11 @@ const getRoute = createSlice({
       return initialState;
     },
     fetchStart(state, action) {
-      state.status = "loading";
-      state.loading = true;
+      state.status = "pending";
     },
     fetchError(state, action) {
-      const { error } = action.payload;
-      return { ...state, items: [], loading: false, error, status: "error" };
+      state.status = "error";
+      state.error = String(action.payload.error.message);
     },
     fetchSuccess(state, action) {
       state.data.totalCount = action.payload.total_count;
@@ -77,5 +142,5 @@ export const {
   fetchStart,
   fetchError,
   fetchSuccess,
-} = getRoute.actions;
-export default getRoute.reducer;
+} = getRoutes.actions;
+export default getRoutes.reducer;

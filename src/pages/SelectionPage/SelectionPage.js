@@ -16,7 +16,7 @@ import { fetchRoutes } from "../../store/fetchRoutes";
 
 export default function SelectionPage() {
   const dispatch = useDispatch();
-  const status = useSelector((state) => state.getRoute.status);
+  const status = useSelector((state) => state.getRoutes.status);
 
   useEffect(() => {
     dispatch(fetchRoutes());
@@ -25,7 +25,7 @@ export default function SelectionPage() {
   return (
     <div>
       <HeaderSelect />
-      {status === "loading" && <Loader />}
+      {status === "pending" && <Loader />}
       {status === "success" && (
         <>
           <ProgressBar />

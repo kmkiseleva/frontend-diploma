@@ -70,8 +70,8 @@ export default function CustomDatePicker({ pickerPlace }) {
       <div className="date__input">
         {forwardPicker}
         {backwardPicker}
-        {/* <DatePickerInput className="input__header" />
-        <DatePickerInput className="input__header" /> */}
+        <DatePickerInput className="input__header" />
+        <DatePickerInput className="input__header" />
       </div>
     </div>
   );
