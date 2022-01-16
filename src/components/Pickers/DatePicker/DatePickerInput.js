@@ -1,3 +1,4 @@
+import React, { memo } from "react";
 import { ConfigProvider, DatePicker } from "antd";
 import ru_RU from "antd/lib/locale/ru_RU";
 import moment from "moment";
@@ -6,8 +7,8 @@ import "./customDatePicker.css";
 
 moment.locale("ru");
 
-const dateFormat = "DD/MM/YY";
-const placeholder = "ДД/ММ/ГГ";
+const dateFormat = { headerPicker: "DD/MM/YY", asidePicker: "DD.MM.YY" };
+const placeholder = { headerPicker: "ДД/ММ/ГГ", asidePicker: "ДД.ММ.ГГ" };
 
 export default function DatePickerInput({
   defaultValue,

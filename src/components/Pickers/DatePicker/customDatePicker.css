@@ -101,6 +101,11 @@
   color: rgba(255, 168, 0, 1);
 }
 
+.ant-picker:hover,
+.ant-picker-focused {
+  border-color: #ffa800;
+}
+
 .ant-picker-footer {
   display: none;
 }
