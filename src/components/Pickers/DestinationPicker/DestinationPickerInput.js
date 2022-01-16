@@ -40,10 +40,6 @@ const DestinationPickerInput = memo(({ point, defaultValue, onSelect }) => {
     setValue(defaultValue);
   }, [defaultValue]);
 
-  const onChangeInput = (payload) => {
-    stream$.next(payload);
-  };
-
   // подписка на стрим инпута
   React.useEffect(() => {
     const sub = cities$.subscribe({
@@ -75,7 +71,9 @@ const DestinationPickerInput = memo(({ point, defaultValue, onSelect }) => {
       filterOption={(inputValue, option) =>
         option?.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
       }
-      onChange={onChangeInput}
+      onChange={(payload) => {
+        stream$.next(payload);
+      }}
       onSelect={(payload) => returnSelectedCity(payload, options, point)}
     >
       <Input

@@ -13,8 +13,6 @@ import { capitalize } from "./capitalize";
 
 // Here we convert server response into antd-autocomplete-compatible array
 export const refineResponseOptions = (responseArray) => {
-  console.log(responseArray);
-
   if (Array.isArray(responseArray)) {
     return responseArray.map((el) =>
       (({ name, _id }) => ({
@@ -26,7 +24,7 @@ export const refineResponseOptions = (responseArray) => {
   return [];
 };
 
-// It's a HOO, it receives time of debounce,function for getting
+// It's a HOO, it receives time of debounce, function for getting
 // list of suggestions from server, and source stream. It denounces
 // function and returns result only if source stream really stops.
 export const autocomplete = (time, selector) => (source$) =>
@@ -41,8 +39,6 @@ export const autocomplete = (time, selector) => (source$) =>
 export const fetch$ = (term) =>
   fromFetch(`${process.env.REACT_APP_BASE_URL}routes/cities?name=${term}`).pipe(
     switchMap((response) => {
-      console.log(response);
-
       if (response.ok) {
         // OK return data
         return response.json();
