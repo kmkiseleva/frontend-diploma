@@ -1,32 +1,29 @@
 import "./customDatePicker.css";
 import DatePickerInput from "./DatePickerInput";
-import { useEffect, useMemo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
-import { setDateForward } from "../../../store/dateForward";
-import { setDateBackward } from "../../../store/dateBackward";
+import {
+  searchParamsDateOutboundSet,
+  searchParamsDateReturnSet,
+} from "../../../store/params";
 
-export default function CustomDatePicker({ pickerPlace }) {
+const CustomDatePicker = memo(({ pickerPlace }) => {
   const dispatch = useDispatch();
+
   const [forwardMoment, setForwardMoment] = useState(undefined);
-  const [backwardMoment, setBackwardMoment] = useState(undefined);
-  const forwardState = useSelector((state) => state.dateForward);
-  const backwardState = useSelector((state) => state.dateBackward);
+  const [returnMoment, setReturnMoment] = useState(undefined);
+  const forwardState = useSelector((state) => state.params.dateOutbound);
+  const returnState = useSelector((state) => state.params.dateReturn);
 
   const onChange = (value, dateType) => {
     const date = value ? value.format("YYYY-MM-DD") : null;
     if (dateType === "forward") {
-      dispatch(setDateForward(date));
-    } else if (dateType === "backward") {
-      dispatch(setDateBackward(date));
+      dispatch(searchParamsDateOutboundSet(date));
+    } else if (dateType === "return") {
+      dispatch(searchParamsDateReturnSet(date));
     }
   };
-
-  useEffect(() => {
-    if (backwardState && forwardState && backwardState < forwardState) {
-      dispatch(setDateBackward(null));
-    }
-  }, [backwardState, forwardState, dispatch]);
 
   useMemo(() => {
     if (forwardState) {
@@ -37,42 +34,30 @@ export default function CustomDatePicker({ pickerPlace }) {
   }, [forwardState]);
 
   useMemo(() => {
-    if (backwardState) {
-      setBackwardMoment(moment(backwardState, "YYYY-MM-DD"));
+    if (returnState) {
+      setReturnMoment(moment(returnState, "YYYY-MM-DD"));
     } else {
-      setBackwardMoment(undefined);
+      setReturnMoment(undefined);
     }
-  }, [backwardState]);
-
-  const forwardPicker = () => (
-    <DatePickerInput
-      className="input__header"
-      dateType="forward"
-      defaultValue={forwardMoment}
-      disableDate={moment()}
-      getDate={onChange}
-    />
-  );
-
-  const backwardPicker = () => (
-    <DatePickerInput
-      className="input__header"
-      dateType="backward"
-      defaultValue={forwardMoment || moment()}
-      disableDate={moment()}
-      getDate={onChange}
-    />
-  );
+  }, [returnState]);
 
   return (
     <div className="date__container">
       <span className="date__title">Дата</span>
       <div className="date__input">
-        {forwardPicker}
-        {backwardPicker}
-        <DatePickerInput className="input__header" />
-        <DatePickerInput className="input__header" />
+        <DatePickerInput
+          dateType="forward"
+          defaultValue={forwardMoment}
+          getDate={onChange}
+        />
+        <DatePickerInput
+          dateType="return"
+          defaultValue={returnMoment}
+          getDate={onChange}
+        />
       </div>
     </div>
   );
-}
+});
+
+export default CustomDatePicker;

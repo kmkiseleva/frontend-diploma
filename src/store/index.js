@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { params } from "./params";
+import params from "./params";
 import getRoutes from "./fetchRoutes";
 import lastTickets from "./fetchLastTickets";
 import dateForward from "./dateForward";

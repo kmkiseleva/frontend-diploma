@@ -94,4 +94,4 @@ export const {
   searchParamsOffsetSet,
 } = params.actions;
 
-export const searchParams = params.reducer;
+export default params.reducer;
