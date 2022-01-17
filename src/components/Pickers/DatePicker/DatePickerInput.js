@@ -7,23 +7,38 @@ import "./customDatePicker.css";
 
 moment.locale("ru");
 
-const dateFormat = { headerPicker: "DD/MM/YY", asidePicker: "DD.MM.YY" };
-const placeholder = { headerPicker: "ДД/ММ/ГГ", asidePicker: "ДД.ММ.ГГ" };
+const dateFormat = (className) => {
+  if (className === "headerPicker") {
+    return "DD/MM/YY";
+  } else {
+    return "DD.MM.YY";
+  }
+};
 
-const DatePickerInput = memo(({ defaultValue, getDate, dateType }) => {
-  return (
-    <ConfigProvider locale={ru_RU}>
-      <DatePicker
-        className="input__item"
-        dropdownClassName="input__dropDown"
-        onChange={(value) => getDate(value, dateType)}
-        value={defaultValue}
-        format={dateFormat}
-        placeholder="ДД/ММ/ГГ"
-        allowClear
-      />
-    </ConfigProvider>
-  );
-});
+const placeholder = (className) => {
+  if (className === "headerPicker") {
+    return "ДД/ММ/ГГ";
+  } else {
+    return "ДД.ММ.ГГ";
+  }
+};
+
+const DatePickerInput = memo(
+  ({ pickerPlace, defaultValue, getDate, dateType }) => {
+    return (
+      <ConfigProvider locale={ru_RU}>
+        <DatePicker
+          className="input__item"
+          dropdownClassName="input__dropDown"
+          onChange={(value) => getDate(value, dateType)}
+          value={defaultValue}
+          format={dateFormat(pickerPlace)}
+          placeholder={placeholder(pickerPlace)}
+          allowClear
+        />
+      </ConfigProvider>
+    );
+  }
+);
 
 export default DatePickerInput;

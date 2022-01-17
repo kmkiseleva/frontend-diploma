@@ -1,7 +1,7 @@
 import "./selectionPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import moment from "moment";
+// import moment from "moment";
 
 import HeaderSelect from "./../../components/Header/HeaderSelect";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";

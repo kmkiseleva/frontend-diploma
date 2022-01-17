@@ -42,21 +42,27 @@ const CustomDatePicker = memo(({ pickerPlace }) => {
   }, [returnState]);
 
   return (
-    <div className="date__container">
-      <span className="date__title">Дата</span>
-      <div className="date__input">
-        <DatePickerInput
-          dateType="forward"
-          defaultValue={forwardMoment}
-          getDate={onChange}
-        />
-        <DatePickerInput
-          dateType="return"
-          defaultValue={returnMoment}
-          getDate={onChange}
-        />
-      </div>
-    </div>
+    <>
+      {pickerPlace === "headerPicker" && (
+        <div className="date__container">
+          <span className="date__title">Дата</span>
+          <div className="date__input">
+            <DatePickerInput
+              pickerPlace="headerPicker"
+              dateType="forward"
+              defaultValue={forwardMoment}
+              getDate={onChange}
+            />
+            <DatePickerInput
+              pickerPlace="headerPicker"
+              dateType="return"
+              defaultValue={returnMoment}
+              getDate={onChange}
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 });
 

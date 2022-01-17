@@ -24,7 +24,7 @@ export default function FindTicketsBlock() {
         <DestinationPicker />
       </div>
       <div className="block__date">
-        <CustomDatePicker />
+        <CustomDatePicker pickerPlace="headerPicker" />
       </div>
       <div className="block__button">
         <button onClick={findTickets}>Найти билеты</button>
