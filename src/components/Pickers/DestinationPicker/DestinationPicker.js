@@ -4,52 +4,42 @@ import { Button } from "antd";
 import DestinationPickerInput from "./DestinationPickerInput";
 import { ReactComponent as SwapBtn } from "../../../img/swapBtn.svg";
 
-import { setArrival } from "../../../store/arrival";
-import { setDeparture } from "../../../store/departure";
+import {
+  searchParamsCityDepartureSet,
+  searchParamsCityArrivalSet,
+} from "../../../store/params";
 
 export default function DestinationPicker({ className }) {
   const dispatch = useDispatch();
-  const departureState = useSelector((state) => state.departure);
-  const arrivalState = useSelector((state) => state.arrival);
+  const departureState = useSelector((state) => state.params.cityDeparture);
+  const arrivalState = useSelector((state) => state.params.cityArrival);
 
   // выбрать и установить пункт назначения или отправки
   const selectPoint = (value, point) => {
     if (point === "departure") {
-      dispatch(setDeparture(value));
+      dispatch(searchParamsCityDepartureSet(value));
     } else {
-      dispatch(setArrival(value));
+      dispatch(searchParamsCityArrivalSet(value));
     }
   };
 
   // поменять местами пункты назначения в инпутах
   const swapPoints = () => {
-    dispatch(setArrival(departureState));
-    dispatch(setDeparture(arrivalState));
+    dispatch(searchParamsCityArrivalSet(departureState));
+    dispatch(searchParamsCityDepartureSet(arrivalState));
   };
-
-  // отправление (откуда)
-  const departurePicker = (
-    <DestinationPickerInput
-      point="departure"
-      defaultValue={departureState.value}
-      onSelect={selectPoint}
-    />
-  );
-
-  // прибытие (куда)
-  const arrivalPicker = (
-    <DestinationPickerInput
-      point="arrival"
-      defaultValue={arrivalState.value}
-      onSelect={selectPoint}
-    />
-  );
 
   return (
     <div className="destination__container">
       <span className="destination__title">Направление</span>
       <div className="destination__input">
-        <div className="departure__picker">{departurePicker}</div>
+        <div className="departure__picker">
+          <DestinationPickerInput
+            point="departure"
+            defaultValue={departureState.value}
+            onSelect={selectPoint}
+          />
+        </div>
         <div className="swap__button">
           <Button
             shape="circle"
@@ -59,7 +49,13 @@ export default function DestinationPicker({ className }) {
             <SwapBtn />
           </Button>
         </div>
-        <div>{arrivalPicker}</div>
+        <div>
+          <DestinationPickerInput
+            point="arrival"
+            defaultValue={arrivalState.value}
+            onSelect={selectPoint}
+          />
+        </div>
       </div>
     </div>
   );

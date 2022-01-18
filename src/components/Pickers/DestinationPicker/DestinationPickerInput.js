@@ -1,12 +1,14 @@
 import "./destinationPicker.css";
 import { AutoComplete, Input } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
+
 import React, { memo, useMemo, useState } from "react";
 import { BehaviorSubject, of } from "rxjs";
+
 import { ReactComponent as GeoIcon } from "../../../img/geoIcon.svg";
 import { autocomplete, fetch$ } from "../../../utils/streaming";
 
-const DestinationPickerInput = memo(({ point, defaultValue, onSelect }) => {
+const DestinationPickerInput = memo(({ defaultValue, onSelect, point }) => {
   const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState([]);
   const [value, setValue] = useState(defaultValue);
@@ -17,6 +19,7 @@ const DestinationPickerInput = memo(({ point, defaultValue, onSelect }) => {
     [defaultValue]
   );
 
+  // результаты
   const cities$ = useMemo(
     () => stream$.pipe(autocomplete(1000, (val) => fetch$(val))),
     [stream$]
@@ -35,7 +38,7 @@ const DestinationPickerInput = memo(({ point, defaultValue, onSelect }) => {
     return () => loadingSub.unsubscribe();
   }, [stream$, defaultValue]);
 
-  // Обновление значения инпута
+  // обновление значения инпута
   React.useEffect(() => {
     setValue(defaultValue);
   }, [defaultValue]);
@@ -52,10 +55,10 @@ const DestinationPickerInput = memo(({ point, defaultValue, onSelect }) => {
     return () => sub.unsubscribe();
   }, [cities$]);
 
-  const returnSelectedCity = (payload, arrayOfCities, point) => {
+  const returnSelectedCity = (payload, arrayOfCities, mode) => {
     const selectedCity = arrayOfCities.find((el) => el.value === payload);
     if (selectedCity) {
-      onSelect(selectedCity, point);
+      onSelect(selectedCity, mode);
     }
   };
 

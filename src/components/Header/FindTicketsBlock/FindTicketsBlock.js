@@ -14,7 +14,7 @@ const FindTicketsBlock = memo(() => {
 
   const findTickets = () => {
     if (params.cityDeparture.value && params.cityArrival.value) {
-      // dispatch(fetchRoutes(params));
+      dispatch(fetchRoutes(params));
       history.push("/selection");
     }
   };

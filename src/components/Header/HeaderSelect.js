@@ -2,7 +2,7 @@ import "./header.css";
 import NavBar from "./NavBar/NavBar";
 import Logo from "./Logo/Logo";
 import DestinationPicker from "../Pickers/DestinationPicker/DestinationPicker";
-import DatePicker from "../Pickers/DatePicker/CustomDatePicker";
+import CustomDatePicker from "../Pickers/DatePicker/CustomDatePicker";
 
 export default function HeaderSelect() {
   return (
@@ -16,7 +16,7 @@ export default function HeaderSelect() {
           <div className="headerSelect__pickersBlock">
             <div className="headerSelect__pickers">
               <DestinationPicker />
-              <DatePicker />
+              <CustomDatePicker pickerPlace="headerPicker" />
             </div>
             <div className="headerSelect__button">
               <button>Найти билеты</button>
