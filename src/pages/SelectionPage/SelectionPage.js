@@ -1,6 +1,6 @@
 import "./selectionPage.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { memo, useMemo } from "react";
 // import moment from "moment";
 
 import HeaderSelect from "./../../components/Header/HeaderSelect";
@@ -8,19 +8,18 @@ import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import SideSelector from "../../components/Selection/SideSelector/SideSelector";
 import LastTickets from "../../components/Selection/LastTickets/LastTickets";
 // import MainTickets from "../../components/Selection/MainTickets/MainTickets";
-
 import NoResults from "./../../components/NoResults/NoResults";
 import Loader from "./../../components/Loading/Loader";
 
-import { fetchRoutes } from "../../store/fetchRoutes";
+import { searchParamsFiltersSet } from "../../store/params";
 
-export default function SelectionPage() {
+const SelectionPage = memo(() => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.getRoutes.status);
+  const trains = useSelector((state) => state.getRoutes.data.items);
+  const filters = useSelector((state) => state.params.filters);
 
-  useEffect(() => {
-    dispatch(fetchRoutes());
-  }, [dispatch]);
+  console.log(status);
 
   return (
     <div>
@@ -43,4 +42,6 @@ export default function SelectionPage() {
       )}
     </div>
   );
-}
+});
+
+export default SelectionPage;

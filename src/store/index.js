@@ -4,8 +4,6 @@ import getRoutes from "./fetchRoutes";
 import lastTickets from "./fetchLastTickets";
 import dateForward from "./dateForward";
 import dateBackward from "./dateBackward";
-import arrival from "./arrival";
-import departure from "./departure";
 import subscription from "./fetchSubscribe";
 
 const store = configureStore({
@@ -15,8 +13,6 @@ const store = configureStore({
     lastTickets,
     dateForward,
     dateBackward,
-    arrival,
-    departure,
     subscription,
   },
 });
