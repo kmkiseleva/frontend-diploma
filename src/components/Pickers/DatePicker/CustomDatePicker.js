@@ -48,18 +48,40 @@ const CustomDatePicker = memo(({ pickerPlace }) => {
           <span className="date__title">Дата</span>
           <div className="date__input">
             <DatePickerInput
+              className="input__item"
               pickerPlace="headerPicker"
               dateType="forward"
               defaultValue={forwardMoment}
               getDate={onChange}
             />
             <DatePickerInput
+              className="input__item"
               pickerPlace="headerPicker"
               dateType="return"
               defaultValue={returnMoment}
               getDate={onChange}
             />
           </div>
+        </div>
+      )}
+      {pickerPlace === "sidePicker" && (
+        <div className="selector__datePickers">
+          <div className="datePickers__title">Дата поездки</div>
+          <DatePickerInput
+            className="input__sideItem"
+            pickerPlace="sidePicker"
+            dateType="forward"
+            defaultValue={forwardMoment}
+            getDate={onChange}
+          />
+          <div className="datePickers__title">Дата возвращения</div>
+          <DatePickerInput
+            className="input__sideItem"
+            pickerPlace="sidePicker"
+            dateType="return"
+            defaultValue={returnMoment}
+            getDate={onChange}
+          />
         </div>
       )}
     </>

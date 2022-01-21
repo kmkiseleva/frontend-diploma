@@ -5,20 +5,6 @@
   margin-bottom: 94px;
 }
 
-.selector__datePickers {
-  padding-top: 43px;
-  padding-left: 28px;
-  height: 281px;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.datePickers__title {
-  font-size: 30px;
-  line-height: 35px;
-  color: #ffffff;
-  margin-bottom: 10px;
-}
-
 .selector__seatsFilter {
   height: 354px;
   border-bottom: 1px solid #e5e5e5;

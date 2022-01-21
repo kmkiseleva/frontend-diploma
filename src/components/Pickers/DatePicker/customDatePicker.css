@@ -67,6 +67,33 @@
   }
 }
 
+/* side pickers */
+.input__sideItem {
+  box-sizing: border-box;
+  font-size: 18px;
+  line-height: 21px;
+  color: #292929;
+  background: #ffffff;
+  border-radius: 3px;
+  min-width: 295px !important;
+  height: 43px;
+  margin-bottom: 26px;
+}
+
+.selector__datePickers {
+  padding-top: 43px;
+  padding-left: 28px;
+  height: 281px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.datePickers__title {
+  font-size: 30px;
+  line-height: 35px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
 .ant-picker-cell .ant-picker-cell-inner {
   box-sizing: border-box;
   border: 1px solid transparent;

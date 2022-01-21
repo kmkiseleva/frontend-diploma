@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import moment from "moment";
 
 const initialState = {
-  status: "idle",
+  status: "success",
   error: "",
   data: {
     counter: 0,

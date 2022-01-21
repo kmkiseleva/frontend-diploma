@@ -24,11 +24,11 @@ const placeholder = (className) => {
 };
 
 const DatePickerInput = memo(
-  ({ pickerPlace, defaultValue, getDate, dateType }) => {
+  ({ className, pickerPlace, defaultValue, getDate, dateType }) => {
     return (
       <ConfigProvider locale={ru_RU}>
         <DatePicker
-          className="input__item"
+          className={className}
           dropdownClassName="input__dropDown"
           onChange={(value) => getDate(value, dateType)}
           value={defaultValue}
