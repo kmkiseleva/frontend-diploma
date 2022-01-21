@@ -22,7 +22,7 @@ const SelectionPage = memo(() => {
   console.log(status);
 
   return (
-    <div>
+    <div className="selectionPage__body">
       <HeaderSelect />
       {status === "pending" && <Loader />}
       {status === "success" && (
