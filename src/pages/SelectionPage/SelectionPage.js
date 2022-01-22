@@ -19,8 +19,6 @@ const SelectionPage = memo(() => {
   const trains = useSelector((state) => state.getRoutes.data.items);
   const filters = useSelector((state) => state.params.filters);
 
-  console.log(status);
-
   return (
     <div className="selectionPage__body">
       <HeaderSelect />

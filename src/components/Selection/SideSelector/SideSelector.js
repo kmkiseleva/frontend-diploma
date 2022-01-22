@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
+import React, { memo, useMemo } from "react";
+
 import "./sideSelector.css";
 import coupe from "./FilterSeats/img/coupe.svg";
 import platz from "./FilterSeats/img/platz.svg";
@@ -13,22 +16,87 @@ import FilterSeats from "./FilterSeats/FilterSeats";
 import FilterPrice from "./FilterPrice/FilterPrice";
 import FilterTime from "./FilterTime/FilterTime";
 
-export default function SideSelector() {
+import { searchParamsFiltersSet } from "../../../store/params";
+
+const SideSelector = memo(() => {
+  const dispatch = useDispatch();
+  const filters = useSelector((state) => state.params.filters);
+
+  const changeFilter = (filter, state) => {
+    dispatch(searchParamsFiltersSet({ [filter]: state }));
+  };
+  const stubRange = { min: 0, max: 10000 };
+  const priceRange = useMemo(() => {
+    if (filters.price_from && filters.price_to) {
+      return {
+        minPrice: filters.price_from,
+        maxPrice: filters.price_to,
+      };
+    } else {
+      return {
+        minPrice: stubRange.min,
+        maxPrice: stubRange.max,
+      };
+    }
+  }, [filters.price_from, filters.price_to, stubRange.min, stubRange.max]);
+
   return (
     <div className="sideSelector__container">
       <CustomDatePicker pickerPlace="sidePicker" />
       <div className="selector__seatsFilter">
         <ul className="seatsFilter__list">
-          <FilterSeats icon={coupe} text="Купе" />
-          <FilterSeats icon={platz} text="Плацкарт" />
-          <FilterSeats icon={seat} text="Сидячий" />
-          <FilterSeats icon={lux} text="Люкс" />
-          <FilterSeats icon={wifi} text="Wi-Fi" />
-          <FilterSeats icon={express} text="Экспресс" />
+          <FilterSeats
+            icon={coupe}
+            text="Купе"
+            onChange={changeFilter}
+            filter="have_second_class"
+            checked={filters.have_second_class}
+          />
+          <FilterSeats
+            icon={platz}
+            text="Плацкарт"
+            onChange={changeFilter}
+            filter="have_third_class"
+            checked={filters.have_third_class}
+          />
+          <FilterSeats
+            icon={seat}
+            text="Сидячий"
+            onChange={changeFilter}
+            filter="have_fourth_class"
+            checked={filters.have_fourth_class}
+          />
+          <FilterSeats
+            icon={lux}
+            text="Люкс"
+            onChange={changeFilter}
+            filter="have_first_class"
+            checked={filters.have_first_class}
+          />
+          <FilterSeats
+            icon={wifi}
+            text="Wi-Fi"
+            onChange={changeFilter}
+            filter="have_wifi"
+            checked={filters.have_wifi}
+          />
+          <FilterSeats
+            icon={express}
+            text="Экспресс"
+            onChange={changeFilter}
+            filter="is_express"
+            checked={filters.is_express}
+          />
         </ul>
       </div>
       <div className="selector__price">
-        <FilterPrice minPrice={1500} maxPrice={7000} />
+        <FilterPrice
+          initialRange={[
+            priceRange.minPrice || stubRange.min,
+            priceRange.maxPrice || stubRange.max,
+          ]}
+          stubRange={stubRange}
+        />
       </div>
       <div className="selector__timeTo">
         <FilterTime icon={forward} title="Туда" />
@@ -38,4 +106,6 @@ export default function SideSelector() {
       </div>
     </div>
   );
-}
+});
+
+export default SideSelector;
