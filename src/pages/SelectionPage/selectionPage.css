@@ -17,3 +17,18 @@
 .selection__main {
   min-width: 960px;
 }
+
+.selectionMain__sortFilters {
+  margin-top: -5px;
+  display: flex;
+  min-width: 100%;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 18px;
+  line-height: 21px;
+  color: #928f94;
+}
+
+.resultsLimit__container {
+  display: flex;
+}

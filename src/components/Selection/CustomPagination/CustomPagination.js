@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Pagination } from "antd";
-import "customPagination.css";
+import "./customPagination.css";
 
 const CustomPagination = memo(({ data }) => {
   const { total, current, pageSize, onChange } = data;

@@ -1,6 +1,6 @@
 import "./selectionPage.css";
 import { useDispatch, useSelector } from "react-redux";
-import { memo, useMemo, useState } from "react";
+import { memo, useState } from "react";
 // import moment from "moment";
 
 import HeaderSelect from "./../../components/Header/HeaderSelect";
@@ -10,29 +10,62 @@ import LastTickets from "../../components/Selection/LastTickets/LastTickets";
 // import MainTickets from "../../components/Selection/MainTickets/MainTickets";
 import NoResults from "./../../components/NoResults/NoResults";
 import Loader from "./../../components/Loading/Loader";
+import SortFilter from "../../components/Selection/SortFilter/SortFilter";
+import ResultsLimit from "../../components/Selection/ResultsLimit/ResultsLimit";
+import CustomPagination from "./../../components/Selection/CustomPagination/CustomPagination";
 
 import {
-  searchParamsFiltersSet,
   searchParamsSortSet,
   searchParamsOffsetSet,
+  searchParamsLimitSet,
 } from "../../store/params";
+
+export const sortOptions = [
+  {
+    value: "date",
+    label: "времени",
+  },
+  {
+    value: "price_min",
+    label: "стоимости",
+  },
+  {
+    value: "duration",
+    label: "длительности",
+  },
+];
 
 const SelectionPage = memo(() => {
   const dispatch = useDispatch();
 
   const status = useSelector((state) => state.getRoutes.status);
-  const trains = useSelector((state) => state.getRoutes.data.items);
-  const filters = useSelector((state) => state.params.filters);
+  // const trains = useSelector((state) => state.getRoutes.data.items);
   const params = useSelector((state) => state.params);
 
-  const totalCount = useSelector((state) => state.getRoutes.data.totalCount);
+  // const totalCount = useSelector((state) => state.getRoutes.data.totalCount);
+  const totalCount = 0;
+
   const { limit, sort, offset } = params;
   const [activeSort, setActiveSort] = useState([sort]);
+  const [currentPage, setCurrentPage] = useState(offset / limit + 1);
 
+  // сортировать по (времени, стоимости, длительности)
   const onChangeSort = (value) => {
     setActiveSort(value);
     dispatch(searchParamsSortSet(`${value}`));
     dispatch(searchParamsOffsetSet(0));
+  };
+
+  // показывать по 5, 10, 20
+  const onClickLimit = (el) => {
+    dispatch(searchParamsLimitSet(el));
+    dispatch(searchParamsOffsetSet(0));
+  };
+
+  // поменять страницу
+  const onChangePage = (value) => {
+    setCurrentPage(value);
+    dispatch(searchParamsOffsetSet(value * limit - limit));
   };
 
   return (
@@ -58,7 +91,7 @@ const SelectionPage = memo(() => {
                     options={sortOptions}
                   />
                 </div>
-                <div>
+                <div className="resultsLimit__container">
                   показывать по:&nbsp;
                   <ResultsLimit
                     variants={[5, 10, 20]}
@@ -69,6 +102,16 @@ const SelectionPage = memo(() => {
               </div>
               <NoResults />
               {/* <MainTickets /> */}
+              <div className="pagination__container">
+                <CustomPagination
+                  data={{
+                    current: currentPage,
+                    total: totalCount,
+                    pageSize: limit,
+                    onChange: onChangePage,
+                  }}
+                />
+              </div>
             </div>
           </div>
         </>
