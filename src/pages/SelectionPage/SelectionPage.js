@@ -1,13 +1,12 @@
 import "./selectionPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { memo, useState } from "react";
-// import moment from "moment";
 
 import HeaderSelect from "./../../components/Header/HeaderSelect";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import SideSelector from "../../components/Selection/SideSelector/SideSelector";
 import LastTickets from "../../components/Selection/LastTickets/LastTickets";
-// import MainTickets from "../../components/Selection/MainTickets/MainTickets";
+import MainTicketCard from "../../components/Selection/MainTicketCard/MainTicketCard";
 import NoResults from "./../../components/NoResults/NoResults";
 import Loader from "./../../components/Loading/Loader";
 import SortFilter from "../../components/Selection/SortFilter/SortFilter";
@@ -39,11 +38,9 @@ const SelectionPage = memo(() => {
   const dispatch = useDispatch();
 
   const status = useSelector((state) => state.getRoutes.status);
-  // const trains = useSelector((state) => state.getRoutes.data.items);
+  const trains = useSelector((state) => state.getRoutes.data.items);
   const params = useSelector((state) => state.params);
-
-  // const totalCount = useSelector((state) => state.getRoutes.data.totalCount);
-  const totalCount = 0;
+  const counter = useSelector((state) => state.getRoutes.data.counter);
 
   const { limit, sort, offset } = params;
   const [activeSort, setActiveSort] = useState([sort]);
@@ -82,7 +79,7 @@ const SelectionPage = memo(() => {
             </div>
             <div className="selection__main">
               <div className="selectionMain__sortFilters">
-                <div>найдено&nbsp;{totalCount}</div>
+                <div>найдено&nbsp;{counter}</div>
                 <div>
                   сортировать по:
                   <SortFilter
@@ -100,18 +97,28 @@ const SelectionPage = memo(() => {
                   />
                 </div>
               </div>
-              <NoResults />
-              {/* <MainTickets /> */}
-              <div className="pagination__container">
-                <CustomPagination
-                  data={{
-                    current: currentPage,
-                    total: totalCount,
-                    pageSize: limit,
-                    onChange: onChangePage,
-                  }}
-                />
-              </div>
+              {!counter && <NoResults />}
+              {counter !== 0 && (
+                <>
+                  <div className="mainTickets__container">
+                    {trains.map((trainsPair) => {
+                      // eslint-disable-next-line no-underscore-dangle
+                      const key = trainsPair[0].departure.train._id;
+                      return <MainTicketCard trains={trainsPair} key={key} />;
+                    })}
+                  </div>
+                  <div className="pagination__container">
+                    <CustomPagination
+                      data={{
+                        current: currentPage,
+                        total: counter,
+                        pageSize: limit,
+                        onChange: onChangePage,
+                      }}
+                    />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </>

@@ -9,7 +9,7 @@ import wifi from "./img/wifi.png";
 import express from "./img/express.png";
 import cup from "./img/cup.png";
 
-export default function MainTicketCard() {
+export default function MainTicketCard({ trains }) {
   return (
     <div className="mainCard__container">
       <div className="mainCard__side">

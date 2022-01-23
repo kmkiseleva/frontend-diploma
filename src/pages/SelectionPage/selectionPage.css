@@ -32,3 +32,8 @@
 .resultsLimit__container {
   display: flex;
 }
+
+.mainTickets__container {
+  display: flex;
+  flex-direction: column;
+}
