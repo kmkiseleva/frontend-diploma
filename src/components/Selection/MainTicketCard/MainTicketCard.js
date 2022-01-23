@@ -1,4 +1,6 @@
+import { memo } from "react";
 import "./mainTicketCard.css";
+
 import train from "./img/train.png";
 import arrowLight from "../../../../img/arrow_light.png";
 import arrowDark from "../../../../img/arrow_dark.png";
@@ -9,22 +11,34 @@ import wifi from "./img/wifi.png";
 import express from "./img/express.png";
 import cup from "./img/cup.png";
 
-export default function MainTicketCard({ trains }) {
+import { capitalize } from "../../../utils/capitalize";
+
+const MainTicketCard = memo(({ trains }) => {
+  const train0 = trains[0];
+  // const train1 = trains[1];
+  // eslint-disable-next-line no-underscore-dangle
+  const trainId = train0.departure.train._id;
+  const trainName = train0.departure.train.name;
+  const pointA = capitalize(train0.departure.from.city.name);
+  const pointB = capitalize(train0.departure.to.city.name);
+
   return (
     <div className="mainCard__container">
       <div className="mainCard__side">
         <div className="side__img">
           <img src={train} alt="train" />
         </div>
-        <div className="side__trainNumber">116C</div>
+        <div className="side__trainNumber">{trainId}</div>
         <div className="side__trainDirections">
           <div className="trainDirections__from">
-            Адлер <img src={arrowLight} alt="arrow" />
+            {pointA}&nbsp; <img src={arrowLight} alt="arrow" />
           </div>
           <div className="trainDirections__to">
-            Москва <img src={arrowDark} alt="arrow" />
+            {pointB} <img src={arrowDark} alt="arrow" />
           </div>
-          <div className="trainDirections__to">Санкт-Петербург</div>
+          {trainName && (
+            <div className="trainDirections__to">&laquo;{trainName}&raquo;</div>
+          )}
         </div>
       </div>
       <div className="mainCard__middle">
@@ -127,4 +141,6 @@ export default function MainTicketCard({ trains }) {
       </div>
     </div>
   );
-}
+});
+
+export default MainTicketCard;
