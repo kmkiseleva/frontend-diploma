@@ -1,7 +1,7 @@
 import "./confirmPage.css";
 import HeaderSelect from "./../../components/Header/HeaderSelect";
 import ProgressBar from "./../../components/ProgressBar/ProgressBar";
-import MainTicketCard from "./../../components/Selection/MainTickets/MainTicketCard/MainTicketCard";
+import MainTicketCard from "./../../components/Selection/MainTicketCard/MainTicketCard";
 import Passengers from "../../components/Passengers/Passengers";
 import Payment from "../../components/Payment/Payment";
 import rub from "../../img/rub_light.png";

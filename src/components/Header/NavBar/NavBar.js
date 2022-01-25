@@ -13,7 +13,7 @@ export default function NavBar() {
             smooth
             to="/#about"
             className="navbar__link"
-            activeClassName="navbar_active"
+            activeclassname="navbar_active"
           >
             О нас
           </NavLink>
@@ -23,7 +23,7 @@ export default function NavBar() {
             smooth
             to="/#information"
             className="navbar__link"
-            activeClassName="navbar_active"
+            activeclassname="navbar_active"
           >
             Как это работает
           </NavLink>
@@ -33,7 +33,7 @@ export default function NavBar() {
             smooth
             to="/#reviews"
             className="navbar__link"
-            activeClassName="navbar_active"
+            activeclassname="navbar_active"
           >
             Отзывы
           </NavLink>
@@ -43,7 +43,7 @@ export default function NavBar() {
             smooth
             to="/#contacts"
             className="navbar__link"
-            activeClassName="navbar_active"
+            activeclassname="navbar_active"
           >
             Контакты
           </NavLink>

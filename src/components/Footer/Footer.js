@@ -102,7 +102,7 @@ export default function Footer() {
               required
               onChange={(e) => setUserEmail(e.target.value)}
             />
-            <button className="footer__button" htmlType="submit">
+            <button className="footer__button" htmltype="submit">
               Отправить
             </button>
           </form>

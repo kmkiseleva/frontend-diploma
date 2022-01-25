@@ -19,6 +19,8 @@ import {
   searchParamsLimitSet,
 } from "../../store/params";
 
+import trains from "./../../components/Selection/test";
+
 export const sortOptions = [
   {
     value: "date",
@@ -38,9 +40,13 @@ const SelectionPage = memo(() => {
   const dispatch = useDispatch();
 
   const status = useSelector((state) => state.getRoutes.status);
-  const trains = useSelector((state) => state.getRoutes.data.items);
   const params = useSelector((state) => state.params);
-  const counter = useSelector((state) => state.getRoutes.data.counter);
+
+  // const trains = useSelector((state) => state.getRoutes.data.items);
+  // const selectedTrain = useSelector((state) => state.appState.trainOutgoing);
+  // const totalCount = useSelector((state) => state.getRoutes.data.totalCount);
+
+  const totalCount = trains.length;
 
   const { limit, sort, offset } = params;
   const [activeSort, setActiveSort] = useState([sort]);
@@ -79,7 +85,7 @@ const SelectionPage = memo(() => {
             </div>
             <div className="selection__main">
               <div className="selectionMain__sortFilters">
-                <div>найдено&nbsp;{counter}</div>
+                <div>найдено&nbsp;{totalCount}</div>
                 <div>
                   сортировать по:
                   <SortFilter
@@ -97,12 +103,11 @@ const SelectionPage = memo(() => {
                   />
                 </div>
               </div>
-              {!counter && <NoResults />}
-              {counter !== 0 && (
+              {!totalCount && <NoResults />}
+              {totalCount !== 0 && (
                 <>
                   <div className="mainTickets__container">
                     {trains.map((trainsPair) => {
-                      // eslint-disable-next-line no-underscore-dangle
                       const key = trainsPair[0].departure.train._id;
                       return <MainTicketCard trains={trainsPair} key={key} />;
                     })}
@@ -111,7 +116,7 @@ const SelectionPage = memo(() => {
                     <CustomPagination
                       data={{
                         current: currentPage,
-                        total: counter,
+                        total: totalCount,
                         pageSize: limit,
                         onChange: onChangePage,
                       }}

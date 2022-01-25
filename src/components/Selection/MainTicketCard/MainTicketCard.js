@@ -1,22 +1,21 @@
 import { memo } from "react";
 import "./mainTicketCard.css";
 
-import train from "./img/train.png";
-import arrowLight from "../../../../img/arrow_light.png";
-import arrowDark from "../../../../img/arrow_dark.png";
-import arrowTo from "../../../../img/arrow_to.png";
-import arrowBack from "../../../../img/arrow_back.png";
+import trainImg from "./img/train.png";
+import arrowLight from "../../../img/arrow_light.png";
+import arrowDark from "../../../img/arrow_dark.png";
 import rub from "./img/rub.png";
 import wifi from "./img/wifi.png";
 import express from "./img/express.png";
 import cup from "./img/cup.png";
 
 import { capitalize } from "../../../utils/capitalize";
+import TrainRow from "./TrainRow";
 
 const MainTicketCard = memo(({ trains }) => {
   const train0 = trains[0];
-  // const train1 = trains[1];
-  // eslint-disable-next-line no-underscore-dangle
+  const train1 = trains[1];
+
   const trainId = train0.departure.train._id;
   const trainName = train0.departure.train.name;
   const pointA = capitalize(train0.departure.from.city.name);
@@ -26,7 +25,7 @@ const MainTicketCard = memo(({ trains }) => {
     <div className="mainCard__container">
       <div className="mainCard__side">
         <div className="side__img">
-          <img src={train} alt="train" />
+          <img src={trainImg} alt="train" />
         </div>
         <div className="side__trainNumber">{trainId}</div>
         <div className="side__trainDirections">
@@ -42,42 +41,8 @@ const MainTicketCard = memo(({ trains }) => {
         </div>
       </div>
       <div className="mainCard__middle">
-        <div className="middle__row">
-          <div className="row__point">
-            <div className="row__time">00:10</div>
-            <div className="row__city">Москва</div>
-            <div className="row__station">Курский вокзал</div>
-          </div>
-          <div className="row__direction">
-            <div className="direction__time">9 : 42</div>
-            <div className="direction__arrow">
-              <img src={arrowTo} alt="arrow" />
-            </div>
-          </div>
-          <div className="row__point">
-            <div className="row__time">09:52</div>
-            <div className="row__city">Санкт-Петербург</div>
-            <div className="row__station">Ладожский вокзал</div>
-          </div>
-        </div>
-        <div className="middle__row">
-          <div className="row__point">
-            <div className="row__time">00:10</div>
-            <div className="row__city">Москва</div>
-            <div className="row__station">Курский вокзал</div>
-          </div>
-          <div className="row__direction">
-            <div className="direction__time">9 : 42</div>
-            <div className="direction__arrow">
-              <img src={arrowBack} alt="arrow" />
-            </div>
-          </div>
-          <div className="row__point">
-            <div className="row__time">09:52</div>
-            <div className="row__city">Санкт-Петербург</div>
-            <div className="row__station">Ладожский вокзал</div>
-          </div>
-        </div>
+        <TrainRow train={train0} direction />
+        {train1 && <TrainRow train={train1} direction={false} />}
       </div>
       <div className="mainCard__seats">
         <div className="seats__row">
