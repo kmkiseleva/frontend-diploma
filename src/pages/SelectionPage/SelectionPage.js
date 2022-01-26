@@ -107,9 +107,9 @@ const SelectionPage = memo(() => {
               {totalCount !== 0 && (
                 <>
                   <div className="mainTickets__container">
-                    {trains.map((trainsPair) => {
-                      const key = trainsPair[0].departure.train._id;
-                      return <MainTicketCard trains={trainsPair} key={key} />;
+                    {trains.map((trainsItem) => {
+                      const key = trainsItem[0].departure.train._id;
+                      return <MainTicketCard trains={trainsItem} key={key} />;
                     })}
                   </div>
                   <div className="pagination__container">

@@ -1,0 +1,71 @@
+.mainCard__seats {
+  padding-left: 27px;
+  padding-top: 41px;
+}
+
+.seats__row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  margin-bottom: 22px;
+}
+
+.seats__name {
+  font-size: 16px;
+  line-height: 19px;
+  color: #3e3c41;
+  padding-right: 20px;
+  width: 85px;
+}
+
+.seats__amount {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffa800;
+  padding-right: 15px;
+}
+
+.price__from {
+  margin-right: 2px;
+}
+
+.price__value {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  color: #2d2b2f;
+  margin-right: 5px;
+}
+
+.price__rubIcon img {
+  vertical-align: bottom;
+}
+
+.seats__options {
+  margin-bottom: 18px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
+.seatsOptions__icon {
+  margin-right: 10px;
+}
+
+.seats__button button {
+  width: 228px;
+  height: 39px;
+  background: #ffa800;
+  border-radius: 5px;
+  margin-bottom: 23px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #ffffff;
+  padding-top: 2.5px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
