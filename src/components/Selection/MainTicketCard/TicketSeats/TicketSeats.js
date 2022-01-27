@@ -15,6 +15,7 @@ const carriageTypes = {
 
 const TicketSeats = memo(({ train }) => {
   const dispatch = useDispatch();
+
   const {
     departure: {
       have_wifi,
@@ -40,8 +41,7 @@ const TicketSeats = memo(({ train }) => {
   } = train;
 
   const selectTrain = (data) => {
-    console.log(data);
-    // dispatch(appStateSetTrainOutgoing(data));
+    dispatch(appStateSetTrainOutgoing(data));
   };
 
   return (

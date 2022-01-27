@@ -8,8 +8,6 @@ import PassengersPage from "./pages/PassengersPage/PassengersPage";
 import ConfirmPage from "./pages/ConfirmPage/ConfirmPage";
 import SuccessfulPage from "./pages/SuccessfulPage/SuccessfulPage";
 
-import Popups from "./components/Popups/Popups";
-
 function App() {
   return (
     <Router>
@@ -20,7 +18,6 @@ function App() {
         <Route exact path="/passengersPage" component={PassengersPage} />
         <Route exact path="/successfulPage" component={SuccessfulPage} />
         <Route exact path="/confirmPage" component={ConfirmPage} />
-        <Route exact path="/popupsPage" component={Popups} />
       </Switch>
       <Footer />
     </Router>

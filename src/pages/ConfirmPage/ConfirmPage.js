@@ -6,7 +6,11 @@ import Passengers from "../../components/Passengers/Passengers";
 import Payment from "../../components/Payment/Payment";
 import rub from "../../img/rub_light.png";
 
+import trains from "../../components/Selection/test";
+
 export default function ConfirmPage() {
+  const train = trains[0];
+
   return (
     <div>
       <HeaderSelect />
@@ -22,7 +26,7 @@ export default function ConfirmPage() {
         <div className="confirm__main">
           <div className="confirm__ticket">
             <div className="ticket__title">Поезд</div>
-            <MainTicketCard />
+            <MainTicketCard trains={train} />
           </div>
           <Passengers />
           <div className="confirm__pay">

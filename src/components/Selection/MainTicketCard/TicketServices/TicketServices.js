@@ -2,20 +2,28 @@ import { memo } from "react";
 import "./ticketServices.css";
 import wifi from "../img/wifi.png";
 import express from "../img/express.png";
-import cup from "../img/cup.png";
+import ac from "../img/service_ac.svg";
 
 const TicketServices = memo(({ services }) => {
+  const { have_wifi, is_express, have_air_conditioning } = services;
+
   return (
     <div className="seats__options">
-      <div className="seatsOptions__icon">
-        <img src={wifi} alt="wifi" />
-      </div>
-      <div className="seatsOptions__icon">
-        <img src={express} alt="express" />
-      </div>
-      <div className="seatsOptions__icon">
-        <img src={cup} alt="cup" />
-      </div>
+      {have_wifi && (
+        <div className="seatsOptions__icon">
+          <img src={wifi} alt="wifi" />
+        </div>
+      )}
+      {is_express && (
+        <div className="seatsOptions__icon">
+          <img src={express} alt="express" />
+        </div>
+      )}
+      {have_air_conditioning && (
+        <div className="seatsOptions__icon">
+          <img src={ac} alt="ac" />
+        </div>
+      )}
     </div>
   );
 });

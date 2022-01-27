@@ -37,17 +37,20 @@ const TicketSeatsRow = memo(
     };
 
     const arrOfPrices = tooltipData(ticketsPrice);
-    // const tooltip = (
-    //   <div className={s.tooltip__container}>
-    //     {arrOfPrices.map((el) => (
-    //       <div className={s.tooltip__row} key={el[0]}>
-    //         <div className={s.tooltip__txt}>{el[0]}</div>
-    //         <div className={s.tooltip__price}>{el[1]}</div>
-    //         <div className={s.tooltip__rub}>{iconsCollection.rub}</div>
-    //       </div>
-    //     ))}
-    //   </div>
-    // );
+    const tooltip = (
+      <div className="tooltip__container">
+        {arrOfPrices.map((el) => (
+          <div className="tooltip__row" key={el[0]}>
+            <div className="tooltip__txt">{el[0]}</div>
+            <div className="tooltip__price">{el[1]}</div>
+            <div className="tooltip__rub">
+              <img src={rub} alt="rub" />
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+
     return (
       <>
         {(carriageClass === "Люкс" || carriageClass === "Сидячий") && (
@@ -63,28 +66,30 @@ const TicketSeatsRow = memo(
             </div>
           </div>
         )}
-        {/* {carriageClass !== 'Люкс' && carriageClass !== 'Сидячий' && (
-        <Tooltip
-          placement="bottom"
-          title={tooltip}
-          mouseEnterDelay={0.3}
-          mouseLeaveDelay={0.3}
-          trigger="hover"
-          getPopupContainer={() => row.current as unknown as HTMLElement}
-          overlayClassName={s.tooltip}
-          destroyTooltipOnHide
-        >
-          <div className={cn(s.row, className)} ref={row}>
-            <div className={s.carriageClass}>{carriageClass}</div>
-            <div className={s.ticketsAmount}>{ticketsAmount}</div>
-            <div className={s.ticketsPrice}>
-              <span>от&nbsp;</span>
-              {lowPrice}
+        {carriageClass !== "Люкс" && carriageClass !== "Сидячий" && (
+          <Tooltip
+            placement="bottom"
+            title={tooltip}
+            mouseEnterDelay={0.3}
+            mouseLeaveDelay={0.3}
+            trigger="hover"
+            getPopupContainer={() => row.current}
+            overlayClassName="tooltip"
+            destroyTooltipOnHide
+          >
+            <div className="seats__row" ref={row}>
+              <div className="seats__name">{carriageClass}</div>
+              <div className="seats__amount">{ticketsAmount}</div>
+              <div className="seats__price">
+                <span className="price__from">от</span>
+                <span className="price__value">{lowPrice}</span>
+                <span className="price__rubIcon">
+                  <img src={rub} alt="rub" />
+                </span>
+              </div>
             </div>
-            <div className={s.moneySymbol}>{iconsCollection.rub}</div>
-          </div>
-        </Tooltip>
-      )} */}
+          </Tooltip>
+        )}
       </>
     );
   }
