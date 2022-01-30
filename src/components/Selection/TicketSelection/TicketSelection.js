@@ -3,9 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTrainSeatsData } from "./../../../store/fetchSeats";
 import SeatsCard from "./SeatsCard/SeatsCard";
 
+import trains from "../test";
+
 const TicketSelection = memo(() => {
   const dispatch = useDispatch();
-  const selectedTrainOut = useSelector((state) => state.appState.trainOutgoing);
+  const selectedTrainOut = trains[0][0];
+  // const selectedTrainOut = useSelector((state) => state.appState.trainOutgoing);
   const selectedTrainInc = useSelector((state) => state.appState.trainIncoming);
 
   const trainId = selectedTrainOut ? selectedTrainOut.departure._id : 0;

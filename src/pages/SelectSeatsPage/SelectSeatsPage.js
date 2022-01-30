@@ -4,13 +4,14 @@ import HeaderSelect from "./../../components/Header/HeaderSelect";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import SideSelector from "../../components/Selection/SideSelector/SideSelector";
 import LastTickets from "../../components/Selection/LastTickets/LastTickets";
-import TrainInfo from "../../components/TrainInfo/TrainInfo";
-import TicketsCount from "../../components/TicketsCount/TicketsCount";
-import CarriageType from "../../components/CarriageType/CarriageType";
-import Carriage from "./../../components/Carriage/Carriage";
+// import TrainInfo from "../../components/TrainInfo/TrainInfo";
+// import TicketsCount from "../../components/TicketsCount/TicketsCount";
+// import CarriageType from "../../components/CarriageType/CarriageType";
+// import Carriage from "./../../components/Carriage/Carriage";
 
 import arrowRight from "../../img/arrowRight.png";
 import arrowLeft from "../../img/arrowLeft.png";
+import TicketSelection from "../../components/Selection/TicketSelection/TicketSelection";
 
 export default function SelectSeatsPage() {
   return (
@@ -22,7 +23,8 @@ export default function SelectSeatsPage() {
           <SideSelector />
           <LastTickets />
         </div>
-        <div className="selection__main">
+        <TicketSelection />
+        {/* <div className="selection__main">
           <div className="seatsPage__title">Выбор мест</div>
           <div className="seatsPage__informationBlock">
             <div className="informationBlock__header">
@@ -58,7 +60,7 @@ export default function SelectSeatsPage() {
           <div className="seatsPage__buttonBlock">
             <button className="seatsPage__button">Далее</button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
