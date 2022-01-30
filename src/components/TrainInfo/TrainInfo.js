@@ -1,11 +1,23 @@
+import { memo } from "react";
 import "./trainInfo.css";
-import arrowLight from "../../img/arrow_light.png";
 import arrowDark from "../../img/arrow_dark.png";
 import arrowTo from "../../img/arrow_to.png";
 import clock from "../../img/clock.png";
 import trainAva from "../../img/little-train.png";
 
-export default function TrainInfo() {
+const TrainInfo = memo(({ info }) => {
+  const {
+    type,
+    trainId,
+    pointA,
+    stationA,
+    timeA,
+    pointB,
+    stationB,
+    timeB,
+    duration,
+  } = info;
+
   return (
     <div className="informationBlock__train">
       <div className="train__exactInfo">
@@ -13,15 +25,12 @@ export default function TrainInfo() {
           <img src={trainAva} alt="train" />
         </div>
         <div className="exactInfo__trainDetails">
-          <div className="exactInfo__trainNumber">116C</div>
+          <div className="exactInfo__trainNumber">{trainId}</div>
           <div className="exactInfo__trainDirections">
-            <div className="trainDirections__from">
-              Адлер <img src={arrowLight} alt="arrow" />
-            </div>
             <div className="trainDirections__to">
-              Москва <img src={arrowDark} alt="arrow" />
+              {pointA} <img src={arrowDark} alt="arrow" />
             </div>
-            <div className="trainDirections__to">Санкт-Петербург</div>
+            <div className="trainDirections__to">{pointB}</div>
           </div>
         </div>
       </div>
@@ -29,19 +38,19 @@ export default function TrainInfo() {
         <div className="mainCard__middle">
           <div className="middle__row">
             <div className="row__point">
-              <div className="row__time">00:10</div>
-              <div className="row__city">Москва</div>
-              <div className="row__station">Курский вокзал</div>
+              <div className="row__time">{timeA}</div>
+              <div className="row__city">{pointA}</div>
+              <div className="row__station">{stationA}</div>
             </div>
             <div className="row__direction destinationsInfo">
               <div className="direction__arrow">
-                <img src={arrowTo} alt="arrow" />
+                {type === "outgoing" && <img src={arrowTo} alt="arrow" />}
               </div>
             </div>
             <div className="row__point">
-              <div className="row__time">09:52</div>
-              <div className="row__city">Санкт-Петербург</div>
-              <div className="row__station">Ладожский вокзал</div>
+              <div className="row__time">{timeB}</div>
+              <div className="row__city">{pointB}</div>
+              <div className="row__station">{stationB}</div>
             </div>
           </div>
         </div>
@@ -51,10 +60,12 @@ export default function TrainInfo() {
           <img src={clock} alt="clock" />
         </div>
         <div className="travelTimeInfo__time">
-          <span>9</span> часов <br />
-          <span>42</span> минуты
+          <div>{duration.hours}</div>
+          <div>{duration.minutes}</div>
         </div>
       </div>
     </div>
   );
-}
+});
+
+export default TrainInfo;
