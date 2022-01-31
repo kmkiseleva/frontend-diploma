@@ -9,9 +9,9 @@ import {
 } from "../../../../store/appState";
 import { trainSeatsReset } from "../../../../store/fetchSeats";
 
-import TrainInfo from "../../../TrainInfo/TrainInfo";
-import TicketsCount from "../../../TicketsCount/TicketsCount";
-import CarriageType from "../../../CarriageType/CarriageType";
+import TrainInfo from "./TrainInfo/TrainInfo";
+import TicketsCount from "./TicketsCount/TicketsCount";
+import CarriageTypeSection from "./CarriageType/CarriageTypesSection";
 
 import arrowRight from "../../../../img/arrowRight.png";
 import arrowLeft from "../../../../img/arrowLeft.png";
@@ -62,6 +62,7 @@ const SeatsCard = memo(({ type, data }) => {
     toddlerCount: 0,
   });
   const trainSeats = useSelector((state) => state.trainSeats.items);
+
   const anotherTrain = (arg) => {
     if ((arg = "outgoing")) {
       dispatch(appStateResetTrainOutgoing());
@@ -70,15 +71,22 @@ const SeatsCard = memo(({ type, data }) => {
     }
     dispatch(trainSeatsReset());
   };
+
   const chooseCarriageType = (val) => {
     setCarriageType(val);
   };
+
+  const selectSeats = (arg) => {
+    console.log("SELECT SEATS", arg, ticketsCount);
+  };
+
   const toggleCarriage = (number) => {
     const newCarriage = trainSeats.find((coach) => coach.coach._id === number);
     if (newCarriage) {
       setActiveCarriage(newCarriage);
     }
   };
+
   useEffect(() => {
     const firstCoach = trainSeats
       .filter((coach) => coach.coach.class_type === carriageType)
@@ -87,16 +95,12 @@ const SeatsCard = memo(({ type, data }) => {
       setActiveCarriage(firstCoach);
     }
   }, [carriageType, trainSeats]);
+
   const getTicketsCount = useCallback(
     (adultCount, childrenCount, toddlerCount) => {
       setTicketsCount({ adultCount, childrenCount, toddlerCount });
-      console.log(
-        "SEATS CARD RERENDER",
-        trainSeats,
-        ticketsCount.adultCount + ticketsCount.childrenCount
-      );
     },
-    [ticketsCount.adultCount, ticketsCount.childrenCount, trainSeats]
+    []
   );
 
   return (
@@ -129,7 +133,7 @@ const SeatsCard = memo(({ type, data }) => {
         }}
       />
       <TicketsCount getTicketsCount={getTicketsCount} />
-      <CarriageType
+      <CarriageTypeSection
         data={{
           have_first_class: data.departure.have_first_class,
           have_second_class: data.departure.have_second_class,

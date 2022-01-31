@@ -1,9 +1,9 @@
 import { memo } from "react";
 import "./trainInfo.css";
-import arrowDark from "../../img/arrow_dark.png";
-import arrowTo from "../../img/arrow_to.png";
-import clock from "../../img/clock.png";
-import trainAva from "../../img/little-train.png";
+import arrowDark from "../../../../../img/arrow_dark.png";
+import arrowTo from "../../../../../img/arrow_to.png";
+import clock from "../../../../../img/clock.png";
+import trainAva from "../../../../../img/little-train.png";
 
 const TrainInfo = memo(({ info }) => {
   const {

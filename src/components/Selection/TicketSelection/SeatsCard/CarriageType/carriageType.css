@@ -30,8 +30,29 @@
   margin-bottom: 18px;
 }
 
+.type__block button {
+  background: transparent;
+  border: none;
+}
+
+.type__block button:hover {
+  color: #ffa800;
+  border: 2px solid #ffa800;
+  cursor: pointer;
+}
+
+.type__block button:disabled {
+  color: #c4c4c4;
+  border: 0;
+  cursor: not-allowed;
+}
+
 .type__name {
   font-size: 24px;
   line-height: 28px;
   color: #928f94;
+}
+
+.type__name .active {
+  color: #ffa800;
 }
