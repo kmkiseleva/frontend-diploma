@@ -1,5 +1,6 @@
 import { memo, useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import "./seatsCard.css";
 
 import { capitalize } from "./../../../../utils/capitalize";
 import { sec2hhmm, secToDateTime } from "./../../../../utils/timing";
@@ -12,9 +13,11 @@ import { trainSeatsReset } from "../../../../store/fetchSeats";
 import TrainInfo from "./TrainInfo/TrainInfo";
 import TicketsCount from "./TicketsCount/TicketsCount";
 import CarriageTypeSection from "./CarriageType/CarriageTypesSection";
+import CarriageImg from "./CarriageImg/CarriageImg";
 
 import arrowRight from "../../../../img/arrowRight.png";
 import arrowLeft from "../../../../img/arrowLeft.png";
+import rub from "../../../../img/rub.png";
 
 const clearCarriage = {
   coach: {
@@ -143,6 +146,17 @@ const SeatsCard = memo(({ type, data }) => {
         chooseCarriageType={chooseCarriageType}
         activeType={carriageType}
       />
+      <CarriageImg activeCarriage={activeCarriage} selectSeats={selectSeats} />
+      {totalPrice !== 0 && (
+        <>
+          <div className="totalPrice__container">
+            <div className="totalPrice__number">{totalPrice}</div>
+            <div className="totalPrice__rub">
+              <img src={rub} alt="rub" />
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 });
