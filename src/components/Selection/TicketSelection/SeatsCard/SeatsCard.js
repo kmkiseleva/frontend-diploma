@@ -13,6 +13,8 @@ import { trainSeatsReset } from "../../../../store/fetchSeats";
 import TrainInfo from "./TrainInfo/TrainInfo";
 import TicketsCount from "./TicketsCount/TicketsCount";
 import CarriageTypeSection from "./CarriageType/CarriageTypesSection";
+import CarriageNumber from "./CarriageNumber/CarriageNumber";
+import CarriageServices from "./CarriageServices/CarriageServices";
 import CarriageImg from "./CarriageImg/CarriageImg";
 
 import arrowRight from "../../../../img/arrowRight.png";
@@ -44,8 +46,54 @@ const clearCarriage = {
   ],
 };
 
+const testCarriage = {
+  coach: {
+    _id: 5,
+    name: "",
+    class_type: "second",
+    have_wifi: false,
+    have_air_conditioning: false,
+    price: 0,
+    top_price: 0,
+    bottom_price: 0,
+    side_price: 0,
+    linens_price: 0,
+    wifi_price: 0,
+    is_linens_included: false,
+    available_seats: 1,
+    train: 0,
+  },
+  seats: [
+    {
+      index: 1,
+      available: true,
+    },
+    {
+      index: 2,
+      available: false,
+    },
+    {
+      index: 3,
+      available: false,
+    },
+    {
+      index: 4,
+      available: false,
+    },
+    {
+      index: 5,
+      available: true,
+    },
+    {
+      index: 6,
+      available: true,
+    },
+  ],
+};
+
 const SeatsCard = memo(({ type, data }) => {
   const dispatch = useDispatch();
+  const trainSeats = useSelector((state) => state.trainSeats.items);
 
   const trainId = data.departure.train._id;
   const pointA = capitalize(data.departure.from.city.name);
@@ -56,15 +104,14 @@ const SeatsCard = memo(({ type, data }) => {
   const timeB = secToDateTime(data.departure.to.datetime);
   const duration = sec2hhmm(data.departure.duration);
 
-  const [carriageType, setCarriageType] = useState(undefined);
+  const [carriageType, setCarriageType] = useState("first");
   const [totalPrice, setTotalPrice] = useState(8080);
-  const [activeCarriage, setActiveCarriage] = useState(clearCarriage);
+  const [activeCarriage, setActiveCarriage] = useState(testCarriage);
   const [ticketsCount, setTicketsCount] = useState({
     adultCount: 0,
     childrenCount: 0,
     toddlerCount: 0,
   });
-  const trainSeats = useSelector((state) => state.trainSeats.items);
 
   const anotherTrain = (arg) => {
     if ((arg = "outgoing")) {
@@ -146,7 +193,53 @@ const SeatsCard = memo(({ type, data }) => {
         chooseCarriageType={chooseCarriageType}
         activeType={carriageType}
       />
+
+      {carriageType !== undefined && (
+        <div className="informationBlock__carriageBlock">
+          <div className="carriageBlock__header">
+            <div className="carriageBlock__carriages">
+              Вагоны <span className="active-carriage">07</span> <span>09</span>
+            </div>
+            <div className="carriageBlock__subtitle">
+              Нумерация вагонов начинается с головы поезда
+            </div>
+          </div>
+          <div className="carriageBlock__details">
+            <div className="carriage__number">
+              <span>07</span> <br /> вагон
+            </div>
+            <div className="carriage__seatsInfo">
+              <div className="seatsInfo__block">
+                <div className="seatsInfo__title">
+                  Места <span>11</span>
+                </div>
+                <div className="seatsInfo__seats">
+                  Верхние <span>3</span>
+                </div>
+                <div className="seatsInfo__seats">
+                  Нижние <span>8</span>
+                </div>
+              </div>
+              <div className="seatsInfo__block">
+                <div className="seatsInfo__title">Стоимость</div>
+                <div className="seatsInfo__price">
+                  2920 <img src={rub} alt="rub" />
+                </div>
+                <div className="seatsInfo__price">
+                  3530 <img src={rub} alt="rub" />
+                </div>
+              </div>
+              <CarriageServices data={activeCarriage} />
+            </div>
+          </div>
+          <div className="carriage__popup">
+            <span>11</span> человек выбирают места в этом поезде
+          </div>
+        </div>
+      )}
+
       <CarriageImg activeCarriage={activeCarriage} selectSeats={selectSeats} />
+
       {totalPrice !== 0 && (
         <>
           <div className="totalPrice__container">
