@@ -51,16 +51,16 @@ const testCarriage = {
     _id: 5,
     name: "",
     class_type: "second",
-    have_wifi: false,
-    have_air_conditioning: false,
-    price: 0,
+    have_wifi: true,
+    have_air_conditioning: true,
+    price: 5050,
     top_price: 0,
-    bottom_price: 0,
-    side_price: 0,
+    bottom_price: 1050,
+    side_price: 3000,
     linens_price: 0,
     wifi_price: 0,
     is_linens_included: false,
-    available_seats: 1,
+    available_seats: 3,
     train: 0,
   },
   seats: [
@@ -198,37 +198,105 @@ const SeatsCard = memo(({ type, data }) => {
         <div className="informationBlock__carriageBlock">
           <div className="carriageBlock__header">
             <div className="carriageBlock__carriages">
-              Вагоны <span className="active-carriage">07</span> <span>09</span>
+              Вагоны{" "}
+              <span className="active-carriage">
+                {trainSeats
+                  .filter((coach) => coach.coach.class_type === carriageType)
+                  .map((coach) => (
+                    <CarriageNumber
+                      key={coach.coach._id}
+                      buttonNumber={coach.coach._id}
+                      toggleCarriage={(e) => toggleCarriage(e)}
+                      activeCarriage={activeCarriage.coach._id}
+                    />
+                  ))}
+              </span>
             </div>
             <div className="carriageBlock__subtitle">
               Нумерация вагонов начинается с головы поезда
             </div>
           </div>
+
           <div className="carriageBlock__details">
             <div className="carriage__number">
-              <span>07</span> <br /> вагон
+              <span>{activeCarriage.coach._id}</span> <br /> вагон
             </div>
             <div className="carriage__seatsInfo">
               <div className="seatsInfo__block">
                 <div className="seatsInfo__title">
-                  Места <span>11</span>
+                  Места <span>{activeCarriage.seats.length}</span>
                 </div>
-                <div className="seatsInfo__seats">
-                  Верхние <span>3</span>
-                </div>
-                <div className="seatsInfo__seats">
-                  Нижние <span>8</span>
-                </div>
+                {carriageType === "first" && <></>}
+                {carriageType === "second" && (
+                  <>
+                    <div className="seatsInfo__seats">
+                      Верхние <span>{activeCarriage.seats.length}</span>
+                    </div>
+                    <div className="seatsInfo__seats">
+                      Нижние <span>{activeCarriage.seats.length}</span>
+                    </div>
+                  </>
+                )}
+                {carriageType === "third" && (
+                  <>
+                    <div className="seatsInfo__seats">
+                      Верхние <span>{activeCarriage.seats.length}</span>
+                    </div>
+                    <div className="seatsInfo__seats">
+                      Нижние <span>{activeCarriage.seats.length}</span>
+                    </div>
+                    <div className="seatsInfo__seats">
+                      Боковые <span>{activeCarriage.seats.length}</span>
+                    </div>
+                  </>
+                )}
+                {carriageType === "fourth" && <></>}
               </div>
+
               <div className="seatsInfo__block">
                 <div className="seatsInfo__title">Стоимость</div>
-                <div className="seatsInfo__price">
-                  2920 <img src={rub} alt="rub" />
-                </div>
-                <div className="seatsInfo__price">
-                  3530 <img src={rub} alt="rub" />
-                </div>
+                {carriageType === "first" && data.departure.price_info.first && (
+                  <div className="seatsInfo__price">
+                    {data.departure.price_info.first.price}{" "}
+                    <img src={rub} alt="rub" />
+                  </div>
+                )}
+                {carriageType === "second" && data.departure.price_info.second && (
+                  <>
+                    <div className="seatsInfo__price">
+                      {data.departure.price_info.second.top_price}{" "}
+                      <img src={rub} alt="rub" />
+                    </div>
+                    <div className="seatsInfo__price">
+                      {data.departure.price_info.second.bottom_price}{" "}
+                      <img src={rub} alt="rub" />
+                    </div>
+                  </>
+                )}
+                {carriageType === "third" && data.departure.price_info.third && (
+                  <>
+                    <div className="seatsInfo__price">
+                      {data.departure.price_info.third.top_price}{" "}
+                      <img src={rub} alt="rub" />
+                    </div>
+                    <div className="seatsInfo__price">
+                      {data.departure.price_info.third.bottom_price}{" "}
+                      <img src={rub} alt="rub" />
+                    </div>
+                    <div className="seatsInfo__price">
+                      {data.departure.price_info.third.side_price}{" "}
+                      <img src={rub} alt="rub" />
+                    </div>
+                  </>
+                )}
+                {carriageType === "fourth" && data.departure.price_info.fourth && (
+                  <div className="seatsInfo__price">
+                    {data.departure.price_info.fourth.top_price}{" "}
+                    <img src={rub} alt="rub" />
+                  </div>
+                )}
               </div>
+
               <CarriageServices data={activeCarriage} />
             </div>
           </div>
