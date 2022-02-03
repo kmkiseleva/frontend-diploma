@@ -1,5 +1,5 @@
 import "./passengersPage.css";
-import { Select } from "antd";
+import { Select, Input, Checkbox } from "antd";
 import { Option } from "antd/lib/mentions";
 import rub from "../../img/rub.png";
 import addPlus from "../../img/add_plus.svg";
@@ -48,7 +48,52 @@ export default function PassengersPage() {
                   <Option value="child">Детский</Option>
                 </Select>
               </div>
+              <div className="passenger__initials">
+                <div className="passengerInitials__block">
+                  <div className="passengerInput__title">Фамилия</div>
+                  <Input
+                    className="passengerInitials__input"
+                    placeholder="Иванов"
+                    required
+                  />
+                </div>
+                <div className="passengerInitials__block">
+                  <div className="passengerInput__title">Имя</div>
+                  <Input
+                    className="passengerInitials__input"
+                    placeholder="Иван"
+                    required
+                  />
+                </div>
+                <div className="passengerInitials__block">
+                  <div className="passengerInput__title">Отчество</div>
+                  <Input
+                    className="passengerInitials__input"
+                    placeholder="Иванович"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="passenger__sex_bd">
+                <div className="passenger__sex">
+                  <div className="passengerInput__title">Пол</div>
+                </div>
+                <div className="passenger__bd">
+                  <div className="passengerInput__title">Дата рождения</div>
+                  <Input
+                    placeholder="ДД/ММ/ГГ"
+                    className="passengerBd__input"
+                  />
+                </div>
+              </div>
+              <div className="passengerCheckbox__block">
+                <Checkbox />
+                <div className="passengerCheckbox__title">
+                  ограниченная подвижность
+                </div>
+              </div>
             </div>
+            <div className="passenger__passportData"></div>
           </div>
           <div className="passengersPage__passenger">
             <div className="passenger__plus">

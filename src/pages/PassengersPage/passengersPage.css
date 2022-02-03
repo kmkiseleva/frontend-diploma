@@ -93,7 +93,8 @@
 }
 
 .passenger-full__content {
-  padding-left: 36px;
+  padding-left: 35px;
+  padding-right: 35px;
 }
 
 .passenger-full__selectAge {
@@ -154,6 +155,86 @@
   border: none;
 }
 
+.passenger-full__selectAge {
+  margin-bottom: 45px;
+}
+
+.passengerFullSelectAge__field {
+  border-radius: 5px;
+  border: 1px solid #928f94;
+}
+
+.passenger__initials {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.passengerInput__title {
+  font-size: 16px;
+  line-height: 19px;
+  color: #928f94;
+  margin-bottom: 8px;
+}
+
+.passengerInitials__input {
+  width: 280px;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 24px;
+  line-height: 28px;
+  color: #292929;
+  border: 1px solid #928f94;
+}
+
+.passengerInitials__input:hover,
+.passengerInitials__input:focus,
+.passengerInitials__input:active {
+  border: 2px solid #ffa800;
+}
+
+.passenger__sex_bd {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: 50px;
+}
+
+.passenger__sex {
+  width: 205px;
+  margin-bottom: 55px;
+}
+
+.passengerBd__input {
+  width: 240px;
+  height: 50px;
+  border: 1px solid #928f94;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.passengerCheckbox__block {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-bottom: 33px;
+}
+
+.passengerCheckbox__title {
+  font-size: 18px;
+  line-height: 21px;
+  color: #292929;
+  padding-left: 20px;
+}
+
+.passenger__passportData {
+  height: 153px;
+  border-top: 1px dashed #928f94;
+  border-bottom: 1px dashed #928f94;
+  padding-top: 37px;
+  padding-bottom: 33px;
+}
+
 /* antd */
 .ant-select-selector {
   width: 280px !important;
@@ -166,4 +247,30 @@
   font-size: 24px;
   line-height: 28px;
   color: #292929;
+}
+
+.ant-checkbox-inner {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #928f94;
+  box-sizing: border-box;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #ffa800;
+  border-color: #ffa800;
+}
+
+.ant-checkbox-wrapper:hover .ant-checkbox-inner,
+.ant-checkbox-inner:hover,
+.ant-checkbox-inner:focus,
+.ant-checkbox:hover .ant-checkbox-inner,
+.ant-checkbox-input:focus + .ant-checkbox-inner,
+.ant-checkbox-checked .ant-checkbox-inner:hover {
+  border-color: #ffa800;
 }
