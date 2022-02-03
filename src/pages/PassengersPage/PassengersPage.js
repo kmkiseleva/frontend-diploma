@@ -6,7 +6,7 @@ import addPlus from "../../img/add_plus.svg";
 import addMinus from "../../img/add_minus.svg";
 import addClose from "../../img/add_close.svg";
 
-import HeaderSelect from "./../../components/Header/HeaderSelect";
+import Header from "../../components/Header/Header";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 
 import ButtonNext from "./../../components/Buttons/ButtonNext";
@@ -14,7 +14,7 @@ import ButtonNext from "./../../components/Buttons/ButtonNext";
 export default function PassengersPage() {
   return (
     <div>
-      <HeaderSelect />
+      <Header headerType="select" />
       <ProgressBar />
       <div className="passengersPage__container">
         <div className="passengersPage__sidebar">

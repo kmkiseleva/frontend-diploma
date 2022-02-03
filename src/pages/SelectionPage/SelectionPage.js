@@ -2,7 +2,7 @@ import "./selectionPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { memo, useState } from "react";
 
-import HeaderSelect from "./../../components/Header/HeaderSelect";
+import Header from "../../components/Header/Header";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import SideSelector from "../../components/Selection/SideSelector/SideSelector";
 import LastTickets from "../../components/Selection/LastTickets/LastTickets";
@@ -73,7 +73,7 @@ const SelectionPage = memo(() => {
 
   return (
     <div className="selectionPage__body">
-      <HeaderSelect />
+      <Header headerType="select" />
       {status === "pending" && <Loader />}
       {status === "success" && (
         <>

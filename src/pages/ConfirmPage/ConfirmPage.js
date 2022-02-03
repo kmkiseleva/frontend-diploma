@@ -1,5 +1,6 @@
+import { memo } from "react";
 import "./confirmPage.css";
-import HeaderSelect from "./../../components/Header/HeaderSelect";
+import Header from "../../components/Header/Header";
 import ProgressBar from "./../../components/ProgressBar/ProgressBar";
 import MainTicketCard from "./../../components/Selection/MainTicketCard/MainTicketCard";
 import Passengers from "../../components/Passengers/Passengers";
@@ -8,12 +9,12 @@ import rub from "../../img/rub_light.png";
 
 import trains from "../../components/Selection/test";
 
-export default function ConfirmPage() {
+const ConfirmPage = memo(() => {
   const train = trains[0];
 
   return (
     <div>
-      <HeaderSelect />
+      <Header headerType="select" />
       <ProgressBar />
       <div className="confirm__container">
         <div className="confirm__sidebar">
@@ -38,4 +39,6 @@ export default function ConfirmPage() {
       </div>
     </div>
   );
-}
+});
+
+export default ConfirmPage;

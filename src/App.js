@@ -14,11 +14,11 @@ function App() {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/selection" component={SelectionPage} />
+        <Route exact path="/selectSeats" component={SelectSeatsPage} />
+        <Route exact path="/passengers" component={PassengersPage} />
 
-        <Route exact path="/selectSeatsPage" component={SelectSeatsPage} />
-        <Route exact path="/passengersPage" component={PassengersPage} />
-        <Route exact path="/successfulPage" component={SuccessfulPage} />
-        <Route exact path="/confirmPage" component={ConfirmPage} />
+        <Route exact path="/confirm" component={ConfirmPage} />
+        <Route exact path="/success" component={SuccessfulPage} />
       </Switch>
       <Footer />
     </Router>

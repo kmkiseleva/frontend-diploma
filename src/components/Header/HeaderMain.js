@@ -1,9 +1,10 @@
 import "./header.css";
+import { memo } from "react";
 import NavBar from "./NavBar/NavBar";
 import Logo from "./Logo/Logo";
 import FindTicketsBlock from "./FindTicketsBlock/FindTicketsBlock";
 
-export default function HeaderMain() {
+const HeaderMain = memo(() => {
   return (
     <div className="wrapper__main">
       <header className="header">
@@ -23,4 +24,6 @@ export default function HeaderMain() {
       </header>
     </div>
   );
-}
+});
+
+export default HeaderMain;

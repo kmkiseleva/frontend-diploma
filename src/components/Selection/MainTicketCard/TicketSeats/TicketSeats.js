@@ -1,6 +1,7 @@
-import { memo } from "react";
 import "./ticketSeats.css";
+import { memo } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { appStateSetTrainOutgoing } from "../../../../store/appState";
 
 import TicketSeatsRow from "./TicketSeatsRow";
@@ -15,6 +16,7 @@ const carriageTypes = {
 
 const TicketSeats = memo(({ train }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const {
     departure: {
@@ -42,6 +44,7 @@ const TicketSeats = memo(({ train }) => {
 
   const selectTrain = (data) => {
     dispatch(appStateSetTrainOutgoing(data));
+    history.push("/selectSeats");
   };
 
   return (

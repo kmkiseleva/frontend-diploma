@@ -2,7 +2,7 @@ import "./successfulPage.css";
 import { useHistory } from "react-router-dom";
 import { Rate } from "antd";
 import { StarOutlined } from "@ant-design/icons";
-import HeaderSuccess from "./../../components/Header/HeaderSuccess";
+import Header from "./../../components/Header/Header";
 import rub from "../../img/rub.png";
 import icon1 from "./img/icon1.svg";
 import icon2 from "./img/icon2.svg";
@@ -13,7 +13,7 @@ export default function SuccessfulPage() {
 
   return (
     <div className="success__container">
-      <HeaderSuccess />
+      <Header headerType="success" />
       <div className="success__content">
         <div className="success__header">
           <div className="success__order">

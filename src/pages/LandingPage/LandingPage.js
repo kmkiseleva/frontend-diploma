@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderMain from './../../components/Header/HeaderMain';
+import Header from "../../components/Header/Header";
 import About from "../../components/About/About";
 import Information from "../../components/Information/Information";
 import Reviews from "../../components/Reviews/Reviews";
@@ -7,7 +7,7 @@ import Reviews from "../../components/Reviews/Reviews";
 export default function LandingPage() {
   return (
     <>
-      <HeaderMain />
+      <Header headerType="main" />
       <About />
       <Information />
       <Reviews />

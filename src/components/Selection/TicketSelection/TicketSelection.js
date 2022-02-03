@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { fetchTrainSeatsData } from "./../../../store/fetchSeats";
 import SeatsCard from "./SeatsCard/SeatsCard";
 
@@ -7,6 +8,7 @@ import trains from "../test";
 
 const TicketSelection = memo(() => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const selectedTrainOut = trains[0][0];
   // const selectedTrainOut = useSelector((state) => state.appState.trainOutgoing);
   const selectedTrainInc = useSelector((state) => state.appState.trainIncoming);
@@ -15,6 +17,10 @@ const TicketSelection = memo(() => {
   if (trainId !== 0) {
     dispatch(fetchTrainSeatsData(trainId));
   }
+
+  const onNext = () => {
+    history.push("/passengers");
+  };
 
   return (
     <div className="selection__main">
@@ -26,7 +32,9 @@ const TicketSelection = memo(() => {
         <SeatsCard type="incoming" data={selectedTrainInc} />
       )}
       <div className="seatsPage__buttonBlock">
-        <button className="seatsPage__button">Далее</button>
+        <button className="seatsPage__button" onClick={onNext}>
+          Далее
+        </button>
       </div>
     </div>
   );

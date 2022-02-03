@@ -9,10 +9,10 @@ const CustomPagination = memo(({ data }) => {
       <Pagination
         current={current}
         total={total}
-        hideOnSinglePage
         pageSize={pageSize}
         onChange={onChange}
         showLessItems
+        hideOnSinglePage
         showSizeChanger={false}
       />
     </div>

@@ -406,6 +406,150 @@ const trains = [
       },
     },
   ],
+  [
+    {
+      have_first_class: true,
+      have_second_class: true,
+      have_third_class: false,
+      have_fourth_class: true,
+      have_wifi: true,
+      have_air_conditioning: false,
+      is_express: true,
+      min_price: 2050,
+      available_seats: 115,
+      available_seats_info: {
+        first: 18,
+        second: 64,
+        third: 48,
+      },
+      departure: {
+        _id: 65,
+        have_first_class: true,
+        have_second_class: true,
+        have_third_class: true,
+        have_fourth_class: false,
+        have_wifi: true,
+        have_air_conditioning: true,
+        is_express: false,
+        min_price: 1638,
+        duration: 221340,
+        available_seats: 129,
+        available_seats_info: {
+          first: 18,
+          second: 64,
+          third: 48,
+        },
+        train: {
+          _id: 97,
+          name: "Train-8",
+        },
+        from: {
+          railway_station_name: "Станция-5",
+          city: {
+            _id: 1492,
+            name: "Вологда",
+          },
+          datetime: 1616772581,
+        },
+        to: {
+          railway_station_name: "Казанский",
+          city: {
+            _id: 555,
+            name: "москва",
+          },
+          datetime: 1616993921,
+        },
+        price_info: {
+          first: {
+            price: 2520,
+            top_price: 3110,
+            bottom_price: 4555,
+          },
+          second: {
+            top_price: 1731,
+            bottom_price: 1638,
+          },
+          third: {
+            top_price: 2910,
+            bottom_price: 3350,
+            side_price: 2775,
+          },
+        },
+      },
+    },
+  ],
+  [
+    {
+      have_first_class: true,
+      have_second_class: true,
+      have_third_class: false,
+      have_fourth_class: true,
+      have_wifi: true,
+      have_air_conditioning: false,
+      is_express: true,
+      min_price: 2050,
+      available_seats: 115,
+      available_seats_info: {
+        first: 18,
+        second: 64,
+        third: 48,
+      },
+      departure: {
+        _id: 5465,
+        have_first_class: true,
+        have_second_class: true,
+        have_third_class: true,
+        have_fourth_class: false,
+        have_wifi: true,
+        have_air_conditioning: true,
+        is_express: false,
+        min_price: 1638,
+        duration: 221340,
+        available_seats: 129,
+        available_seats_info: {
+          first: 18,
+          second: 64,
+          third: 48,
+        },
+        train: {
+          _id: 1557,
+          name: "Train-99",
+        },
+        from: {
+          railway_station_name: "Станция-55",
+          city: {
+            _id: 542,
+            name: "Вологда",
+          },
+          datetime: 1616772581,
+        },
+        to: {
+          railway_station_name: "Ленинградский",
+          city: {
+            _id: 555,
+            name: "москва",
+          },
+          datetime: 1616993921,
+        },
+        price_info: {
+          first: {
+            price: 2520,
+            top_price: 3110,
+            bottom_price: 4555,
+          },
+          second: {
+            top_price: 1731,
+            bottom_price: 1638,
+          },
+          third: {
+            top_price: 2910,
+            bottom_price: 3350,
+            side_price: 2775,
+          },
+        },
+      },
+    },
+  ],
 ];
 
 export default trains;
