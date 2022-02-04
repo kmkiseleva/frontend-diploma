@@ -13,7 +13,7 @@ import ButtonNext from "./../../components/Buttons/ButtonNext";
 
 export default function PassengersPage() {
   return (
-    <div>
+    <div className="passengersPage__body">
       <Header headerType="select" />
       <ProgressBar />
       <div className="passengersPage__container">
@@ -77,6 +77,12 @@ export default function PassengersPage() {
               <div className="passenger__sex_bd">
                 <div className="passenger__sex">
                   <div className="passengerInput__title">Пол</div>
+                  <div className="passengerSex__buttons">
+                    <button className="passengerSex__button male">М</button>
+                    <button className="passengerSex__button female active">
+                      Ж
+                    </button>
+                  </div>
                 </div>
                 <div className="passenger__bd">
                   <div className="passengerInput__title">Дата рождения</div>
@@ -93,7 +99,31 @@ export default function PassengersPage() {
                 </div>
               </div>
             </div>
-            <div className="passenger__passportData"></div>
+            <div className="passenger__passportData">
+              <div className="passportData__block">
+                <div className="passengerInput__title">Тип документа</div>
+                <Select defaultValue="Паспорт РФ">
+                  <Option value="passport">Паспорт РФ</Option>
+                  <Option value="certificate">Свидетельство о рождении</Option>
+                </Select>
+              </div>
+              <div className="passportData__block">
+                <div className="passengerInput__title">Серия</div>
+                <Input placeholder="__ __ __ __" className="passport__input" />
+              </div>
+              <div className="passportData__block">
+                <div className="passengerInput__title">Номер</div>
+                <Input
+                  placeholder="__ __ __ __ __ __"
+                  className="passport__input"
+                />
+              </div>
+            </div>
+            <div className="passenger__next">
+              <button className="passengerNext__button">
+                Следующий пассажир
+              </button>
+            </div>
           </div>
           <div className="passengersPage__passenger">
             <div className="passenger__plus">

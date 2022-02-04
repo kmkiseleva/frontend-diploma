@@ -1,8 +1,13 @@
+.passengersPage__body {
+  background: #f7f5f9;
+}
+
 .passengersPage__container {
   padding-left: 259px;
   padding-right: 257px;
   display: flex;
   flex-wrap: nowrap;
+  background: #f7f5f9;
 }
 
 .passengersPage__sidebar {
@@ -68,6 +73,7 @@
   border: 1px solid #c4c4c4;
   box-sizing: border-box;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  margin-bottom: 45px;
 }
 
 .passenger-full__header {
@@ -191,7 +197,7 @@
 .passengerInitials__input:hover,
 .passengerInitials__input:focus,
 .passengerInitials__input:active {
-  border: 2px solid #ffa800;
+  border: 1px solid #ffa800;
 }
 
 .passenger__sex_bd {
@@ -202,7 +208,41 @@
 
 .passenger__sex {
   width: 205px;
-  margin-bottom: 55px;
+}
+
+.passengerSex__buttons {
+  display: flex;
+  margin-right: 35px;
+}
+
+.passengerSex__button {
+  font-weight: 900;
+  font-size: 30px;
+  text-transform: uppercase;
+  color: #000000;
+  height: 50px;
+  width: 102px;
+  text-align: center;
+  background: #ffffff;
+  border-top: 1px solid #928f94;
+  border-bottom: 1px solid #928f94;
+  cursor: pointer;
+}
+
+.male {
+  border-left: 1px solid #928f94;
+  border-right: 1px solid #928f94;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.female {
+  border-right: 1px solid #928f94;
+  border-left: none;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.passengerSex__button.active {
+  background: #ffa800;
 }
 
 .passengerBd__input {
@@ -211,6 +251,15 @@
   border: 1px solid #928f94;
   box-sizing: border-box;
   border-radius: 5px;
+}
+
+.passengerBd__input:hover,
+.passengerBd__input:focus,
+.passengerBd__input:active,
+.passport__input:hover,
+.passport__input:focus,
+.passport__input:active {
+  border: 1px solid #ffa800;
 }
 
 .passengerCheckbox__block {
@@ -233,13 +282,61 @@
   border-bottom: 1px dashed #928f94;
   padding-top: 37px;
   padding-bottom: 33px;
+  padding-left: 35px;
+  padding-right: 35px;
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.passportData__block {
+  margin-right: 35px;
+}
+
+.passport__input {
+  width: 205px;
+  height: 50px;
+  border: 1px solid #928f94;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.passenger__next {
+  display: flex;
+  justify-content: end;
+  padding-right: 35px;
+}
+
+.passengerNext__button {
+  width: 303px;
+  height: 52px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #292929;
+  background-color: #ffffff;
+  border: 1px solid #292929;
+  border-radius: 5px;
 }
 
 /* antd */
+html {
+  --antd-wave-shadow-color: #ffa800;
+}
+
 .ant-select-selector {
   width: 280px !important;
   height: 50px !important;
   box-sizing: border-box;
+}
+
+.ant-select-selector:hover,
+.ant-select-selector:focus,
+.ant-select-selector:active,
+.ant-select:hover,
+.ant-select:active,
+.ant-select:focus {
+  border: 2px solid #ffa800;
 }
 
 .ant-select-selection-item {
@@ -247,6 +344,11 @@
   font-size: 24px;
   line-height: 28px;
   color: #292929;
+}
+
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  padding-left: 13px;
+  padding-top: 10px;
 }
 
 .ant-checkbox-inner {
