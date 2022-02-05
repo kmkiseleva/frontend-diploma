@@ -45,6 +45,8 @@
   padding-top: 40px;
 }
 
+/* antd */
+
 .ant-collapse > .ant-collapse-item > .ant-collapse-header {
   padding: 0;
 }
