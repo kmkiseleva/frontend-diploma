@@ -1,4 +1,5 @@
 import "./passengersPage.css";
+import "./reantd.css";
 import { Collapse, Select, Input, Checkbox } from "antd";
 import { Option } from "antd/lib/mentions";
 
