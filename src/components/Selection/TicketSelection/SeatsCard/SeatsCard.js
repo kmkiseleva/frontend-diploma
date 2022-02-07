@@ -1,6 +1,7 @@
 import { memo, useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./seatsCard.css";
+import { message } from "antd";
 
 import { capitalize } from "./../../../../utils/capitalize";
 import { sec2hhmm, secToDateTime } from "./../../../../utils/timing";
@@ -112,6 +113,8 @@ const SeatsCard = memo(({ type, data }) => {
     childrenCount: 0,
     toddlerCount: 0,
   });
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const [selectedServices, setSelectedServices] = useState([]);
 
   const anotherTrain = (arg) => {
     if ((arg = "outgoing")) {
@@ -126,14 +129,34 @@ const SeatsCard = memo(({ type, data }) => {
     setCarriageType(val);
   };
 
-  const selectSeats = (arg) => {
-    console.log("SELECT SEATS", arg, ticketsCount);
-  };
-
   const toggleCarriage = (number) => {
     const newCarriage = trainSeats.find((coach) => coach.coach._id === number);
     if (newCarriage) {
       setActiveCarriage(newCarriage);
+    }
+  };
+
+  const selectSeats = (arg) => {
+    const existId = selectedSeats.findIndex(
+      (el) => el.coachId === arg.coachId && el.seatId === arg.seatId
+    );
+    if (existId === -1) {
+      const availableToAdd =
+        ticketsCount.adultCount +
+        ticketsCount.childrenCount -
+        selectedSeats.length;
+      if (availableToAdd > 0) {
+        setSelectedSeats([...selectedSeats, arg]);
+      } else {
+        const warning = () => {
+          message
+            .warning("Нельзя выбрать больше мест, чем выбрано билетов")
+            .then();
+        };
+        warning();
+      }
+    } else {
+      setSelectedSeats(selectedSeats.filter((el, idx) => idx !== existId));
     }
   };
 
@@ -153,6 +176,30 @@ const SeatsCard = memo(({ type, data }) => {
     []
   );
 
+  useEffect(() => {
+    const canGetSeats = ticketsCount.adultCount + ticketsCount.childrenCount;
+    if (canGetSeats < selectedSeats.length) {
+      const tempArr = [...selectedSeats];
+      tempArr.length = canGetSeats;
+      setSelectedSeats(tempArr);
+    }
+  }, [selectedSeats, ticketsCount]);
+
+  useEffect(() => {
+    const seatsSummaryPrice = selectedSeats.reduce(
+      (sum, current) =>
+        sum +
+        current.price +
+        Number(
+          selectedServices
+            .filter((el) => el.coachId === current.coachId)
+            .map((el) => el.linen.price + el.wifi.price)
+        ),
+      0
+    );
+    setTotalPrice(seatsSummaryPrice);
+  }, [selectedSeats, selectedServices]);
+
   return (
     <div className="seatsPage__informationBlock">
       <div className="informationBlock__header">
@@ -169,6 +216,7 @@ const SeatsCard = memo(({ type, data }) => {
           </button>
         </div>
       </div>
+
       <TrainInfo
         info={{
           type,
@@ -183,6 +231,7 @@ const SeatsCard = memo(({ type, data }) => {
         }}
       />
       <TicketsCount getTicketsCount={getTicketsCount} />
+
       <CarriageTypeSection
         data={{
           have_first_class: data.departure.have_first_class,
@@ -297,7 +346,12 @@ const SeatsCard = memo(({ type, data }) => {
                 )}
               </div>
 
-              <CarriageServices data={activeCarriage} />
+              <CarriageServices
+                data={activeCarriage}
+                selectedServices={selectedServices}
+                setSelectedServices={setSelectedServices}
+                selectedSeats={selectedSeats}
+              />
             </div>
           </div>
           <div className="carriage__popup">
@@ -306,7 +360,11 @@ const SeatsCard = memo(({ type, data }) => {
         </div>
       )}
 
-      <CarriageImg activeCarriage={activeCarriage} selectSeats={selectSeats} />
+      <CarriageImg
+        activeCarriage={activeCarriage}
+        selectedSeats={selectedSeats}
+        selectSeats={selectSeats}
+      />
 
       {totalPrice !== 0 && (
         <>
