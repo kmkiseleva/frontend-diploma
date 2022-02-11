@@ -1,3 +1,4 @@
+import { memo } from "react";
 import "./passengersPage.css";
 import "./reantd.css";
 import { Collapse, Select, Input, Checkbox } from "antd";
@@ -18,7 +19,7 @@ import ButtonNext from "./../../components/Buttons/ButtonNext";
 
 const { Panel } = Collapse;
 
-export default function PassengersPage() {
+const PassengersPage = memo(() => {
   return (
     <div className="passengersPage__body">
       <Header headerType="select" />
@@ -515,9 +516,11 @@ export default function PassengersPage() {
               </Panel>
             </Collapse>
           </div>
-          <ButtonNext />
+          <ButtonNext text="Далее" />
         </div>
       </div>
     </div>
   );
-}
+});
+
+export default PassengersPage;

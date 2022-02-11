@@ -7,6 +7,7 @@ import SelectSeatsPage from "./pages/SelectSeatsPage/SelectSeatsPage";
 import PassengersPage from "./pages/PassengersPage/PassengersPage";
 import ConfirmPage from "./pages/ConfirmPage/ConfirmPage";
 import SuccessfulPage from "./pages/SuccessfulPage/SuccessfulPage";
+import PayPage from "./pages/PayPage/PayPage";
 
 function App() {
   return (
@@ -16,8 +17,8 @@ function App() {
         <Route exact path="/selection" component={SelectionPage} />
         <Route exact path="/seats" component={SelectSeatsPage} />
         <Route exact path="/passengers" component={PassengersPage} />
-
-        <Route exact path="/confirm" component={ConfirmPage} />
+        <Route exact path="/pay" component={PayPage} />
+        <Route exact path="/check" component={ConfirmPage} />
         <Route exact path="/success" component={SuccessfulPage} />
       </Switch>
       <Footer />
