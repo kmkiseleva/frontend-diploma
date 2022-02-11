@@ -10,6 +10,7 @@ import Header from "../../components/Header/Header";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import TripDetails from "../../components/TripDetails/TripDetails";
 import PassengersDetails from "../../components/PassengersDetails/PassengersDetails";
+import PassengersInitials from "../../components/PassengersInitials/PassengersInitials";
 
 const PayPage = memo(() => {
   return (
@@ -36,7 +37,33 @@ const PayPage = memo(() => {
 
         <div className="payPage__main">
           <div className="payPage__mainInfo">
-            
+            <div className="payPage__mainInfoHeader">Персональные данные</div>
+            <div className="payPage__mainInfoBody">
+              <div>
+                <PassengersInitials
+                  surname="Мартынюк"
+                  name="Ирина"
+                  patr="Эдуардовна"
+                />
+              </div>
+              <div className="mainInfoBody__phone">
+                <div className="mainInfoBody__title">Контактный телефон</div>
+              </div>
+
+              <div className="mainInfoBody__mail">
+                <div className="mainInfoBody__title">E-mail</div>
+              </div>
+            </div>
+            <div className="payPage__payInfoHeader">Способ оплаты</div>
+            <div className="payPage__payInfoBody">
+              <div className="payInfoBody__checkbox">Онлайн</div>
+              <div className="payInfoBody__options">
+                <div className="payInfoBody__option">Банковской картой</div>
+                <div className="payInfoBody__option">PayPal</div>
+                <div className="payInfoBody__option">Visa QIWI Wallet</div>
+              </div>
+            </div>
+            <div className="payPage__payInfoCheckbox">Наличными</div>
           </div>
           <button className="payPage__mainButton">Купить билеты</button>
         </div>

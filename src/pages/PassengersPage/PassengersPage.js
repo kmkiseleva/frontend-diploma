@@ -16,6 +16,7 @@ import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import TripDetails from "../../components/TripDetails/TripDetails";
 import PassengersDetails from "../../components/PassengersDetails/PassengersDetails";
 import ButtonNext from "./../../components/Buttons/ButtonNext";
+import PassengersInitials from "../../components/PassengersInitials/PassengersInitials";
 
 const { Panel } = Collapse;
 
@@ -72,32 +73,7 @@ const PassengersPage = memo(() => {
                         <Option value="child">Детский</Option>
                       </Select>
                     </div>
-                    <div className="passenger__initials">
-                      <div className="passengerInitials__block">
-                        <div className="passengerInput__title">Фамилия</div>
-                        <Input
-                          className="passengerInitials__input"
-                          placeholder="Иванов"
-                          required
-                        />
-                      </div>
-                      <div className="passengerInitials__block">
-                        <div className="passengerInput__title">Имя</div>
-                        <Input
-                          className="passengerInitials__input"
-                          placeholder="Иван"
-                          required
-                        />
-                      </div>
-                      <div className="passengerInitials__block">
-                        <div className="passengerInput__title">Отчество</div>
-                        <Input
-                          className="passengerInitials__input"
-                          placeholder="Иванович"
-                          required
-                        />
-                      </div>
-                    </div>
+                    <PassengersInitials />
                     <div className="passenger__sex_bd">
                       <div className="passenger__sex">
                         <div className="passengerInput__title">Пол</div>
@@ -191,32 +167,7 @@ const PassengersPage = memo(() => {
                         <Option value="child">Детский</Option>
                       </Select>
                     </div>
-                    <div className="passenger__initials">
-                      <div className="passengerInitials__block">
-                        <div className="passengerInput__title">Фамилия</div>
-                        <Input
-                          className="passengerInitials__input"
-                          placeholder="Иванов"
-                          required
-                        />
-                      </div>
-                      <div className="passengerInitials__block">
-                        <div className="passengerInput__title">Имя</div>
-                        <Input
-                          className="passengerInitials__input"
-                          placeholder="Иван"
-                          required
-                        />
-                      </div>
-                      <div className="passengerInitials__block">
-                        <div className="passengerInput__title">Отчество</div>
-                        <Input
-                          className="passengerInitials__input"
-                          placeholder="Иванович"
-                          required
-                        />
-                      </div>
-                    </div>
+                    <PassengersInitials />
                     <div className="passenger__sex_bd">
                       <div className="passenger__sex">
                         <div className="passengerInput__title">Пол</div>
@@ -310,32 +261,7 @@ const PassengersPage = memo(() => {
                         <Option value="child">Детский</Option>
                       </Select>
                     </div>
-                    <div className="passenger__initials">
-                      <div className="passengerInitials__block">
-                        <div className="passengerInput__title">Фамилия</div>
-                        <Input
-                          className="passengerInitials__input"
-                          placeholder="Иванов"
-                          required
-                        />
-                      </div>
-                      <div className="passengerInitials__block">
-                        <div className="passengerInput__title">Имя</div>
-                        <Input
-                          className="passengerInitials__input"
-                          placeholder="Иван"
-                          required
-                        />
-                      </div>
-                      <div className="passengerInitials__block">
-                        <div className="passengerInput__title">Отчество</div>
-                        <Input
-                          className="passengerInitials__input"
-                          placeholder="Иванович"
-                          required
-                        />
-                      </div>
-                    </div>
+                    <PassengersInitials />
                     <div className="passenger__sex_bd">
                       <div className="passenger__sex">
                         <div className="passengerInput__title">Пол</div>
@@ -427,32 +353,7 @@ const PassengersPage = memo(() => {
                         <Option value="child">Детский</Option>
                       </Select>
                     </div>
-                    <div className="passenger__initials">
-                      <div className="passengerInitials__block">
-                        <div className="passengerInput__title">Фамилия</div>
-                        <Input
-                          className="passengerInitials__input"
-                          placeholder="Иванов"
-                          required
-                        />
-                      </div>
-                      <div className="passengerInitials__block">
-                        <div className="passengerInput__title">Имя</div>
-                        <Input
-                          className="passengerInitials__input"
-                          placeholder="Иван"
-                          required
-                        />
-                      </div>
-                      <div className="passengerInitials__block">
-                        <div className="passengerInput__title">Отчество</div>
-                        <Input
-                          className="passengerInitials__input"
-                          placeholder="Иванович"
-                          required
-                        />
-                      </div>
-                    </div>
+                    <PassengersInitials />
                     <div className="passenger__sex_bd">
                       <div className="passenger__sex">
                         <div className="passengerInput__title">Пол</div>
