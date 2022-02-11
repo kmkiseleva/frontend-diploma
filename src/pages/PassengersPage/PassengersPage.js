@@ -27,7 +27,12 @@ export default function PassengersPage() {
         <div className="passengersPage__sidebar">
           <div className="passengersPage__sidebarTitle">Детали поездки</div>
           <div className="passengersPage__sidebarMiddle">
-            <TripDetails icon={forward} title="Туда" date="30.08.2018" />
+            <TripDetails
+              icon={forward}
+              title="Туда"
+              date="30.08.2018"
+              direction="forward"
+            />
             <TripDetails icon={back} title="Обратно" date="09.09.2018" />
             <PassengersDetails />
           </div>

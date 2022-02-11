@@ -3,6 +3,7 @@
   padding-left: 25px;
   padding-right: 25px;
   padding-bottom: 44px;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .tripDetails__header {
@@ -28,6 +29,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
 }
 
 .tripDetails__date {
@@ -36,6 +38,100 @@
   color: #ffffff;
   padding-top: 5px;
   font-weight: normal;
+}
+
+.tripDetails__row {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tripDetails__rowTitle {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #e5e5e5;
+}
+
+.tripDetails__trainValue {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: right;
+  color: #ffffff;
+}
+
+.tripDetails__rowValue {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: right;
+  color: #ffffff;
+}
+
+.tripDetails__timing {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tripDetails__timing {
+  margin-bottom: 17px;
+}
+
+.tripDetails__timingFrom,
+.tripDetails__timingTo {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100px;
+}
+
+.tripDetails__timingTo {
+  justify-content: flex-end;
+}
+
+.timing__time {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  color: #ffffff;
+}
+
+.timing__date {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #928f94;
+}
+
+.tripDetails__direction {
+  margin-top: -15px;
+}
+
+.tripDetails__directionTime {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #e5e5e5;
+}
+
+.tripDetails__stations {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stations__city {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #ffffff;
+}
+
+.stations__station {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #928f94;
 }
 
 /* antd */
