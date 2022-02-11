@@ -4,11 +4,16 @@ import { Collapse, Select, Input, Checkbox } from "antd";
 import { Option } from "antd/lib/mentions";
 
 import rub from "../../img/rub.png";
+import forward from "../../img/forward.svg";
+import back from "../../img/back.svg";
+
 import { ReactComponent as Plus } from "../../img/add_plus_bordered.svg";
 import { ReactComponent as Minus } from "../../img/add_minus.svg";
 
 import Header from "../../components/Header/Header";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import TripDetails from "../../components/TripDetails/TripDetails";
+import PassengersDetails from "../../components/PassengersDetails/PassengersDetails";
 import ButtonNext from "./../../components/Buttons/ButtonNext";
 
 const { Panel } = Collapse;
@@ -21,7 +26,11 @@ export default function PassengersPage() {
       <div className="passengersPage__container">
         <div className="passengersPage__sidebar">
           <div className="passengersPage__sidebarTitle">Детали поездки</div>
-          <div className="passengersPage__sidebarMiddle"></div>
+          <div className="passengersPage__sidebarMiddle">
+            <TripDetails icon={forward} title="Туда" date="30.08.2018" />
+            <TripDetails icon={back} title="Обратно" date="09.09.2018" />
+            <PassengersDetails />
+          </div>
           <div className="passengersPage__sidebarResult">
             Итог <span>7 760</span> <img src={rub} alt="rub" />
           </div>
