@@ -4,6 +4,7 @@ const initialState = {
   progress: 0,
   trainOutgoing: undefined,
   trainIncoming: undefined,
+  totalPrice: 0,
 };
 
 export const appState = createSlice({
@@ -25,6 +26,10 @@ export const appState = createSlice({
     appStateResetTrainIncoming: (state) => {
       state.trainIncoming = undefined;
     },
+
+    appStateSetTotalPrice: (state, action) => {
+      state.totalPrice = action.payload;
+    },
   },
 });
 
@@ -34,5 +39,6 @@ export const {
   appStateResetTrainOutgoing,
   appStateSetTrainIncoming,
   appStateResetTrainIncoming,
+  appStateSetTotalPrice,
 } = appState.actions;
 export default appState.reducer;

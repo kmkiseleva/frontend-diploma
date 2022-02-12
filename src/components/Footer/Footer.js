@@ -44,7 +44,7 @@ export default function Footer() {
     }
   }, [status]);
 
-  const onSubsribe = (e) => {
+  const onSubscribe = (e) => {
     e.preventDefault();
     dispatch(fetchSubscribe(userEmail));
     setUserEmail("");
@@ -90,7 +90,7 @@ export default function Footer() {
             className="footer__subscription"
             id="subscription"
             name="subscription"
-            onSubmit={(e) => onSubsribe(e)}
+            onSubmit={(e) => onSubscribe(e)}
           >
             <Input
               type="email"

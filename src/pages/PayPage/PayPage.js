@@ -52,11 +52,7 @@ const PayPage = memo(() => {
             <div className="payPage__mainInfoHeader">Персональные данные</div>
             <div className="payPage__mainInfoBody">
               <div>
-                <PassengersInitials
-                  surname="Мартынюк"
-                  name="Ирина"
-                  patr="Эдуардовна"
-                />
+                <PassengersInitials />
               </div>
               <div className="mainInfoBody__phone">
                 <div className="mainInfoBody__title">Контактный телефон</div>

@@ -1,6 +1,7 @@
 import "./successfulPage.css";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { memo } from "react";
 import { Rate } from "antd";
 import { StarOutlined } from "@ant-design/icons";
 import Header from "./../../components/Header/Header";
@@ -10,10 +11,15 @@ import icon2 from "./img/icon2.svg";
 import icon3 from "./img/icon3.svg";
 
 import { appStateSetProgress } from "../../store/appState";
+import { appStateResetInitials } from "../../store/personalData";
 
-export default function SuccessfulPage() {
+const SuccessfulPage = memo(() => {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const totalPrice = useSelector((state) => state.appState.totalPrice);
+  const name = useSelector((state) => state.personalData.name);
+  const patr = useSelector((state) => state.personalData.patr);
 
   return (
     <div className="success__container">
@@ -21,10 +27,10 @@ export default function SuccessfulPage() {
       <div className="success__content">
         <div className="success__header">
           <div className="success__order">
-            №Заказа <span>285АА</span>
+            №Заказа <span>{Math.floor(Math.random() * 1000)}АА</span>
           </div>
           <div className="success__sum">
-            сумма <span>7 760</span> <img src={rub} alt="rub" />
+            сумма <span>{totalPrice}</span> <img src={rub} alt="rub" />
           </div>
         </div>
         <div className="success__progress">
@@ -56,7 +62,9 @@ export default function SuccessfulPage() {
           </div>
         </div>
         <div className="success__message">
-          <p className="message__name">Ирина Эдуардовна!</p>
+          <p className="message__name">
+            {name} {patr}!
+          </p>
           <p className="message__text">
             Ваш заказ успешно оформлен. <br /> В ближайшее время с вами свяжется
             наш оператор для подтверждения.
@@ -72,6 +80,7 @@ export default function SuccessfulPage() {
             className="successFooter__button"
             onClick={() => {
               dispatch(appStateSetProgress(0));
+              dispatch(appStateResetInitials());
               history.push("/");
             }}
           >
@@ -81,4 +90,6 @@ export default function SuccessfulPage() {
       </div>
     </div>
   );
-}
+});
+
+export default SuccessfulPage;

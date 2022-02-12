@@ -6,6 +6,7 @@ import lastTickets from "./fetchLastTickets";
 import getTickets from "./fetchTickets";
 import trainSeats from "./fetchSeats";
 import subscription from "./fetchSubscribe";
+import personalData from "./personalData";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     getTickets,
     trainSeats,
     subscription,
+    personalData,
   },
 });
 

@@ -1,7 +1,27 @@
 import { memo } from "react";
 import { Input } from "antd";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
-const PassengersInitials = memo(({ surname, name, patr }) => {
+import {
+  appStateSetSurname,
+  appStateSetName,
+  appStateSetPatr,
+} from "../../store/personalData";
+
+const PassengersInitials = memo(() => {
+  const dispatch = useDispatch();
+
+  const [surname, setUserSurname] = useState("");
+  const [name, setUserName] = useState("");
+  const [patr, setUserPatr] = useState("");
+
+  useEffect(() => {
+    dispatch(appStateSetSurname(surname));
+    dispatch(appStateSetName(name));
+    dispatch(appStateSetPatr(patr));
+  }, [dispatch, surname, name, patr]);
+
   return (
     <>
       <div className="passenger__initials">
@@ -10,8 +30,9 @@ const PassengersInitials = memo(({ surname, name, patr }) => {
           <Input
             className="passengerInitials__input"
             placeholder="Иванов"
-            defaultValue={surname}
+            value={surname}
             required
+            onChange={(e) => setUserSurname(e.target.value)}
           />
         </div>
         <div className="passengerInitials__block">
@@ -19,8 +40,9 @@ const PassengersInitials = memo(({ surname, name, patr }) => {
           <Input
             className="passengerInitials__input"
             placeholder="Иван"
-            defaultValue={name}
+            value={name}
             required
+            onChange={(e) => setUserName(e.target.value)}
           />
         </div>
         <div className="passengerInitials__block">
@@ -28,8 +50,9 @@ const PassengersInitials = memo(({ surname, name, patr }) => {
           <Input
             className="passengerInitials__input"
             placeholder="Иванович"
-            defaultValue={patr}
+            value={patr}
             required
+            onChange={(e) => setUserPatr(e.target.value)}
           />
         </div>
       </div>

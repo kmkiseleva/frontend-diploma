@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./confirmPage.css";
 import Header from "../../components/Header/Header";
 import ProgressBar from "./../../components/ProgressBar/ProgressBar";
@@ -14,12 +15,17 @@ import back from "../../img/back.svg";
 import rub from "../../img/rub_light.png";
 
 import trains from "../../components/Selection/test";
+import { appStateSetTotalPrice } from "../../store/appState";
 
 const ConfirmPage = memo(() => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const train = trains[0];
 
+  const sumPrice = 7760;
+
   const toSuccessPage = () => {
+    dispatch(appStateSetTotalPrice(sumPrice));
     history.push("./success");
   };
 
