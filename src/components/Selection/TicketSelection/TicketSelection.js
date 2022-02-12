@@ -2,6 +2,7 @@ import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchTrainSeatsData } from "./../../../store/fetchSeats";
+import { appStateSetProgress } from "../../../store/appState";
 import SeatsCard from "./SeatsCard/SeatsCard";
 
 import trains from "../test";
@@ -18,7 +19,8 @@ const TicketSelection = memo(() => {
     dispatch(fetchTrainSeatsData(trainId));
   }
 
-  const onNext = () => {
+  const onPassengersPage = () => {
+    dispatch(appStateSetProgress(1));
     history.push("/passengers");
   };
 
@@ -32,7 +34,7 @@ const TicketSelection = memo(() => {
         <SeatsCard type="incoming" data={selectedTrainInc} />
       )}
       <div className="seatsPage__buttonBlock">
-        <button className="seatsPage__button" onClick={onNext}>
+        <button className="seatsPage__button" onClick={onPassengersPage}>
           Далее
         </button>
       </div>

@@ -1,5 +1,6 @@
 import "./successfulPage.css";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { Rate } from "antd";
 import { StarOutlined } from "@ant-design/icons";
 import Header from "./../../components/Header/Header";
@@ -8,7 +9,10 @@ import icon1 from "./img/icon1.svg";
 import icon2 from "./img/icon2.svg";
 import icon3 from "./img/icon3.svg";
 
+import { appStateSetProgress } from "../../store/appState";
+
 export default function SuccessfulPage() {
+  const dispatch = useDispatch();
   const history = useHistory();
 
   return (
@@ -67,6 +71,7 @@ export default function SuccessfulPage() {
           <button
             className="successFooter__button"
             onClick={() => {
+              dispatch(appStateSetProgress(0));
               history.push("/");
             }}
           >

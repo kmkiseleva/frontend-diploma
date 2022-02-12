@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useHistory } from "react-router-dom";
 import "./confirmPage.css";
 import Header from "../../components/Header/Header";
 import ProgressBar from "./../../components/ProgressBar/ProgressBar";
@@ -15,7 +16,12 @@ import rub from "../../img/rub_light.png";
 import trains from "../../components/Selection/test";
 
 const ConfirmPage = memo(() => {
+  const history = useHistory();
   const train = trains[0];
+
+  const toSuccessPage = () => {
+    history.push("./success");
+  };
 
   return (
     <div>
@@ -48,7 +54,9 @@ const ConfirmPage = memo(() => {
             <div className="pay__title">Способ оплаты</div>
             <Payment />
           </div>
-          <button className="confirm__button">Подтвердить</button>
+          <button className="confirm__button" onClick={toSuccessPage}>
+            Подтвердить
+          </button>
         </div>
       </div>
     </div>

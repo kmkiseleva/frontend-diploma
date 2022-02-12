@@ -1,4 +1,6 @@
 import { memo } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./payPage.css";
 import "./reantd.css";
 
@@ -12,7 +14,17 @@ import TripDetails from "../../components/TripDetails/TripDetails";
 import PassengersDetails from "../../components/PassengersDetails/PassengersDetails";
 import PassengersInitials from "../../components/PassengersInitials/PassengersInitials";
 
+import { appStateSetProgress } from "../../store/appState";
+
 const PayPage = memo(() => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const buyTickets = () => {
+    dispatch(appStateSetProgress(3));
+    history.push("./check");
+  };
+
   return (
     <div className="payPage__body">
       <Header headerType="select" />
@@ -65,7 +77,9 @@ const PayPage = memo(() => {
             </div>
             <div className="payPage__payInfoCheckbox">Наличными</div>
           </div>
-          <button className="payPage__mainButton">Купить билеты</button>
+          <button className="payPage__mainButton" onClick={buyTickets}>
+            Купить билеты
+          </button>
         </div>
       </div>
     </div>

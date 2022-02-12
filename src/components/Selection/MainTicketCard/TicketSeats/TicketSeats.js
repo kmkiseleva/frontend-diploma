@@ -44,7 +44,7 @@ const TicketSeats = memo(({ train }) => {
 
   const selectTrain = (data) => {
     dispatch(appStateSetTrainOutgoing(data));
-    history.push("/selectSeats");
+    history.push("/seats");
   };
 
   return (

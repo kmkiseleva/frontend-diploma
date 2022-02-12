@@ -1,4 +1,6 @@
 import { memo } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./passengersPage.css";
 import "./reantd.css";
 import { Collapse, Select, Input, Checkbox } from "antd";
@@ -18,9 +20,19 @@ import PassengersDetails from "../../components/PassengersDetails/PassengersDeta
 import ButtonNext from "./../../components/Buttons/ButtonNext";
 import PassengersInitials from "../../components/PassengersInitials/PassengersInitials";
 
+import { appStateSetProgress } from "../../store/appState";
+
 const { Panel } = Collapse;
 
 const PassengersPage = memo(() => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const toPayPage = () => {
+    dispatch(appStateSetProgress(2));
+    history.push("./pay");
+  };
+
   return (
     <div className="passengersPage__body">
       <Header headerType="select" />
@@ -417,7 +429,7 @@ const PassengersPage = memo(() => {
               </Panel>
             </Collapse>
           </div>
-          <ButtonNext text="Далее" />
+          <ButtonNext text="Далее" onClick={toPayPage} />
         </div>
       </div>
     </div>
