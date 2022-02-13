@@ -389,10 +389,9 @@ const PassengersPage = memo(() => {
                       </div>
                     </div>
                     <div className="passengerCheckbox__block">
-                      <Checkbox />
-                      <div className="passengerCheckbox__title">
+                      <Checkbox className="passengerCheckbox__title">
                         ограниченная подвижность
-                      </div>
+                      </Checkbox>
                     </div>
                   </div>
                   <div className="passenger__passportData">

@@ -2,6 +2,7 @@ import { memo } from "react";
 import { Input } from "antd";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import "./passengersInitials.css";
 
 import {
   appStateSetSurname,

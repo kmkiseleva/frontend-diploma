@@ -1,6 +1,8 @@
 import { memo } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { Input, Checkbox } from "antd";
 import "./payPage.css";
 import "./reantd.css";
 
@@ -15,10 +17,27 @@ import PassengersDetails from "../../components/PassengersDetails/PassengersDeta
 import PassengersInitials from "../../components/PassengersInitials/PassengersInitials";
 
 import { appStateSetProgress } from "../../store/appState";
+import { appStateSetPhone, appStateSetEmail } from "../../store/personalData";
 
 const PayPage = memo(() => {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const [phone, setUserPhone] = useState("");
+  const [email, setUserEmail] = useState("");
+
+  useEffect(() => {
+    dispatch(appStateSetPhone(phone));
+    dispatch(appStateSetEmail(email));
+  }, [dispatch, phone, email]);
+
+  function onPayOnline(e) {
+    console.log(`checked = ${e.target.checked}`);
+  }
+
+  function onPayCash(e) {
+    console.log(`checked = ${e.target.checked}`);
+  }
 
   const buyTickets = () => {
     dispatch(appStateSetProgress(3));
@@ -56,22 +75,46 @@ const PayPage = memo(() => {
               </div>
               <div className="mainInfoBody__phone">
                 <div className="mainInfoBody__title">Контактный телефон</div>
+                <Input
+                  className="payPage__input"
+                  placeholder="+79533221818"
+                  value={phone}
+                  required
+                  onChange={(e) => setUserPhone(e.target.value)}
+                />
               </div>
 
               <div className="mainInfoBody__mail">
                 <div className="mainInfoBody__title">E-mail</div>
+                <Input
+                  className="payPage__input"
+                  placeholder="inbox@gmail.ru"
+                  value={email}
+                  required
+                  onChange={(e) => setUserEmail(e.target.value)}
+                />
               </div>
             </div>
             <div className="payPage__payInfoHeader">Способ оплаты</div>
             <div className="payPage__payInfoBody">
-              <div className="payInfoBody__checkbox">Онлайн</div>
+              <Checkbox
+                className="payInfoBody__checkbox"
+                onChange={onPayOnline}
+              >
+                Онлайн
+              </Checkbox>
               <div className="payInfoBody__options">
                 <div className="payInfoBody__option">Банковской картой</div>
                 <div className="payInfoBody__option">PayPal</div>
                 <div className="payInfoBody__option">Visa QIWI Wallet</div>
               </div>
+              <Checkbox
+                className="payPage__payInfoCheckbox"
+                onChange={onPayCash}
+              >
+                Наличными
+              </Checkbox>
             </div>
-            <div className="payPage__payInfoCheckbox">Наличными</div>
           </div>
           <button className="payPage__mainButton" onClick={buyTickets}>
             Купить билеты

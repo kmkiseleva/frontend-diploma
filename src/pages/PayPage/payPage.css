@@ -152,6 +152,13 @@
   font-size: 24px;
   line-height: 28px;
   color: #928f94;
+  margin-top: 59px;
+  margin-left: -10px;
+}
+
+.payPage__payInfoCheckbox,
+.ant-checkbox + span {
+  padding-left: 10px;
 }
 
 .payPage__mainButton {
@@ -172,4 +179,23 @@
   margin-right: 0;
   text-align: center;
   display: block;
+}
+
+.payPage__input {
+  width: 360px;
+  height: 50px;
+  border-radius: 5px;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  color: #292929;
+  border: 1px solid #928f94;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  margin-top: 5px;
+}
+
+.payPage__input:hover,
+.payPage__input:focus,
+.payPage__input:active {
+  border: 1px solid #ffa800;
 }
