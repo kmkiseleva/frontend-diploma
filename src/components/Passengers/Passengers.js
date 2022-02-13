@@ -1,8 +1,20 @@
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./passengers.css";
 import ava from "../../img/avatar.png";
 import rub from "../../img/rub.png";
 
+import { appStateSetProgress } from "../../store/appState";
+
 export default function Passengers() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const changePassengersData = () => {
+    dispatch(appStateSetProgress(1));
+    history.push("./passengers");
+  };
+
   return (
     <div className="confirm__passengers">
       <div className="passengers__title">Пассажиры</div>
@@ -55,7 +67,7 @@ export default function Passengers() {
           <div>
             Всего <span>7 760</span> <img src={rub} alt="rub"></img>
           </div>
-          <button>Изменить</button>
+          <button onClick={changePassengersData}>Изменить</button>
         </div>
       </div>
     </div>
