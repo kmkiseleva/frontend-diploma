@@ -17,7 +17,12 @@ import PassengersDetails from "../../components/PassengersDetails/PassengersDeta
 import PassengersInitials from "../../components/PassengersInitials/PassengersInitials";
 
 import { appStateSetProgress } from "../../store/appState";
-import { appStateSetPhone, appStateSetEmail } from "../../store/personalData";
+import {
+  appStateSetPhone,
+  appStateSetEmail,
+  appStateSetPayOnline,
+  appStateSetPayCash,
+} from "../../store/personalData";
 
 const PayPage = memo(() => {
   const dispatch = useDispatch();
@@ -25,18 +30,22 @@ const PayPage = memo(() => {
 
   const [phone, setUserPhone] = useState("");
   const [email, setUserEmail] = useState("");
+  const [payOnline, setPayOnline] = useState(false);
+  const [payCash, setPayCash] = useState(false);
 
   useEffect(() => {
     dispatch(appStateSetPhone(phone));
     dispatch(appStateSetEmail(email));
-  }, [dispatch, phone, email]);
+    dispatch(appStateSetPayOnline(payOnline));
+    dispatch(appStateSetPayCash(payCash));
+  }, [dispatch, phone, email, payOnline, payCash]);
 
-  function onPayOnline(e) {
-    console.log(`checked = ${e.target.checked}`);
+  function onPayOnline() {
+    setPayOnline(!payOnline);
   }
 
-  function onPayCash(e) {
-    console.log(`checked = ${e.target.checked}`);
+  function onPayCash() {
+    setPayCash(!payCash);
   }
 
   const buyTickets = () => {
@@ -98,8 +107,9 @@ const PayPage = memo(() => {
             <div className="payPage__payInfoHeader">Способ оплаты</div>
             <div className="payPage__payInfoBody">
               <Checkbox
-                className="payInfoBody__checkbox"
+                className={`payInfoBody__checkbox ${payOnline ? "active" : ""}`}
                 onChange={onPayOnline}
+                checked={payOnline}
               >
                 Онлайн
               </Checkbox>
@@ -109,8 +119,11 @@ const PayPage = memo(() => {
                 <div className="payInfoBody__option">Visa QIWI Wallet</div>
               </div>
               <Checkbox
-                className="payPage__payInfoCheckbox"
+                className={`payPage__payInfoCheckbox ${
+                  payCash ? "active" : ""
+                }`}
                 onChange={onPayCash}
+                checked={payCash}
               >
                 Наличными
               </Checkbox>

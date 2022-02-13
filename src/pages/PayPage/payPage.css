@@ -199,3 +199,7 @@
 .payPage__input:active {
   border: 1px solid #ffa800;
 }
+
+.active {
+  color: #ffa800;
+}

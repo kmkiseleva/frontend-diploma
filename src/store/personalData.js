@@ -6,6 +6,8 @@ const initialState = {
   patr: "",
   phone: "",
   email: "",
+  payOnline: false,
+  payCash: false,
 };
 
 export const personalData = createSlice({
@@ -27,6 +29,12 @@ export const personalData = createSlice({
     appStateSetEmail: (state, action) => {
       state.email = action.payload;
     },
+    appStateSetPayOnline: (state, action) => {
+      state.payOnline = action.payload;
+    },
+    appStateSetPayCash: (state, action) => {
+      state.payCash = action.payload;
+    },
     appStateResetInitials: (state) => {
       return initialState;
     },
@@ -39,6 +47,8 @@ export const {
   appStateSetPatr,
   appStateSetPhone,
   appStateSetEmail,
+  appStateSetPayOnline,
+  appStateSetPayCash,
   appStateResetInitials,
 } = personalData.actions;
 export default personalData.reducer;
