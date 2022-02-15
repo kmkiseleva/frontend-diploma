@@ -1,10 +1,10 @@
 import { memo } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 import "./passengersPage.css";
 import "./reantd.css";
 import { Collapse, Select, Input, Checkbox } from "antd";
-import { Option } from "antd/lib/mentions";
 
 import rub from "../../img/rub.png";
 import forward from "../../img/forward.svg";
@@ -18,15 +18,41 @@ import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import TripDetails from "../../components/TripDetails/TripDetails";
 import PassengersDetails from "../../components/PassengersDetails/PassengersDetails";
 import ButtonNext from "./../../components/Buttons/ButtonNext";
-import PassengersInitials from "../../components/PassengersInitials/PassengersInitials";
 
 import { appStateSetProgress } from "../../store/appState";
+import { addPassenger } from "../../store/passengersData";
 
 const { Panel } = Collapse;
+const { Option } = Select;
 
 const PassengersPage = memo(() => {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const [surname, setUserSurname] = useState("");
+  const [name, setUserName] = useState("");
+  const [patr, setUserPatr] = useState("");
+  const [sex, setUserSex] = useState("");
+  const [bd, setUserBd] = useState("");
+  const [dysmobility, setUserDysmobility] = useState(false);
+
+  let passenger = {
+    counter: 1,
+    age: "",
+    surname: surname,
+    name: name,
+    patr: patr,
+    sex: sex,
+    bd: bd,
+    dysmobility: dysmobility,
+    document: "",
+    passport: { seria: undefined, number: undefined },
+    bdCertif: undefined,
+  };
+
+  const uploadPassengerData = () => {
+    dispatch(addPassenger(passenger));
+  };
 
   const toPayPage = () => {
     dispatch(appStateSetProgress(2));
@@ -85,15 +111,52 @@ const PassengersPage = memo(() => {
                         <Option value="child">Детский</Option>
                       </Select>
                     </div>
-                    <PassengersInitials />
+                    <div className="passenger__initials">
+                      <div className="passengerInitials__block">
+                        <div className="passengerInput__title">Фамилия</div>
+                        <Input
+                          className="passengerInitials__input"
+                          placeholder="Иванов"
+                          value={surname}
+                          required
+                          onChange={(e) => setUserSurname(e.target.value)}
+                        />
+                      </div>
+                      <div className="passengerInitials__block">
+                        <div className="passengerInput__title">Имя</div>
+                        <Input
+                          className="passengerInitials__input"
+                          placeholder="Иван"
+                          value={name}
+                          required
+                          onChange={(e) => setUserName(e.target.value)}
+                        />
+                      </div>
+                      <div className="passengerInitials__block">
+                        <div className="passengerInput__title">Отчество</div>
+                        <Input
+                          className="passengerInitials__input"
+                          placeholder="Иванович"
+                          value={patr}
+                          required
+                          onChange={(e) => setUserPatr(e.target.value)}
+                        />
+                      </div>
+                    </div>
                     <div className="passenger__sex_bd">
                       <div className="passenger__sex">
                         <div className="passengerInput__title">Пол</div>
                         <div className="passengerSex__buttons">
-                          <button className="passengerSex__button male">
+                          <button
+                            className="passengerSex__button male"
+                            onClick={() => setUserSex("Мужской")}
+                          >
                             М
                           </button>
-                          <button className="passengerSex__button female active">
+                          <button
+                            className="passengerSex__button female"
+                            onClick={() => setUserSex("Женский")}
+                          >
                             Ж
                           </button>
                         </div>
@@ -105,14 +168,20 @@ const PassengersPage = memo(() => {
                         <Input
                           placeholder="17.02.1985"
                           className="passengerBd__input"
+                          value={bd}
+                          required
+                          onChange={(e) => setUserBd(e.target.value)}
                         />
                       </div>
                     </div>
                     <div className="passengerCheckbox__block">
-                      <Checkbox />
-                      <div className="passengerCheckbox__title">
+                      <Checkbox
+                        className="passengerCheckbox__title"
+                        onChange={() => setUserDysmobility(!dysmobility)}
+                        checked={dysmobility}
+                      >
                         ограниченная подвижность
-                      </div>
+                      </Checkbox>
                     </div>
                   </div>
                   <div className="passenger__passportData">
@@ -141,7 +210,10 @@ const PassengersPage = memo(() => {
                     </div>
                   </div>
                   <div className="passenger__next">
-                    <button className="passengerNext__button">
+                    <button
+                      className="passengerNext__button"
+                      onClick={uploadPassengerData}
+                    >
                       Следующий пассажир
                     </button>
                   </div>
@@ -149,7 +221,7 @@ const PassengersPage = memo(() => {
               </Panel>
             </Collapse>
           </div>
-
+          {/* 
           <div className="passengersPage__collapse">
             <Collapse
               ghost
@@ -336,7 +408,7 @@ const PassengersPage = memo(() => {
                 </div>
               </Panel>
             </Collapse>
-          </div>
+          </div> */}
 
           <div className="passengersPage__collapse">
             <Collapse
@@ -365,7 +437,7 @@ const PassengersPage = memo(() => {
                         <Option value="child">Детский</Option>
                       </Select>
                     </div>
-                    <PassengersInitials />
+                    {/* <PassengersInitials /> */}
                     <div className="passenger__sex_bd">
                       <div className="passenger__sex">
                         <div className="passengerInput__title">Пол</div>

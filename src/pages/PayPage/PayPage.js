@@ -2,7 +2,7 @@ import { memo } from "react";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Input, Checkbox } from "antd";
+import { Checkbox } from "antd";
 import "./payPage.css";
 import "./reantd.css";
 
@@ -14,39 +14,22 @@ import Header from "../../components/Header/Header";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import TripDetails from "../../components/TripDetails/TripDetails";
 import PassengersDetails from "../../components/PassengersDetails/PassengersDetails";
-import PassengersInitials from "../../components/PassengersInitials/PassengersInitials";
+import PersonalData from "../../components/PersonalData/PersonalData";
 
 import { appStateSetProgress } from "../../store/appState";
-import {
-  appStateSetPhone,
-  appStateSetEmail,
-  appStateSetPayOnline,
-  appStateSetPayCash,
-} from "../../store/personalData";
+import { stateSetPayOnline, stateSetPayCash } from "../../store/personalData";
 
 const PayPage = memo(() => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [phone, setUserPhone] = useState("");
-  const [email, setUserEmail] = useState("");
   const [payOnline, setPayOnline] = useState(false);
   const [payCash, setPayCash] = useState(false);
 
   useEffect(() => {
-    dispatch(appStateSetPhone(phone));
-    dispatch(appStateSetEmail(email));
-    dispatch(appStateSetPayOnline(payOnline));
-    dispatch(appStateSetPayCash(payCash));
-  }, [dispatch, phone, email, payOnline, payCash]);
-
-  function onPayOnline() {
-    setPayOnline(!payOnline);
-  }
-
-  function onPayCash() {
-    setPayCash(!payCash);
-  }
+    dispatch(stateSetPayOnline(payOnline));
+    dispatch(stateSetPayCash(payCash));
+  }, [dispatch, payOnline, payCash]);
 
   const buyTickets = () => {
     dispatch(appStateSetProgress(3));
@@ -79,36 +62,13 @@ const PayPage = memo(() => {
           <div className="payPage__mainInfo">
             <div className="payPage__mainInfoHeader">Персональные данные</div>
             <div className="payPage__mainInfoBody">
-              <div>
-                <PassengersInitials />
-              </div>
-              <div className="mainInfoBody__phone">
-                <div className="mainInfoBody__title">Контактный телефон</div>
-                <Input
-                  className="payPage__input"
-                  placeholder="+79533221818"
-                  value={phone}
-                  required
-                  onChange={(e) => setUserPhone(e.target.value)}
-                />
-              </div>
-
-              <div className="mainInfoBody__mail">
-                <div className="mainInfoBody__title">E-mail</div>
-                <Input
-                  className="payPage__input"
-                  placeholder="inbox@gmail.ru"
-                  value={email}
-                  required
-                  onChange={(e) => setUserEmail(e.target.value)}
-                />
-              </div>
+              <PersonalData />
             </div>
             <div className="payPage__payInfoHeader">Способ оплаты</div>
             <div className="payPage__payInfoBody">
               <Checkbox
                 className={`payInfoBody__checkbox ${payOnline ? "active" : ""}`}
-                onChange={onPayOnline}
+                onChange={() => setPayOnline(!payOnline)}
                 checked={payOnline}
               >
                 Онлайн
@@ -122,7 +82,7 @@ const PayPage = memo(() => {
                 className={`payPage__payInfoCheckbox ${
                   payCash ? "active" : ""
                 }`}
-                onChange={onPayCash}
+                onChange={() => setPayCash(!payCash)}
                 checked={payCash}
               >
                 Наличными

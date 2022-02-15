@@ -14,41 +14,41 @@ export const personalData = createSlice({
   name: "personalData",
   initialState,
   reducers: {
-    appStateSetSurname: (state, action) => {
+    setPersonalSurname: (state, action) => {
       state.surname = action.payload;
     },
-    appStateSetName: (state, action) => {
+    setPersonalName: (state, action) => {
       state.name = action.payload;
     },
-    appStateSetPatr: (state, action) => {
+    setPersonalPatr: (state, action) => {
       state.patr = action.payload;
     },
-    appStateSetPhone: (state, action) => {
+    setPersonalPhone: (state, action) => {
       state.phone = action.payload;
     },
-    appStateSetEmail: (state, action) => {
+    setPersonalEmail: (state, action) => {
       state.email = action.payload;
     },
-    appStateSetPayOnline: (state, action) => {
+    stateSetPayOnline: (state, action) => {
       state.payOnline = action.payload;
     },
-    appStateSetPayCash: (state, action) => {
+    stateSetPayCash: (state, action) => {
       state.payCash = action.payload;
     },
-    appStateResetInitials: (state) => {
+    resetPersonalInitials: (state) => {
       return initialState;
     },
   },
 });
 
 export const {
-  appStateSetSurname,
-  appStateSetName,
-  appStateSetPatr,
-  appStateSetPhone,
-  appStateSetEmail,
-  appStateSetPayOnline,
-  appStateSetPayCash,
-  appStateResetInitials,
+  setPersonalSurname,
+  setPersonalName,
+  setPersonalPatr,
+  setPersonalPhone,
+  setPersonalEmail,
+  stateSetPayOnline,
+  stateSetPayCash,
+  resetPersonalInitials,
 } = personalData.actions;
 export default personalData.reducer;

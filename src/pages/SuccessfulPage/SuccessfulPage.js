@@ -11,7 +11,7 @@ import icon2 from "./img/icon2.svg";
 import icon3 from "./img/icon3.svg";
 
 import { appStateSetProgress } from "../../store/appState";
-import { appStateResetInitials } from "../../store/personalData";
+import { resetPersonalInitials } from "../../store/personalData";
 
 const SuccessfulPage = memo(() => {
   const dispatch = useDispatch();
@@ -80,7 +80,7 @@ const SuccessfulPage = memo(() => {
             className="successFooter__button"
             onClick={() => {
               dispatch(appStateSetProgress(0));
-              dispatch(appStateResetInitials());
+              dispatch(resetPersonalInitials());
               history.push("/");
             }}
           >

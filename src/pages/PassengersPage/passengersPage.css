@@ -169,6 +169,16 @@
   margin-bottom: 45px;
 }
 
+.selectAge__container {
+  border: 1px solid #928f94;
+}
+
+.selectAge__container:hover,
+.selectAge__container:active,
+.selectAge__container:focus {
+  border: 1px solid #ffa800;
+}
+
 .passengerFullSelectAge__field {
   border-radius: 5px;
   border: 1px solid #928f94;
@@ -250,7 +260,6 @@
   font-size: 18px;
   line-height: 21px;
   color: #292929;
-  padding-left: 20px;
 }
 
 .passenger__passportData {

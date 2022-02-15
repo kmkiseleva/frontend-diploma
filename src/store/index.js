@@ -6,6 +6,7 @@ import lastTickets from "./fetchLastTickets";
 import getTickets from "./fetchTickets";
 import trainSeats from "./fetchSeats";
 import subscription from "./fetchSubscribe";
+import passengersData from "./passengersData";
 import personalData from "./personalData";
 
 const store = configureStore({
@@ -17,6 +18,7 @@ const store = configureStore({
     getTickets,
     trainSeats,
     subscription,
+    passengersData,
     personalData,
   },
 });
