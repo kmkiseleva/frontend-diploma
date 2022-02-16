@@ -1,21 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  items: [
-    {
-      counter: 1,
-      age: "",
-      surname: "",
-      name: "",
-      patr: "",
-      sex: "",
-      bd: undefined,
-      dysmobility: false,
-      document: "",
-      passport: { seria: undefined, number: undefined },
-      bdCertif: undefined,
-    },
-  ],
+  items: [],
 };
 
 export const passengersData = createSlice({

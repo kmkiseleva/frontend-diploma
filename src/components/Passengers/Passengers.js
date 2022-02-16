@@ -1,14 +1,16 @@
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./passengers.css";
-import ava from "../../img/avatar.png";
 import rub from "../../img/rub.png";
+import PassengerCard from "./../PassengerCard/PassengerCard";
 
 import { appStateSetProgress } from "../../store/appState";
 
 export default function Passengers() {
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const items = useSelector((state) => state.passengersData.items);
 
   const changePassengersData = () => {
     dispatch(appStateSetProgress(1));
@@ -20,7 +22,24 @@ export default function Passengers() {
       <div className="passengers__title">Пассажиры</div>
       <div className="passengers__info">
         <div className="passengers__names">
-          <div className="names__card">
+          {items.map((el) => (
+            <PassengerCard
+              key={el.counter}
+              age={el.age}
+              surname={el.surname}
+              name={el.name}
+              patr={el.patr}
+              sex={el.sex}
+              bd={el.bd}
+              dysmobility={el.dysmobility}
+              document={el.document}
+              passportSeria={el.passport.seria}
+              passportNumber={el.passport.number}
+              bdCertif={el.bdCertif}
+            />
+          ))}
+
+          {/* <div className="names__card">
             <div className="card__img">
               <div>
                 <img src={ava} alt="avatar" />
@@ -61,7 +80,7 @@ export default function Passengers() {
               <div className="details__birthday">Дата рождения 17.02.1985</div>
               <div className="details__passport">Паспорт РФ 4204 380694</div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="passengers__price">
           <div>

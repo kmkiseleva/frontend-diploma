@@ -1,7 +1,6 @@
 import { memo } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 import "./passengersPage.css";
 import "./reantd.css";
 import { Collapse, Select, Input, Checkbox } from "antd";
@@ -17,10 +16,10 @@ import Header from "../../components/Header/Header";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import TripDetails from "../../components/TripDetails/TripDetails";
 import PassengersDetails from "../../components/PassengersDetails/PassengersDetails";
+import PassengerCollapse from "./../../components/PassengerCollapse/PassengerCollapse";
 import ButtonNext from "./../../components/Buttons/ButtonNext";
 
 import { appStateSetProgress } from "../../store/appState";
-import { addPassenger } from "../../store/passengersData";
 
 const { Panel } = Collapse;
 const { Option } = Select;
@@ -28,31 +27,6 @@ const { Option } = Select;
 const PassengersPage = memo(() => {
   const dispatch = useDispatch();
   const history = useHistory();
-
-  const [surname, setUserSurname] = useState("");
-  const [name, setUserName] = useState("");
-  const [patr, setUserPatr] = useState("");
-  const [sex, setUserSex] = useState("");
-  const [bd, setUserBd] = useState("");
-  const [dysmobility, setUserDysmobility] = useState(false);
-
-  let passenger = {
-    counter: 1,
-    age: "",
-    surname: surname,
-    name: name,
-    patr: patr,
-    sex: sex,
-    bd: bd,
-    dysmobility: dysmobility,
-    document: "",
-    passport: { seria: undefined, number: undefined },
-    bdCertif: undefined,
-  };
-
-  const uploadPassengerData = () => {
-    dispatch(addPassenger(passenger));
-  };
 
   const toPayPage = () => {
     dispatch(appStateSetProgress(2));
@@ -82,7 +56,9 @@ const PassengersPage = memo(() => {
         </div>
 
         <div className="passengersPage__main">
-          <div className="passengersPage__collapse">
+          <PassengerCollapse />
+
+          {/* <div className="passengersPage__collapse">
             <Collapse
               ghost
               expandIconPosition="left"
@@ -91,9 +67,7 @@ const PassengersPage = memo(() => {
               <Panel
                 header={
                   <div className="passenger-full__header">
-                    <div className="passenger__title">
-                      Пассажир <span>1</span>
-                    </div>
+                    <div className="passenger__title">Добавить пассажира</div>
                   </div>
                 }
                 key={1}
@@ -143,301 +117,6 @@ const PassengersPage = memo(() => {
                         />
                       </div>
                     </div>
-                    <div className="passenger__sex_bd">
-                      <div className="passenger__sex">
-                        <div className="passengerInput__title">Пол</div>
-                        <div className="passengerSex__buttons">
-                          <button
-                            className="passengerSex__button male"
-                            onClick={() => setUserSex("Мужской")}
-                          >
-                            М
-                          </button>
-                          <button
-                            className="passengerSex__button female"
-                            onClick={() => setUserSex("Женский")}
-                          >
-                            Ж
-                          </button>
-                        </div>
-                      </div>
-                      <div className="passenger__bd">
-                        <div className="passengerInput__title">
-                          Дата рождения
-                        </div>
-                        <Input
-                          placeholder="17.02.1985"
-                          className="passengerBd__input"
-                          value={bd}
-                          required
-                          onChange={(e) => setUserBd(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                    <div className="passengerCheckbox__block">
-                      <Checkbox
-                        className="passengerCheckbox__title"
-                        onChange={() => setUserDysmobility(!dysmobility)}
-                        checked={dysmobility}
-                      >
-                        ограниченная подвижность
-                      </Checkbox>
-                    </div>
-                  </div>
-                  <div className="passenger__passportData">
-                    <div className="passportData__block">
-                      <div className="passengerInput__title">Тип документа</div>
-                      <Select defaultValue="Паспорт РФ">
-                        <Option value="passport">Паспорт РФ</Option>
-                        <Option value="certificate">
-                          Свидетельство о рождении
-                        </Option>
-                      </Select>
-                    </div>
-                    <div className="passportData__block">
-                      <div className="passengerInput__title">Серия</div>
-                      <Input
-                        placeholder="__ __ __ __"
-                        className="passport__input"
-                      />
-                    </div>
-                    <div className="passportData__block">
-                      <div className="passengerInput__title">Номер</div>
-                      <Input
-                        placeholder="__ __ __ __ __ __"
-                        className="passport__input"
-                      />
-                    </div>
-                  </div>
-                  <div className="passenger__next">
-                    <button
-                      className="passengerNext__button"
-                      onClick={uploadPassengerData}
-                    >
-                      Следующий пассажир
-                    </button>
-                  </div>
-                </div>
-              </Panel>
-            </Collapse>
-          </div>
-          {/* 
-          <div className="passengersPage__collapse">
-            <Collapse
-              ghost
-              expandIconPosition="left"
-              expandIcon={({ isActive }) => (isActive ? <Minus /> : <Plus />)}
-            >
-              <Panel
-                header={
-                  <div className="passenger-full__header">
-                    <div className="passenger__title">
-                      Пассажир <span>2</span>
-                    </div>
-                  </div>
-                }
-                key={1}
-              >
-                <div className="passengersPage__passenger-full">
-                  <div className="passenger-full__content">
-                    <div className="passenger-full__selectAge">
-                      <Select
-                        className="selectAge__container"
-                        dropdownClassName={("selectAge__dropdown", "selectAge")}
-                        defaultValue="Взрослый"
-                        allowClear={false}
-                      >
-                        <Option value="adult">Взрослый</Option>
-                        <Option value="child">Детский</Option>
-                      </Select>
-                    </div>
-                    <PassengersInitials />
-                    <div className="passenger__sex_bd">
-                      <div className="passenger__sex">
-                        <div className="passengerInput__title">Пол</div>
-                        <div className="passengerSex__buttons">
-                          <button className="passengerSex__button male">
-                            М
-                          </button>
-                          <button className="passengerSex__button female active">
-                            Ж
-                          </button>
-                        </div>
-                      </div>
-                      <div className="passenger__bd">
-                        <div className="passengerInput__title">
-                          Дата рождения
-                        </div>
-                        <Input
-                          placeholder="17.02.1985"
-                          className="passengerBd__input"
-                        />
-                      </div>
-                    </div>
-                    <div className="passengerCheckbox__block">
-                      <Checkbox />
-                      <div className="passengerCheckbox__title">
-                        ограниченная подвижность
-                      </div>
-                    </div>
-                  </div>
-                  <div className="passenger__passportData">
-                    <div className="passportData__block">
-                      <div className="passengerInput__title">Тип документа</div>
-                      <Select defaultValue="Паспорт РФ">
-                        <Option value="passport">Паспорт РФ</Option>
-                        <Option value="certificate">
-                          Свидетельство о рождении
-                        </Option>
-                      </Select>
-                    </div>
-                    <div className="passportData__block">
-                      <div className="passengerInput__title">Серия</div>
-                      <Input
-                        placeholder="__ __ __ __"
-                        className="passport__input"
-                      />
-                    </div>
-                    <div className="passportData__block">
-                      <div className="passengerInput__title">Номер</div>
-                      <Input
-                        placeholder="__ __ __ __ __ __"
-                        className="passport__input"
-                      />
-                    </div>
-                  </div>
-                  <div className="passenger__next">
-                    <button className="passengerNext__button">
-                      Следующий пассажир
-                    </button>
-                  </div>
-                </div>
-              </Panel>
-            </Collapse>
-          </div>
-
-          <div className="passengersPage__collapse">
-            <Collapse
-              ghost
-              expandIconPosition="left"
-              expandIcon={({ isActive }) => (isActive ? <Minus /> : <Plus />)}
-            >
-              <Panel
-                header={
-                  <div className="passenger-full__header">
-                    <div className="passenger__title">
-                      Пассажир <span>3</span>
-                    </div>
-                  </div>
-                }
-                key={1}
-              >
-                <div className="passengersPage__passenger-full">
-                  <div className="passenger-full__content">
-                    <div className="passenger-full__selectAge">
-                      <Select
-                        className="selectAge__container"
-                        dropdownClassName={("selectAge__dropdown", "selectAge")}
-                        defaultValue="Взрослый"
-                        allowClear={false}
-                      >
-                        <Option value="adult">Взрослый</Option>
-                        <Option value="child">Детский</Option>
-                      </Select>
-                    </div>
-                    <PassengersInitials />
-                    <div className="passenger__sex_bd">
-                      <div className="passenger__sex">
-                        <div className="passengerInput__title">Пол</div>
-                        <div className="passengerSex__buttons">
-                          <button className="passengerSex__button male">
-                            М
-                          </button>
-                          <button className="passengerSex__button female active">
-                            Ж
-                          </button>
-                        </div>
-                      </div>
-                      <div className="passenger__bd">
-                        <div className="passengerInput__title">
-                          Дата рождения
-                        </div>
-                        <Input
-                          placeholder="17.02.1985"
-                          className="passengerBd__input"
-                        />
-                      </div>
-                    </div>
-                    <div className="passengerCheckbox__block">
-                      <Checkbox />
-                      <div className="passengerCheckbox__title">
-                        ограниченная подвижность
-                      </div>
-                    </div>
-                  </div>
-                  <div className="passenger__passportData">
-                    <div className="passportData__block">
-                      <div className="passengerInput__title">Тип документа</div>
-                      <Select defaultValue="Паспорт РФ">
-                        <Option value="passport">Паспорт РФ</Option>
-                        <Option value="certificate">
-                          Свидетельство о рождении
-                        </Option>
-                      </Select>
-                    </div>
-                    <div className="passportData__block">
-                      <div className="passengerInput__title">Серия</div>
-                      <Input
-                        placeholder="__ __ __ __"
-                        className="passport__input"
-                      />
-                    </div>
-                    <div className="passportData__block">
-                      <div className="passengerInput__title">Номер</div>
-                      <Input
-                        placeholder="__ __ __ __ __ __"
-                        className="passport__input"
-                      />
-                    </div>
-                  </div>
-                  <div className="passenger__next">
-                    <button className="passengerNext__button">
-                      Следующий пассажир
-                    </button>
-                  </div>
-                </div>
-              </Panel>
-            </Collapse>
-          </div> */}
-
-          <div className="passengersPage__collapse">
-            <Collapse
-              ghost
-              expandIconPosition="left"
-              expandIcon={({ isActive }) => (isActive ? <Minus /> : <Plus />)}
-            >
-              <Panel
-                header={
-                  <div className="passenger-full__header">
-                    <div className="passenger__title">Добавить пассажира</div>
-                  </div>
-                }
-                key={1}
-              >
-                <div className="passengersPage__passenger-full">
-                  <div className="passenger-full__content">
-                    <div className="passenger-full__selectAge">
-                      <Select
-                        className="selectAge__container"
-                        dropdownClassName={("selectAge__dropdown", "selectAge")}
-                        defaultValue="Взрослый"
-                        allowClear={false}
-                      >
-                        <Option value="adult">Взрослый</Option>
-                        <Option value="child">Детский</Option>
-                      </Select>
-                    </div>
-                    {/* <PassengersInitials /> */}
                     <div className="passenger__sex_bd">
                       <div className="passenger__sex">
                         <div className="passengerInput__title">Пол</div>
@@ -499,7 +178,7 @@ const PassengersPage = memo(() => {
                 </div>
               </Panel>
             </Collapse>
-          </div>
+          </div> */}
           <ButtonNext text="Далее" onClick={toPayPage} />
         </div>
       </div>
