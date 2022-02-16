@@ -182,26 +182,43 @@ const PassengerCollapse = memo(() => {
                   </Option>
                 </Select>
               </div>
-              <div className="passportData__block">
-                <div className="passengerInput__title">Серия</div>
-                <Input
-                  placeholder="__ __ __ __"
-                  className="passport__input"
-                  value={passportSeria}
-                  required
-                  onChange={(e) => setUserPassportSeria(e.target.value)}
-                />
-              </div>
-              <div className="passportData__block">
-                <div className="passengerInput__title">Номер</div>
-                <Input
-                  placeholder="__ __ __ __ __ __"
-                  className="passport__input"
-                  value={passportNumber}
-                  required
-                  onChange={(e) => setUserPassportNumber(e.target.value)}
-                />
-              </div>
+              {document === "Паспорт РФ" ? (
+                <>
+                  <div className="passportData__block">
+                    <div className="passengerInput__title">Серия</div>
+                    <Input
+                      placeholder="__ __ __ __"
+                      className="passport__input"
+                      value={passportSeria}
+                      required
+                      onChange={(e) => setUserPassportSeria(e.target.value)}
+                    />
+                  </div>
+                  <div className="passportData__block">
+                    <div className="passengerInput__title">Номер</div>
+                    <Input
+                      placeholder="__ __ __ __ __ __"
+                      className="passport__input"
+                      value={passportNumber}
+                      required
+                      onChange={(e) => setUserPassportNumber(e.target.value)}
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="passportData__block">
+                    <div className="passengerInput__title">Номер</div>
+                    <Input
+                      placeholder="VIII УН 256319"
+                      className="passport__input"
+                      value={bdCertif}
+                      required
+                      onChange={(e) => setUserBdCertif(e.target.value)}
+                    />
+                  </div>
+                </>
+              )}
             </div>
             {!isDone && (
               <div className="passenger__next">
