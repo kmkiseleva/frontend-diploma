@@ -1,69 +1,3 @@
-.passengersPage__body {
-  background: #f7f5f9;
-}
-
-.passengersPage__container {
-  padding-left: 259px;
-  padding-right: 257px;
-  display: flex;
-  flex-wrap: nowrap;
-  background: #f7f5f9;
-}
-
-.passengersPage__sidebar {
-  width: 361px;
-  max-height: 1279px;
-  background: #3e3c41;
-  color: #fff;
-  margin-right: 85px;
-  margin-bottom: 1000px;
-}
-
-.passengersPage__sidebarTitle {
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 35px;
-  text-transform: uppercase;
-  color: #e5e5e5;
-  border-bottom: 1px solid #e5e5e5;
-  height: 108px;
-  text-align: center;
-  padding-top: 35px;
-}
-
-.passengersPage__sidebarMiddle {
-  height: 1062px;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.passengersPage__sidebarResult {
-  min-height: 110px;
-  font-weight: bold;
-  font-size: 30px;
-  line-height: 35px;
-  text-transform: uppercase;
-  color: #ffffff;
-  padding-left: 28px;
-  padding-top: 25px;
-}
-
-.passengersPage__sidebarResult span {
-  font-weight: bold;
-  font-size: 48px;
-  line-height: 56px;
-  color: #ffa800;
-  padding-left: 55px;
-}
-
-.passengersPage__sidebarResult img {
-  margin-top: -15px;
-}
-
-.passengersPage__main {
-  display: flex;
-  flex-direction: column;
-}
-
 .passengersPage__collapse {
   margin-bottom: 46px;
 }
@@ -225,7 +159,7 @@
   border-radius: 0px 5px 5px 0px;
 }
 
-.passengerSex__button.active {
+.sexButtonActive {
   background: #ffa800;
 }
 
@@ -271,7 +205,6 @@
   padding-left: 35px;
   padding-right: 35px;
   display: flex;
-  margin-bottom: 25px;
 }
 
 .passportData__block {
@@ -293,6 +226,28 @@
   display: flex;
   justify-content: end;
   padding-right: 35px;
+  padding-top: 35px;
+}
+
+.passenger__nextDone {
+  height: 118px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 35px;
+  padding-left: 35px;
+  padding-right: 35px;
+  background: #b2f6a1;
+}
+
+.nextDone__text {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #ffffff;
+}
+
+.nextDone__text img {
+  margin-right: 15px;
 }
 
 .passengerNext__button {

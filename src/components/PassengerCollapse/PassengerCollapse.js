@@ -6,6 +6,7 @@ import { Collapse, Select, Input, Checkbox } from "antd";
 
 import { ReactComponent as Plus } from "../../img/add_plus_bordered.svg";
 import { ReactComponent as Minus } from "../../img/add_minus.svg";
+import done from "../../img/done.png";
 
 import { addPassenger } from "../../store/passengersData";
 
@@ -41,6 +42,16 @@ const PassengerCollapse = memo(() => {
     passport: { seria: passportSeria, number: passportNumber },
     bdCertif: bdCertif,
   };
+
+  const isDone =
+    age &&
+    surname &&
+    name &&
+    patr &&
+    sex &&
+    bd &&
+    document &&
+    ((passportSeria && passportNumber) || bdCertif);
 
   const uploadPassengerData = () => {
     counter += 1;
@@ -115,13 +126,21 @@ const PassengerCollapse = memo(() => {
                   <div className="passengerInput__title">Пол</div>
                   <div className="passengerSex__buttons">
                     <button
-                      className="passengerSex__button male"
+                      className={
+                        sex === "Мужской"
+                          ? "passengerSex__button male sexButtonActive"
+                          : "passengerSex__button male"
+                      }
                       onClick={() => setUserSex("Мужской")}
                     >
                       М
                     </button>
                     <button
-                      className="passengerSex__button female"
+                      className={
+                        sex === "Женский"
+                          ? "passengerSex__button female sexButtonActive"
+                          : "passengerSex__button female"
+                      }
                       onClick={() => setUserSex("Женский")}
                     >
                       Ж
@@ -184,14 +203,30 @@ const PassengerCollapse = memo(() => {
                 />
               </div>
             </div>
-            <div className="passenger__next">
-              <button
-                className="passengerNext__button"
-                onClick={uploadPassengerData}
-              >
-                Следующий пассажир
-              </button>
-            </div>
+            {!isDone && (
+              <div className="passenger__next">
+                <button
+                  className="passengerNext__button"
+                  onClick={uploadPassengerData}
+                >
+                  Следующий пассажир
+                </button>
+              </div>
+            )}
+            {isDone && (
+              <div className="passenger__nextDone">
+                <div className="nextDone__text">
+                  <img src={done} alt="done" />
+                  Готово
+                </div>
+                <button
+                  className="passengerNext__button"
+                  onClick={uploadPassengerData}
+                >
+                  Следующий пассажир
+                </button>
+              </div>
+            )}
           </div>
         </Panel>
       </Collapse>
