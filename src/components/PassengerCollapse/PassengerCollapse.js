@@ -1,12 +1,13 @@
 import { memo } from "react";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./passengerCollapse.css";
 import { Collapse, Select, Input, Checkbox } from "antd";
 
 import { ReactComponent as Plus } from "../../img/add_plus_bordered.svg";
 import { ReactComponent as Minus } from "../../img/add_minus.svg";
 import done from "../../img/done.png";
+import error from "../../img/error.png";
 
 import { addPassenger } from "../../store/passengersData";
 
@@ -28,6 +29,7 @@ const PassengerCollapse = memo(() => {
   const [passportSeria, setUserPassportSeria] = useState("");
   const [passportNumber, setUserPassportNumber] = useState("");
   const [bdCertif, setUserBdCertif] = useState("");
+  const [bdCertifError, setBdCertifError] = useState(false);
 
   let passenger = {
     counter: counter,
@@ -51,12 +53,26 @@ const PassengerCollapse = memo(() => {
     sex &&
     bd &&
     document &&
-    ((passportSeria && passportNumber) || bdCertif);
+    ((passportSeria.length === 4 && passportNumber.length === 6) ||
+      bdCertif.length === 12);
 
   const uploadPassengerData = () => {
-    counter += 1;
-    dispatch(addPassenger(passenger));
+    if (isDone) {
+      counter += 1;
+      dispatch(addPassenger(passenger));
+    } else if (
+      document === "Свидетельство о рождении" &&
+      bdCertif.length < 12
+    ) {
+      setBdCertifError(true);
+    }
   };
+
+  useEffect(() => {
+    if (document === "Свидетельство о рождении" && bdCertif.length === 12) {
+      setBdCertifError(false);
+    }
+  }, [document, bdCertif.length, bdCertifError]);
 
   return (
     <div className="passengersPage__collapse">
@@ -220,7 +236,7 @@ const PassengerCollapse = memo(() => {
                 </>
               )}
             </div>
-            {!isDone && (
+            {!isDone && bdCertifError === false && (
               <div className="passenger__next">
                 <button
                   className="passengerNext__button"
@@ -230,7 +246,7 @@ const PassengerCollapse = memo(() => {
                 </button>
               </div>
             )}
-            {isDone && (
+            {isDone && bdCertifError === false && (
               <div className="passenger__nextDone">
                 <div className="nextDone__text">
                   <img src={done} alt="done" />
@@ -242,6 +258,19 @@ const PassengerCollapse = memo(() => {
                 >
                   Следующий пассажир
                 </button>
+              </div>
+            )}
+            {bdCertifError === true && (
+              <div className="passenger__nextError">
+                <div className="nextError__text">
+                  <div className="nextError__img">
+                    <img src={error} alt="error" />
+                  </div>
+                  <div>
+                    Номер свидетельства о рождении указан некорректно. <br />{" "}
+                    Пример: <span>VIII УН 256319</span>
+                  </div>
+                </div>
               </div>
             )}
           </div>

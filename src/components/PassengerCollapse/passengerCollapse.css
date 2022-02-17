@@ -250,6 +250,32 @@
   margin-right: 15px;
 }
 
+.passenger__nextError {
+  height: 113px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 35px;
+  padding-left: 35px;
+  padding-right: 35px;
+  background: rgba(255, 61, 0, 0.38);
+}
+
+.nextError__text {
+  display: flex;
+  flex-wrap: nowrap;
+  font-size: 18px;
+  line-height: 21px;
+  color: #292929;
+}
+
+.nextError__text span {
+  font-weight: bold;
+}
+
+.nextError__text img {
+  margin-right: 15px;
+}
+
 .passengerNext__button {
   width: 303px;
   height: 52px;
