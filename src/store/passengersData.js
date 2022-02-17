@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   items: [],
+  counter: 1,
 };
 
 export const passengersData = createSlice({
@@ -9,9 +10,12 @@ export const passengersData = createSlice({
   initialState,
   reducers: {
     addPassenger: (state, action) => {
-      console.log(action.payload);
       state.items.push(action.payload);
     },
+    incCounter: (state, action) => {
+      state.counter = action.payload + 1;
+    },
+
     setPassengerAge: (state, action) => {
       state.age = action.payload;
     },
@@ -37,6 +41,7 @@ export const passengersData = createSlice({
 
 export const {
   addPassenger,
+  incCounter,
   setPassengerAge,
   setPassengerSurname,
   setPassengerName,

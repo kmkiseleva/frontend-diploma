@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import "./passengerCollapse.css";
 import { Collapse, Select, Input, Checkbox } from "antd";
@@ -9,15 +9,15 @@ import { ReactComponent as Minus } from "../../img/add_minus.svg";
 import done from "../../img/done.png";
 import error from "../../img/error.png";
 
-import { addPassenger } from "../../store/passengersData";
+import { addPassenger, incCounter } from "../../store/passengersData";
 
 const { Panel } = Collapse;
 const { Option } = Select;
 
-const PassengerCollapse = memo(() => {
+const PassengerCollapse = memo(({ passengerNumber }) => {
   const dispatch = useDispatch();
+  const counter = useSelector((state) => state.passengersData.counter);
 
-  let counter = 1;
   const [age, setUserAge] = useState("Взрослый");
   const [surname, setUserSurname] = useState("");
   const [name, setUserName] = useState("");
@@ -30,20 +30,6 @@ const PassengerCollapse = memo(() => {
   const [passportNumber, setUserPassportNumber] = useState("");
   const [bdCertif, setUserBdCertif] = useState("");
   const [bdCertifError, setBdCertifError] = useState(false);
-
-  let passenger = {
-    counter: counter,
-    age: age,
-    surname: surname,
-    name: name,
-    patr: patr,
-    sex: sex,
-    bd: bd,
-    dysmobility: dysmobility,
-    document: document,
-    passport: { seria: passportSeria, number: passportNumber },
-    bdCertif: bdCertif,
-  };
 
   const isDone =
     age &&
@@ -58,8 +44,22 @@ const PassengerCollapse = memo(() => {
 
   const uploadPassengerData = () => {
     if (isDone) {
-      counter += 1;
-      dispatch(addPassenger(passenger));
+      dispatch(
+        addPassenger({
+          id: counter,
+          age: age,
+          surname: surname,
+          name: name,
+          patr: patr,
+          sex: sex,
+          bd: bd,
+          dysmobility: dysmobility,
+          document: document,
+          passport: { seria: passportSeria, number: passportNumber },
+          bdCertif: bdCertif,
+        })
+      );
+      dispatch(incCounter(counter));
     } else if (
       document === "Свидетельство о рождении" &&
       bdCertif.length < 12
@@ -85,7 +85,7 @@ const PassengerCollapse = memo(() => {
           header={
             <div className="passenger-full__header">
               <div className="passenger__title">
-                Пассажир <span>{counter}</span>
+                Пассажир <span>{passengerNumber}</span>
               </div>
             </div>
           }
