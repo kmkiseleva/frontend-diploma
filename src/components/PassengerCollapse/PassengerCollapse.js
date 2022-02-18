@@ -6,10 +6,16 @@ import { Collapse, Select, Input, Checkbox } from "antd";
 
 import { ReactComponent as Plus } from "../../img/add_plus_bordered.svg";
 import { ReactComponent as Minus } from "../../img/add_minus.svg";
+import { ReactComponent as Close } from "../../img/add_close.svg";
+
 import done from "../../img/done.png";
 import error from "../../img/error.png";
 
-import { addPassenger, incCounter } from "../../store/passengersData";
+import {
+  addPassenger,
+  incCounter,
+  deletePassenger,
+} from "../../store/passengersData";
 
 const { Panel } = Collapse;
 const { Option } = Select;
@@ -17,6 +23,7 @@ const { Option } = Select;
 const PassengerCollapse = memo(({ passengerNumber }) => {
   const dispatch = useDispatch();
   const counter = useSelector((state) => state.passengersData.counter);
+  let lastCounterItem = counter[counter.length - 1];
 
   const [age, setUserAge] = useState("Взрослый");
   const [surname, setUserSurname] = useState("");
@@ -42,6 +49,10 @@ const PassengerCollapse = memo(({ passengerNumber }) => {
     ((passportSeria.length === 4 && passportNumber.length === 6) ||
       bdCertif.length === 12);
 
+  const onDeletePassenger = () => {
+    dispatch(deletePassenger(lastCounterItem));
+  };
+
   const uploadPassengerData = () => {
     if (isDone) {
       dispatch(
@@ -59,7 +70,8 @@ const PassengerCollapse = memo(({ passengerNumber }) => {
           bdCertif: bdCertif,
         })
       );
-      dispatch(incCounter(counter));
+      let newCounter = lastCounterItem + 1;
+      dispatch(incCounter(newCounter));
     } else if (
       document === "Свидетельство о рождении" &&
       bdCertif.length < 12
@@ -86,6 +98,14 @@ const PassengerCollapse = memo(({ passengerNumber }) => {
             <div className="passenger-full__header">
               <div className="passenger__title">
                 Пассажир <span>{passengerNumber}</span>
+              </div>
+              <div className="passenger__close">
+                <button
+                  className="passenger__closeButton"
+                  onClick={onDeletePassenger}
+                >
+                  <Close />
+                </button>
               </div>
             </div>
           }

@@ -51,8 +51,9 @@ const PassengersPage = memo(() => {
         </div>
 
         <div className="passengersPage__main">
-          <PassengerCollapse passengerNumber={counter} />
-          {counter === 2 && <PassengerCollapse passengerNumber={counter} />}
+          {counter.map((el) => (
+            <PassengerCollapse key={el} passengerNumber={el} />
+          ))}
           <ButtonNext text="Далее" onClick={toPayPage} />
         </div>
       </div>
