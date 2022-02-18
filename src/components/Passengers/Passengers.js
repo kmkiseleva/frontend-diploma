@@ -11,6 +11,7 @@ export default function Passengers() {
   const dispatch = useDispatch();
 
   const items = useSelector((state) => state.passengersData.items);
+  const totalPrice = useSelector((state) => state.appState.totalPrice);
 
   const changePassengersData = () => {
     dispatch(appStateSetProgress(1));
@@ -41,7 +42,7 @@ export default function Passengers() {
         </div>
         <div className="passengers__price">
           <div>
-            Всего <span>7 760</span> <img src={rub} alt="rub"></img>
+            Всего <span>{totalPrice}</span> <img src={rub} alt="rub"></img>
           </div>
           <button onClick={changePassengersData}>Изменить</button>
         </div>

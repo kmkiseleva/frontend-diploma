@@ -262,7 +262,7 @@ const PassengerCollapse = memo(({ passengerNumber }) => {
                   className="passengerNext__button"
                   onClick={uploadPassengerData}
                 >
-                  Следующий пассажир
+                  Добавить пассажира
                 </button>
               </div>
             )}
@@ -276,7 +276,7 @@ const PassengerCollapse = memo(({ passengerNumber }) => {
                   className="passengerNext__button"
                   onClick={uploadPassengerData}
                 >
-                  Следующий пассажир
+                  Готово
                 </button>
               </div>
             )}
