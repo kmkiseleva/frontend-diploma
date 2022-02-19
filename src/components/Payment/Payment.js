@@ -1,10 +1,11 @@
 import "./payment.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { memo } from "react";
 
 import { appStateSetProgress } from "../../store/appState";
 
-export default function Payment() {
+const Payment = memo(() => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -26,4 +27,6 @@ export default function Payment() {
       </div>
     </div>
   );
-}
+});
+
+export default Payment;

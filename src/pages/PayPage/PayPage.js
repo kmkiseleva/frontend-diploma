@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Checkbox } from "antd";
 import "./payPage.css";
 import "./reantd.css";
@@ -23,8 +23,13 @@ const PayPage = memo(() => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [payOnline, setPayOnline] = useState(false);
-  const [payCash, setPayCash] = useState(false);
+  const payOnlineFromState = useSelector(
+    (state) => state.personalData.payOnline
+  );
+  const payCashFromState = useSelector((state) => state.personalData.payCash);
+
+  const [payOnline, setPayOnline] = useState(payOnlineFromState);
+  const [payCash, setPayCash] = useState(payCashFromState);
 
   useEffect(() => {
     dispatch(stateSetPayOnline(payOnline));

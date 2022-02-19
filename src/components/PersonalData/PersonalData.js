@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Input } from "antd";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./personalData.css";
 
 import {
@@ -15,11 +15,17 @@ import {
 const PersonalData = memo(() => {
   const dispatch = useDispatch();
 
-  const [surname, setUserSurname] = useState("");
-  const [name, setUserName] = useState("");
-  const [patr, setUserPatr] = useState("");
-  const [phone, setUserPhone] = useState("");
-  const [email, setUserEmail] = useState("");
+  const surnameFromState = useSelector((state) => state.personalData.surname);
+  const nameFromState = useSelector((state) => state.personalData.name);
+  const patrFromState = useSelector((state) => state.personalData.patr);
+  const phoneFromState = useSelector((state) => state.personalData.phone);
+  const emailFromState = useSelector((state) => state.personalData.email);
+
+  const [surname, setUserSurname] = useState(surnameFromState);
+  const [name, setUserName] = useState(nameFromState);
+  const [patr, setUserPatr] = useState(patrFromState);
+  const [phone, setUserPhone] = useState(phoneFromState);
+  const [email, setUserEmail] = useState(emailFromState);
 
   useEffect(() => {
     dispatch(setPersonalSurname(surname));
