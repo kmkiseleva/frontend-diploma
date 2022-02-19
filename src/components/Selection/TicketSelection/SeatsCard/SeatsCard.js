@@ -1,5 +1,6 @@
 import { memo, useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "./seatsCard.css";
 import { message } from "antd";
 
@@ -93,6 +94,7 @@ const testCarriage = {
 };
 
 const SeatsCard = memo(({ type, data }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const trainSeats = useSelector((state) => state.trainSeats.items);
 
@@ -123,6 +125,7 @@ const SeatsCard = memo(({ type, data }) => {
       dispatch(appStateResetTrainIncoming);
     }
     dispatch(trainSeatsReset());
+    history.push("./selection");
   };
 
   const chooseCarriageType = (val) => {

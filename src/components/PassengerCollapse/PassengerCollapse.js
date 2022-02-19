@@ -22,6 +22,7 @@ const { Option } = Select;
 
 const PassengerCollapse = memo(({ passengerNumber }) => {
   const dispatch = useDispatch();
+
   const counter = useSelector((state) => state.passengersData.counter);
   let lastCounterItem = counter[counter.length - 1];
 
@@ -49,11 +50,13 @@ const PassengerCollapse = memo(({ passengerNumber }) => {
     ((passportSeria.length === 4 && passportNumber.length === 6) ||
       bdCertif.length === 12);
 
-  const onDeletePassenger = () => {
-    dispatch(deletePassenger(lastCounterItem));
+  const onDeletePassenger = (e) => {
+    const deleteButton = e.currentTarget;
+    const idx = Number(deleteButton.getAttribute("data-id"));
+    dispatch(deletePassenger(idx));
   };
 
-  const uploadPassengerData = () => {
+  const uploadPassengerData = (e) => {
     if (isDone) {
       dispatch(
         addPassenger({
@@ -72,6 +75,10 @@ const PassengerCollapse = memo(({ passengerNumber }) => {
       );
       let newCounter = lastCounterItem + 1;
       dispatch(incCounter(newCounter));
+
+      const doneButton = e.target;
+      doneButton.setAttribute("disabled", "disabled");
+      console.log(doneButton);
     } else if (
       document === "Свидетельство о рождении" &&
       bdCertif.length < 12
@@ -103,6 +110,7 @@ const PassengerCollapse = memo(({ passengerNumber }) => {
                 <button
                   className="passenger__closeButton"
                   onClick={onDeletePassenger}
+                  data-id={passengerNumber}
                 >
                   <Close />
                 </button>
@@ -262,7 +270,7 @@ const PassengerCollapse = memo(({ passengerNumber }) => {
                   className="passengerNext__button"
                   onClick={uploadPassengerData}
                 >
-                  Добавить пассажира
+                  Следующий пассажир
                 </button>
               </div>
             )}
