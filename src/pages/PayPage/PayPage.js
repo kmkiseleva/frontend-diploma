@@ -23,13 +23,10 @@ const PayPage = memo(() => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const payOnlineFromState = useSelector(
-    (state) => state.personalData.payOnline
-  );
-  const payCashFromState = useSelector((state) => state.personalData.payCash);
+  const personalData = useSelector((state) => state.personalData);
 
-  const [payOnline, setPayOnline] = useState(payOnlineFromState);
-  const [payCash, setPayCash] = useState(payCashFromState);
+  const [payOnline, setPayOnline] = useState(personalData.payOnline);
+  const [payCash, setPayCash] = useState(personalData.payCash);
 
   useEffect(() => {
     dispatch(stateSetPayOnline(payOnline));

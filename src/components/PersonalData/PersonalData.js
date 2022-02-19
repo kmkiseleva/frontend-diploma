@@ -15,17 +15,13 @@ import {
 const PersonalData = memo(() => {
   const dispatch = useDispatch();
 
-  const surnameFromState = useSelector((state) => state.personalData.surname);
-  const nameFromState = useSelector((state) => state.personalData.name);
-  const patrFromState = useSelector((state) => state.personalData.patr);
-  const phoneFromState = useSelector((state) => state.personalData.phone);
-  const emailFromState = useSelector((state) => state.personalData.email);
+  const personalData = useSelector((state) => state.personalData);
 
-  const [surname, setUserSurname] = useState(surnameFromState);
-  const [name, setUserName] = useState(nameFromState);
-  const [patr, setUserPatr] = useState(patrFromState);
-  const [phone, setUserPhone] = useState(phoneFromState);
-  const [email, setUserEmail] = useState(emailFromState);
+  const [surname, setUserSurname] = useState(personalData.surname);
+  const [name, setUserName] = useState(personalData.name);
+  const [patr, setUserPatr] = useState(personalData.patr);
+  const [phone, setUserPhone] = useState(personalData.phone);
+  const [email, setUserEmail] = useState(personalData.email);
 
   useEffect(() => {
     dispatch(setPersonalSurname(surname));
