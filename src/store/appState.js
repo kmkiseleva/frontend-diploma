@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   progress: 0,
-  trainOutgoing: undefined,
-  trainIncoming: undefined,
+  trainOutbound: undefined,
+  trainReturn: undefined,
   totalPrice: 0,
 };
 
@@ -14,17 +14,17 @@ export const appState = createSlice({
     appStateSetProgress: (state, action) => {
       state.progress = action.payload;
     },
-    appStateSetTrainOutgoing: (state, action) => {
-      state.trainOutgoing = action.payload;
+    appStateSetTrainOutbound: (state, action) => {
+      state.trainOutbound = action.payload;
     },
-    appStateResetTrainOutgoing: (state) => {
-      state.trainOutgoing = undefined;
+    appStateResetTrainOutbound: (state) => {
+      state.trainOutbound = undefined;
     },
-    appStateSetTrainIncoming: (state, action) => {
-      state.trainIncoming = action.payload;
+    appStateSetTrainReturn: (state, action) => {
+      state.trainReturn = action.payload;
     },
-    appStateResetTrainIncoming: (state) => {
-      state.trainIncoming = undefined;
+    appStateResetTrainReturn: (state) => {
+      state.trainReturn = undefined;
     },
 
     appStateSetTotalPrice: (state, action) => {
@@ -35,10 +35,10 @@ export const appState = createSlice({
 
 export const {
   appStateSetProgress,
-  appStateSetTrainOutgoing,
-  appStateResetTrainOutgoing,
-  appStateSetTrainIncoming,
-  appStateResetTrainIncoming,
+  appStateSetTrainOutbound,
+  appStateResetTrainOutbound,
+  appStateSetTrainReturn,
+  appStateResetTrainReturn,
   appStateSetTotalPrice,
 } = appState.actions;
 export default appState.reducer;

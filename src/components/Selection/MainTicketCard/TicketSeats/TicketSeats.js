@@ -2,7 +2,7 @@ import "./ticketSeats.css";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { appStateSetTrainOutgoing } from "../../../../store/appState";
+import { appStateSetTrainOutbound } from "../../../../store/appState";
 
 import TicketSeatsRow from "./TicketSeatsRow";
 import TicketServices from "../TicketServices/TicketServices";
@@ -43,7 +43,7 @@ const TicketSeats = memo(({ train }) => {
   } = train;
 
   const selectTrain = (data) => {
-    dispatch(appStateSetTrainOutgoing(data));
+    dispatch(appStateSetTrainOutbound(data));
     history.push("/seats");
   };
 

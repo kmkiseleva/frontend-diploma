@@ -7,8 +7,8 @@ import { message } from "antd";
 import { capitalize } from "./../../../../utils/capitalize";
 import { sec2hhmm, secToDateTime } from "./../../../../utils/timing";
 import {
-  appStateResetTrainOutgoing,
-  appStateResetTrainIncoming,
+  appStateResetTrainOutbound,
+  appStateResetTrainReturn,
 } from "../../../../store/appState";
 import { trainSeatsReset } from "../../../../store/fetchSeats";
 
@@ -120,9 +120,9 @@ const SeatsCard = memo(({ type, data }) => {
 
   const anotherTrain = (arg) => {
     if ((arg = "outgoing")) {
-      dispatch(appStateResetTrainOutgoing());
+      dispatch(appStateResetTrainOutbound());
     } else if (arg === "incoming") {
-      dispatch(appStateResetTrainIncoming);
+      dispatch(appStateResetTrainReturn());
     }
     dispatch(trainSeatsReset());
     history.push("./selection");

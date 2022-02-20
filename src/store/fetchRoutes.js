@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import moment from "moment";
 
 const initialState = {
-  status: "success",
+  status: "idle",
   error: "",
   data: {
     totalCount: 0,
@@ -43,6 +43,10 @@ export const fetchRoutes = createAsyncThunk(
         end_arrival_hour_to = 0,
       },
     } = params;
+
+    if (!departureId || !arrivalId) {
+      throw new Error(`empty points`);
+    }
 
     let reqURL = `${process.env.REACT_APP_BASE_URL}routes?from_city_id=${departureId}&to_city_id=${arrivalId}&limit=${limit}&sort=${sort}`;
 
@@ -97,8 +101,6 @@ export const fetchRoutes = createAsyncThunk(
     if (price_to) {
       reqURL += `&price_to=${price_to}`;
     }
-
-    console.log(reqURL);
 
     const response = await fetch(reqURL);
     if (!response.ok) {
