@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import "./passengerCollapse.css";
 import { Collapse, Select, Input, Checkbox } from "antd";
@@ -20,11 +20,8 @@ import {
 const { Panel } = Collapse;
 const { Option } = Select;
 
-const PassengerCollapse = memo(({ passengerNumber }) => {
+const PassengerCollapse = memo(({ passengerNumber, passenger }) => {
   const dispatch = useDispatch();
-
-  const counter = useSelector((state) => state.passengersData.counter);
-  let lastCounterItem = counter[counter.length - 1];
 
   const [age, setUserAge] = useState("Взрослый");
   const [surname, setUserSurname] = useState("");
@@ -60,7 +57,7 @@ const PassengerCollapse = memo(({ passengerNumber }) => {
     if (isDone) {
       dispatch(
         addPassenger({
-          id: counter,
+          id: passengerNumber,
           age: age,
           surname: surname,
           name: name,
@@ -73,12 +70,11 @@ const PassengerCollapse = memo(({ passengerNumber }) => {
           bdCertif: bdCertif,
         })
       );
-      let newCounter = lastCounterItem + 1;
+      let newCounter = passengerNumber + 1;
       dispatch(incCounter(newCounter));
 
       const doneButton = e.target;
       doneButton.setAttribute("disabled", "disabled");
-      console.log(doneButton);
     } else if (
       document === "Свидетельство о рождении" &&
       bdCertif.length < 12

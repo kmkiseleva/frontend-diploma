@@ -22,6 +22,7 @@ const PassengersPage = memo(() => {
   const history = useHistory();
 
   const counter = useSelector((state) => state.passengersData.counter);
+  const passengers = useSelector((state) => state.passengersData.items);
 
   const toPayPage = () => {
     dispatch(appStateSetProgress(2));
@@ -52,7 +53,11 @@ const PassengersPage = memo(() => {
 
         <div className="passengersPage__main">
           {counter.map((el) => (
-            <PassengerCollapse key={el} passengerNumber={el} />
+            <PassengerCollapse
+              key={el}
+              passengerNumber={el}
+              passenger={passengers[el - 1]}
+            />
           ))}
           <ButtonNext text="Далее" onClick={toPayPage} />
         </div>
