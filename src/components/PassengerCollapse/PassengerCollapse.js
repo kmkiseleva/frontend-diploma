@@ -23,17 +23,88 @@ const { Option } = Select;
 const PassengerCollapse = memo(({ passengerNumber, passenger }) => {
   const dispatch = useDispatch();
 
-  const [age, setUserAge] = useState("Взрослый");
-  const [surname, setUserSurname] = useState("");
-  const [name, setUserName] = useState("");
-  const [patr, setUserPatr] = useState("");
-  const [sex, setUserSex] = useState("");
-  const [bd, setUserBd] = useState("");
-  const [dysmobility, setUserDysmobility] = useState(false);
-  const [document, setUserDocument] = useState("Паспорт РФ");
-  const [passportSeria, setUserPassportSeria] = useState("");
-  const [passportNumber, setUserPassportNumber] = useState("");
-  const [bdCertif, setUserBdCertif] = useState("");
+  // сохранение данных при возврате назад
+  const isAge = () => {
+    if (passenger) {
+      return passenger.age;
+    }
+  };
+
+  const isSurname = () => {
+    if (passenger) {
+      return passenger.surname;
+    }
+  };
+
+  const isName = () => {
+    if (passenger) {
+      return passenger.name;
+    }
+  };
+
+  const isPatr = () => {
+    if (passenger) {
+      return passenger.patr;
+    }
+  };
+
+  const isSex = () => {
+    if (passenger) {
+      return passenger.sex;
+    }
+  };
+
+  const isBd = () => {
+    if (passenger) {
+      return passenger.bd;
+    }
+  };
+
+  const isDysmobility = () => {
+    if (passenger) {
+      return passenger.dysmobility;
+    }
+  };
+
+  const isDocument = () => {
+    if (passenger) {
+      return passenger.document;
+    }
+  };
+
+  const isPassportSeria = () => {
+    if (passenger) {
+      return passenger.passport.seria;
+    }
+  };
+
+  const isPassportNumber = () => {
+    if (passenger) {
+      return passenger.passport.number;
+    }
+  };
+
+  const isBdCertif = () => {
+    if (passenger) {
+      return passenger.bdCertif;
+    }
+  };
+
+  const [age, setUserAge] = useState(isAge() || "Взрослый");
+  const [surname, setUserSurname] = useState(isSurname() || "");
+  const [name, setUserName] = useState(isName() || "");
+  const [patr, setUserPatr] = useState(isPatr() || "");
+  const [sex, setUserSex] = useState(isSex() || "");
+  const [bd, setUserBd] = useState(isBd() || "");
+  const [dysmobility, setUserDysmobility] = useState(isDysmobility() || false);
+  const [document, setUserDocument] = useState(isDocument() || "Паспорт РФ");
+  const [passportSeria, setUserPassportSeria] = useState(
+    isPassportSeria() || ""
+  );
+  const [passportNumber, setUserPassportNumber] = useState(
+    isPassportNumber() || ""
+  );
+  const [bdCertif, setUserBdCertif] = useState(isBdCertif() || "");
   const [bdCertifError, setBdCertifError] = useState(false);
 
   const isDone =
@@ -121,7 +192,7 @@ const PassengerCollapse = memo(({ passengerNumber, passenger }) => {
                 <Select
                   className="selectAge__container"
                   dropdownClassName={("selectAge__dropdown", "selectAge")}
-                  defaultValue="Взрослый"
+                  defaultValue={age}
                   allowClear={false}
                   onChange={(value) => setUserAge(value)}
                 >
