@@ -4,13 +4,11 @@ import { useHistory } from "react-router-dom";
 import { fetchTrainSeatsData } from "./../../../store/fetchSeats";
 import { appStateSetProgress } from "../../../store/appState";
 import SeatsCard from "./SeatsCard/SeatsCard";
-// import trains from "../test";
 
 const TicketSelection = memo(() => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // const selectedTrainOut = trains[0][0];
   const selectedTrainOut = useSelector((state) => state.appState.trainOutbound);
   const selectedTrainRet = useSelector((state) => state.appState.trainReturn);
 

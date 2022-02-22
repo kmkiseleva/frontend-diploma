@@ -19,8 +19,6 @@ import {
   searchParamsLimitSet,
 } from "../../store/params";
 
-import trains from "./../../components/Selection/test";
-
 export const sortOptions = [
   {
     value: "date",
@@ -39,16 +37,14 @@ export const sortOptions = [
 const SelectionPage = memo(() => {
   const dispatch = useDispatch();
 
-  const status = useSelector((state) => state.getRoutes.status);
   const params = useSelector((state) => state.params);
-
-  // const trains = useSelector((state) => state.getRoutes.data.items);
-  // const selectedTrain = useSelector((state) => state.appState.trainOutgoing);
-  // const totalCount = useSelector((state) => state.getRoutes.data.totalCount);
-
-  const totalCount = trains.length;
-
   const { limit, sort, offset } = params;
+
+  const trains = useSelector((state) => state.getRoutes.data.items);
+  const totalCount = useSelector((state) => state.getRoutes.data.totalCount);
+
+  const status = useSelector((state) => state.getRoutes.status);
+
   const [activeSort, setActiveSort] = useState([sort]);
   const [currentPage, setCurrentPage] = useState(offset / limit + 1);
 

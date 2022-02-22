@@ -48,7 +48,7 @@ export const fetchRoutes = createAsyncThunk(
       throw new Error(`empty points`);
     }
 
-    let reqURL = `${process.env.REACT_APP_BASE_URL}routes?from_city_id=${departureId}&to_city_id=${arrivalId}&limit=${limit}&sort=${sort}`;
+    let reqURL = `${process.env.REACT_APP_NEW_BASE_URL}routes?from_city_id=${departureId}&to_city_id=${arrivalId}&limit=${limit}&sort=${sort}`;
 
     if (dateOutbound) {
       // temporary reduce YY by one
@@ -107,7 +107,6 @@ export const fetchRoutes = createAsyncThunk(
       throw new Error(`request error: ${reqURL}`);
     }
 
-    console.log(response);
     return response.json();
   }
 );

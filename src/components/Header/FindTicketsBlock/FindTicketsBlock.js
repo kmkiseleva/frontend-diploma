@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DestinationPicker from "../../Pickers/DestinationPicker/DestinationPicker";
 import CustomDatePicker from "../../Pickers/DatePicker/CustomDatePicker";
 
-import { fetchRoutes } from "../../../store/fetchRoutes";
+import { fetchRoutes, getRouteSet } from "../../../store/fetchRoutes";
 
 const FindTicketsBlock = memo(() => {
   const history = useHistory();
@@ -14,7 +14,8 @@ const FindTicketsBlock = memo(() => {
 
   const findTickets = () => {
     if (params.cityDeparture.value && params.cityArrival.value) {
-      dispatch(fetchRoutes(params));
+      const data = dispatch(fetchRoutes(params));
+      dispatch(getRouteSet(data));
       history.push("/selection");
     }
   };
