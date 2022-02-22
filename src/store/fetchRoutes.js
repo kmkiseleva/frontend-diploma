@@ -106,8 +106,9 @@ export const fetchRoutes = createAsyncThunk(
     if (!response.ok) {
       throw new Error(`request error: ${reqURL}`);
     }
-
-    return response.json();
+    const data = await response.json();
+    console.log(data);
+    return data;
   }
 );
 
@@ -116,6 +117,7 @@ const getRoutes = createSlice({
   initialState,
   reducers: {
     getRouteSet(state, action) {
+      console.log(action.payload);
       state.data.items = action.payload;
     },
     getRouteReset(state, action) {
