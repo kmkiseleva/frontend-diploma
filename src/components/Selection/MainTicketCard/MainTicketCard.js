@@ -14,7 +14,7 @@ const MainTicketCard = memo(({ trains }) => {
   const train0 = trains[0];
   const train1 = trains[1];
 
-  const trainId = train0.departure.train._id.substr(0, 4);
+  const trainId = train0.departure.train._id;
   const trainName = train0.departure.train.name;
   const pointA = capitalize(train0.departure.from.city.name);
   const pointB = capitalize(train0.departure.to.city.name);

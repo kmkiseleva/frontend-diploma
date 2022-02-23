@@ -13,6 +13,7 @@ import SortFilter from "../../components/Selection/SortFilter/SortFilter";
 import ResultsLimit from "../../components/Selection/ResultsLimit/ResultsLimit";
 import CustomPagination from "./../../components/Selection/CustomPagination/CustomPagination";
 
+import { fetchRoutes } from "./../../store/fetchRoutes";
 import {
   searchParamsSortSet,
   searchParamsOffsetSet,
@@ -51,8 +52,10 @@ const SelectionPage = memo(() => {
   // сортировать по (времени, стоимости, длительности)
   const onChangeSort = (value) => {
     setActiveSort(value);
-    dispatch(searchParamsSortSet(`${value}`));
+    const valueStr = `${value}`;
+    dispatch(searchParamsSortSet(valueStr));
     dispatch(searchParamsOffsetSet(0));
+    dispatch(fetchRoutes(params));
   };
 
   // показывать по 5, 10, 20
@@ -85,9 +88,9 @@ const SelectionPage = memo(() => {
                 <div>
                   сортировать по:
                   <SortFilter
-                    onChange={onChangeSort}
                     active={activeSort}
                     options={sortOptions}
+                    onChange={onChangeSort}
                   />
                 </div>
                 <div className="resultsLimit__container">

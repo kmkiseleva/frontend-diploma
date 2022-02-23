@@ -38,7 +38,7 @@ export const autocomplete = (time, selector) => (source$) =>
 // This is a function for getting list of suggestions from the server
 export const fetch$ = (term) =>
   fromFetch(
-    `${process.env.REACT_APP_NEW_BASE_URL}routes/cities?name=${term}`
+    `${process.env.REACT_APP_BASE_URL}routes/cities?name=${term}`
   ).pipe(
     switchMap((response) => {
       if (response.ok) {
