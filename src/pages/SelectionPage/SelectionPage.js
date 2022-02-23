@@ -62,6 +62,7 @@ const SelectionPage = memo(() => {
   const onClickLimit = (el) => {
     dispatch(searchParamsLimitSet(el));
     dispatch(searchParamsOffsetSet(0));
+    dispatch(fetchRoutes(params));
   };
 
   // поменять страницу
