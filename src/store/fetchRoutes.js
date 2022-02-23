@@ -102,6 +102,7 @@ export const fetchRoutes = createAsyncThunk(
       reqURL += `&price_to=${price_to}`;
     }
 
+    console.log(reqURL);
     const response = await fetch(reqURL);
     if (!response.ok) {
       throw new Error(`request error: ${reqURL}`);

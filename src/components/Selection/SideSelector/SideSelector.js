@@ -17,15 +17,20 @@ import FilterPrice from "./FilterPrice/FilterPrice";
 import FilterTime from "./FilterTime/FilterTime";
 
 import { searchParamsFiltersSet } from "../../../store/params";
+import { fetchRoutes } from "../../../store/fetchRoutes";
 
 const SideSelector = memo(() => {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.params.filters);
+  const params = useSelector((state) => state.params);
 
   const changeFilter = (filter, state) => {
     dispatch(searchParamsFiltersSet({ [filter]: state }));
+    dispatch(fetchRoutes(params));
   };
+
   const stubRange = { min: 0, max: 10000 };
+
   const priceRange = useMemo(() => {
     if (filters.price_from && filters.price_to) {
       return {
@@ -99,10 +104,10 @@ const SideSelector = memo(() => {
         />
       </div>
       <div className="selector__timeTo">
-        <FilterTime icon={forward} title="Туда" />
+        <FilterTime icon={forward} type="outbound" />
       </div>
       <div className="selector__timeBack">
-        <FilterTime icon={back} title="Обратно" />
+        <FilterTime icon={back} type="return" />
       </div>
     </div>
   );
