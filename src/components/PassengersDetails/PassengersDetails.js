@@ -1,4 +1,5 @@
-import { memo, useRef } from "react";
+import { memo, useRef, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "./passengersDetails.css";
 import { Collapse } from "antd";
 
@@ -11,6 +12,22 @@ const { Panel } = Collapse;
 
 const PassengersDetails = memo(() => {
   const forward = useRef(null);
+  const passengers = useSelector((state) => state.passengersData.items);
+
+  const adultPassengersCount = passengers.filter(
+    (el) => el.age === "Взрослый"
+  ).length;
+  const childPassengersCount = passengers.filter(
+    (el) => el.age === "Детский"
+  ).length;
+
+  const [adultPassengers, setAdultPassengers] = useState(adultPassengersCount);
+  const [childPassengers, setChildPassengers] = useState(childPassengersCount);
+
+  useEffect(() => {
+    setAdultPassengers(adultPassengersCount);
+    setChildPassengers(childPassengersCount);
+  }, [adultPassengersCount, childPassengersCount]);
 
   return (
     <div className="passengDetails__container">
@@ -33,7 +50,8 @@ const PassengersDetails = memo(() => {
           <div className="passengDetails__panel" ref={forward}>
             <div className="passengDetails__row">
               <div className="passengDetails__age">
-                <span>2</span> Взрослых{" "}
+                <span>{adultPassengers}</span>{" "}
+                {adultPassengers === 1 ? "Взрослый" : "Взрослых"}
               </div>
               <div className="passengDetails__price">
                 <span>5 840</span> <img src={rub} alt="rub" />
@@ -41,7 +59,8 @@ const PassengersDetails = memo(() => {
             </div>
             <div className="passengDetails__row">
               <div className="passengDetails__age">
-                <span>1</span> Ребенок{" "}
+                <span>{childPassengers}</span>{" "}
+                {childPassengers === 1 ? "Ребенок" : "Детей"}
               </div>
               <div className="passengDetails__price">
                 <span>1 920</span> <img src={rub} alt="rub" />
