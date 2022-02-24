@@ -60,7 +60,7 @@ const PassengersDetails = memo(() => {
             <div className="passengDetails__row">
               <div className="passengDetails__age">
                 <span>{childPassengers}</span>{" "}
-                {childPassengers === 1 ? "Ребенок" : "Детей"}
+                {childPassengers === 1 ? "Детский" : "Детских"}
               </div>
               <div className="passengDetails__price">
                 <span>1 920</span> <img src={rub} alt="rub" />
