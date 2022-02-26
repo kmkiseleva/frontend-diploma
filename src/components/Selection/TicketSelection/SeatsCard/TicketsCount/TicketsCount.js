@@ -27,20 +27,22 @@ const TicketsCount = memo(({ getTicketsCount }) => {
       <div className="seatsCount__title">Количество билетов</div>
       <div className="seatsCount__blocks">
         <div className="seatsCount__block more-seats">
-          <div className="countBlock__field">Взрослых - 2</div>
+          <div className="countBlock__field">Взрослых - {adultCount}</div>
           <div className="countBlock__info">
             Можно добавить еще {maxAdultTicketsCount - adultCount} пассажиров
           </div>
         </div>
         <div className="seatsCount__block one-seat">
-          <div className="countBlock__field">Детских - 1</div>
+          <div className="countBlock__field">Детских - {childrenCount}</div>
           <div className="countBlock__info one-seat">
             Можно добавить еще {childrenMax} билетов для детей до 10 лет. Свое
             место в вагоне, как у взрослых, но дешевле в среднем на 50-65%
           </div>
         </div>
         <div className="seatsCount__block no-seats">
-          <div className="countBlock__field">Детских "без места" - 0</div>
+          <div className="countBlock__field">
+            Детских "без места" - {toddlerCount}
+          </div>
         </div>
       </div>
     </div>

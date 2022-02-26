@@ -9,16 +9,11 @@ const initialState = {
 export const fetchTrainSeatsData = createAsyncThunk(
   "trainSeats/FetchingData",
   async (trainId) => {
-    const reqURL = `${process.env.REACT_APP_ROUTES_URL}${trainId}/seats`;
-
-    console.log(reqURL);
-
+    const reqURL = `${process.env.REACT_APP_BASE_URL}routes/${trainId}/seats`;
     const response = await fetch(reqURL);
     if (!response.ok) {
       throw new Error("Something went wrong");
     }
-
-    console.log(response);
     return response.json();
   }
 );

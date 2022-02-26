@@ -48,56 +48,11 @@ const clearCarriage = {
   ],
 };
 
-const testCarriage = {
-  coach: {
-    _id: 5,
-    name: "",
-    class_type: "second",
-    have_wifi: true,
-    have_air_conditioning: true,
-    price: 5050,
-    top_price: 0,
-    bottom_price: 1050,
-    side_price: 3000,
-    linens_price: 0,
-    wifi_price: 0,
-    is_linens_included: false,
-    available_seats: 3,
-    train: 0,
-  },
-  seats: [
-    {
-      index: 1,
-      available: true,
-    },
-    {
-      index: 2,
-      available: false,
-    },
-    {
-      index: 3,
-      available: false,
-    },
-    {
-      index: 4,
-      available: false,
-    },
-    {
-      index: 5,
-      available: true,
-    },
-    {
-      index: 6,
-      available: true,
-    },
-  ],
-};
-
 const SeatsCard = memo(({ type, data }) => {
-  const history = useHistory();
   const dispatch = useDispatch();
-  const trainSeats = useSelector((state) => state.trainSeats.items);
+  const history = useHistory();
 
+  const trainSeats = useSelector((state) => state.trainSeats.items);
   const trainId = data.departure.train._id;
   const pointA = capitalize(data.departure.from.city.name);
   const pointB = capitalize(data.departure.to.city.name);
@@ -107,9 +62,9 @@ const SeatsCard = memo(({ type, data }) => {
   const timeB = secToDateTime(data.departure.to.datetime);
   const duration = sec2hhmm(data.departure.duration);
 
-  const [carriageType, setCarriageType] = useState("first");
-  const [totalPrice, setTotalPrice] = useState(8080);
-  const [activeCarriage, setActiveCarriage] = useState(testCarriage);
+  const [carriageType, setCarriageType] = useState(undefined);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [activeCarriage, setActiveCarriage] = useState(clearCarriage);
   const [ticketsCount, setTicketsCount] = useState({
     adultCount: 0,
     childrenCount: 0,
@@ -118,10 +73,10 @@ const SeatsCard = memo(({ type, data }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [selectedServices, setSelectedServices] = useState([]);
 
-  const anotherTrain = (arg) => {
-    if ((arg = "outgoing")) {
+  const anotherTrain = (data) => {
+    if ((data = "outbound")) {
       dispatch(appStateResetTrainOutbound());
-    } else if (arg === "incoming") {
+    } else if (data === "return") {
       dispatch(appStateResetTrainReturn());
     }
     dispatch(trainSeatsReset());
@@ -207,8 +162,8 @@ const SeatsCard = memo(({ type, data }) => {
     <div className="seatsPage__informationBlock">
       <div className="informationBlock__header">
         <div className="informationBlock__arrowImg">
-          {type === "outgoing" && <img src={arrowRight} alt="arrowRight" />}
-          {type === "incoming" && <img src={arrowLeft} alt="arrowLeft" />}
+          {type === "outbound" && <img src={arrowRight} alt="arrowRight" />}
+          {type === "return" && <img src={arrowLeft} alt="arrowLeft" />}
         </div>
         <div className="informationBlock__button">
           <button
@@ -219,7 +174,6 @@ const SeatsCard = memo(({ type, data }) => {
           </button>
         </div>
       </div>
-
       <TrainInfo
         info={{
           type,
@@ -233,6 +187,7 @@ const SeatsCard = memo(({ type, data }) => {
           duration,
         }}
       />
+
       <TicketsCount getTicketsCount={getTicketsCount} />
 
       <CarriageTypeSection
@@ -360,24 +315,22 @@ const SeatsCard = memo(({ type, data }) => {
           <div className="carriage__popup">
             <span>11</span> человек выбирают места в этом поезде
           </div>
+          <CarriageImg
+            activeCarriage={activeCarriage}
+            selectedSeats={selectedSeats}
+            selectSeats={selectSeats}
+          />
+          {totalPrice !== 0 && (
+            <>
+              <div className="totalPrice__container">
+                <div className="totalPrice__number">{totalPrice}</div>
+                <div className="totalPrice__rub">
+                  <img src={rub} alt="rub" />
+                </div>
+              </div>
+            </>
+          )}
         </div>
-      )}
-
-      <CarriageImg
-        activeCarriage={activeCarriage}
-        selectedSeats={selectedSeats}
-        selectSeats={selectSeats}
-      />
-
-      {totalPrice !== 0 && (
-        <>
-          <div className="totalPrice__container">
-            <div className="totalPrice__number">{totalPrice}</div>
-            <div className="totalPrice__rub">
-              <img src={rub} alt="rub" />
-            </div>
-          </div>
-        </>
       )}
     </div>
   );

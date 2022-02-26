@@ -102,13 +102,11 @@ export const fetchRoutes = createAsyncThunk(
       reqURL += `&price_to=${price_to}`;
     }
 
-    console.log(reqURL);
     const response = await fetch(reqURL);
     if (!response.ok) {
       throw new Error(`request error: ${reqURL}`);
     }
     const data = await response.json();
-    console.log(data);
     return data;
   }
 );
@@ -118,7 +116,6 @@ const getRoutes = createSlice({
   initialState,
   reducers: {
     getRouteSet(state, action) {
-      console.log(action.payload);
       state.data.items = action.payload;
     },
     getRouteReset(state, action) {

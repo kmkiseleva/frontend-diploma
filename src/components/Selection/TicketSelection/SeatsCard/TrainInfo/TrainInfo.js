@@ -44,7 +44,7 @@ const TrainInfo = memo(({ info }) => {
             </div>
             <div className="row__direction destinationsInfo">
               <div className="direction__arrow">
-                {type === "outgoing" && <img src={arrowTo} alt="arrow" />}
+                {type === "outbound" && <img src={arrowTo} alt="arrow" />}
               </div>
             </div>
             <div className="row__point">
