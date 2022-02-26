@@ -37,8 +37,11 @@
 
 .type__block button:hover {
   color: #ffa800;
+  width: 130px;
+  height: 130px;
   border: 2px solid #ffa800;
   cursor: pointer;
+  border-radius: 30px;
 }
 
 .type__block button:disabled {

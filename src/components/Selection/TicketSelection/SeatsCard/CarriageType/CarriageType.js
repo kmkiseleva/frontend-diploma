@@ -14,6 +14,8 @@ const carriageTypes = {
 };
 
 const CarriageType = memo(({ carriageType, toggleType, available, active }) => {
+  console.log(toggleType);
+
   return (
     <div
       className={active === carriageType ? "type__block active" : "type__block"}

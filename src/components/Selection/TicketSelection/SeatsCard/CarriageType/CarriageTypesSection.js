@@ -11,25 +11,25 @@ const CarriageTypeSection = memo((data, chooseCarriageType, activeType) => {
           active={activeType}
           carriageType="fourth"
           toggleType={chooseCarriageType}
-          available={data.have_fourth_class}
+          available={data.data.have_fourth_class}
         />
         <CarriageType
           active={activeType}
           carriageType="third"
           toggleType={chooseCarriageType}
-          available={data.have_third_class}
+          available={data.data.have_third_class}
         />
         <CarriageType
           active={activeType}
           carriageType="second"
           toggleType={chooseCarriageType}
-          available={data.have_second_class}
+          available={data.data.have_second_class}
         />
         <CarriageType
           active={activeType}
           carriageType="first"
           toggleType={chooseCarriageType}
-          available={data.have_first_class}
+          available={data.data.have_first_class}
         />
       </div>
     </div>

@@ -84,6 +84,7 @@ const SeatsCard = memo(({ type, data }) => {
   };
 
   const chooseCarriageType = (val) => {
+    console.log(val);
     setCarriageType(val);
   };
 
