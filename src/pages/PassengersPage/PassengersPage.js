@@ -25,6 +25,9 @@ const PassengersPage = memo(() => {
   const passengers = useSelector((state) => state.passengersData.items);
   const totalPrice = useSelector((state) => state.appState.totalPrice);
 
+  const selectedTrainOut = useSelector((state) => state.appState.trainOutbound);
+  const selectedTrainRet = useSelector((state) => state.appState.trainReturn);
+
   const toPayPage = () => {
     dispatch(appStateSetProgress(2));
     history.push("./pay");
@@ -41,10 +44,16 @@ const PassengersPage = memo(() => {
             <TripDetails
               icon={forward}
               title="Туда"
-              date="30.08.2018"
               direction="forward"
+              data={selectedTrainOut}
             />
-            <TripDetails icon={back} title="Обратно" date="09.09.2018" />
+            {selectedTrainRet && (
+              <TripDetails
+                icon={back}
+                title="Обратно"
+                data={selectedTrainRet}
+              />
+            )}
             <PassengersDetails />
           </div>
           <div className="passengersPage__sidebarResult">

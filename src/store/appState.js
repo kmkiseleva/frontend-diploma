@@ -5,6 +5,9 @@ const initialState = {
   trainOutbound: undefined,
   trainReturn: undefined,
   totalPrice: 0,
+  adultCount: 0,
+  childrenCount: 0,
+  toddlerCount: 0,
 };
 
 export const appState = createSlice({
@@ -26,9 +29,17 @@ export const appState = createSlice({
     appStateResetTrainReturn: (state) => {
       state.trainReturn = undefined;
     },
-
     appStateSetTotalPrice: (state, action) => {
       state.totalPrice = action.payload;
+    },
+    appStateSetAdultCount: (state, action) => {
+      state.adultCount = action.payload;
+    },
+    appStateSetChildrenCount: (state, action) => {
+      state.childrenCount = action.payload;
+    },
+    appStateSetToddlerCount: (state, action) => {
+      state.toddlerCount = action.payload;
     },
   },
 });
@@ -40,5 +51,8 @@ export const {
   appStateSetTrainReturn,
   appStateResetTrainReturn,
   appStateSetTotalPrice,
+  appStateSetAdultCount,
+  appStateSetChildrenCount,
+  appStateSetToddlerCount,
 } = appState.actions;
 export default appState.reducer;

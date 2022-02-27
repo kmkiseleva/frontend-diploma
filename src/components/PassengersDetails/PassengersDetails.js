@@ -12,22 +12,9 @@ const { Panel } = Collapse;
 
 const PassengersDetails = memo(() => {
   const forward = useRef(null);
-  const passengers = useSelector((state) => state.passengersData.items);
 
-  const adultPassengersCount = passengers.filter(
-    (el) => el.age === "Взрослый"
-  ).length;
-  const childPassengersCount = passengers.filter(
-    (el) => el.age === "Детский"
-  ).length;
-
-  const [adultPassengers, setAdultPassengers] = useState(adultPassengersCount);
-  const [childPassengers, setChildPassengers] = useState(childPassengersCount);
-
-  useEffect(() => {
-    setAdultPassengers(adultPassengersCount);
-    setChildPassengers(childPassengersCount);
-  }, [adultPassengersCount, childPassengersCount]);
+  const adultPassengers = useSelector((state) => state.appState.adultCount);
+  const childPassengers = useSelector((state) => state.appState.childrenCount);
 
   return (
     <div className="passengDetails__container">

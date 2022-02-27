@@ -158,7 +158,7 @@ const SeatsCard = memo(({ type, data }) => {
     );
     setTotalPrice(seatsSummaryPrice);
     dispatch(appStateSetTotalPrice(seatsSummaryPrice));
-  }, [selectedSeats, selectedServices]);
+  }, [dispatch, selectedSeats, selectedServices]);
 
   return (
     <div className="seatsPage__informationBlock">
