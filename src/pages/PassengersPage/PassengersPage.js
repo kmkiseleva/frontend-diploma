@@ -15,7 +15,7 @@ import PassengersDetails from "../../components/PassengersDetails/PassengersDeta
 import PassengerCollapse from "./../../components/PassengerCollapse/PassengerCollapse";
 import ButtonNext from "./../../components/Buttons/ButtonNext";
 
-import appState, { appStateSetProgress } from "../../store/appState";
+import { appStateSetProgress } from "../../store/appState";
 
 const PassengersPage = memo(() => {
   const dispatch = useDispatch();
