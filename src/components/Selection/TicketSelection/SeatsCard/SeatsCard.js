@@ -73,6 +73,24 @@ const SeatsCard = memo(({ type, data }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [selectedServices, setSelectedServices] = useState([]);
 
+  // const carriagesNumbers = () => {
+  //   const arr = trainSeats
+  //     .filter((item) => item.coach.class_type === carriageType)
+  //     .map((item) => item.coach._id);
+  //   return arr;
+
+  //   // trainSeats
+  //   //               .filter((item) => item.coach.class_type === carriageType)
+  //   //               .map((item) => (
+  //   //                 <CarriageNumber
+  //   //                   key={item.coach._id}
+  //   //                   buttonNumber={item.coach._id}
+  //   //                   toggleCarriage={(e) => toggleCarriage(e)}
+  //   //                   activeCarriage={activeCarriage.coach._id}
+  //   //                 />
+  //   //               ))
+  // };
+
   const anotherTrain = (data) => {
     if ((data = "outbound")) {
       dispatch(appStateResetTrainOutbound());
@@ -204,21 +222,21 @@ const SeatsCard = memo(({ type, data }) => {
       {carriageType !== undefined && (
         <div className="informationBlock__carriageBlock">
           <div className="carriageBlock__header">
-            {/* <div className="carriageBlock__carriages">
+            <div className="carriageBlock__carriages">
               Вагоны{" "}
               <span className="active-carriage">
                 {trainSeats
-                  .filter((coach) => coach.coach.class_type === carriageType)
-                  .map((coach) => (
+                  .filter((item) => item.coach.class_type === carriageType)
+                  .map((item) => (
                     <CarriageNumber
-                      key={coach.coach._id}
-                      buttonNumber={coach.coach._id}
+                      key={item.coach._id}
+                      buttonNumber={item.coach._id}
                       toggleCarriage={(e) => toggleCarriage(e)}
                       activeCarriage={activeCarriage.coach._id}
                     />
                   ))}
               </span>
-            </div> */}
+            </div>
             <div className="carriageBlock__subtitle">
               Нумерация вагонов начинается с головы поезда
             </div>
