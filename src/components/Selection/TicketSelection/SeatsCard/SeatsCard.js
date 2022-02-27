@@ -73,24 +73,6 @@ const SeatsCard = memo(({ type, data }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [selectedServices, setSelectedServices] = useState([]);
 
-  // const carriagesNumbers = () => {
-  //   const arr = trainSeats
-  //     .filter((item) => item.coach.class_type === carriageType)
-  //     .map((item) => item.coach._id);
-  //   return arr;
-
-  //   // trainSeats
-  //   //               .filter((item) => item.coach.class_type === carriageType)
-  //   //               .map((item) => (
-  //   //                 <CarriageNumber
-  //   //                   key={item.coach._id}
-  //   //                   buttonNumber={item.coach._id}
-  //   //                   toggleCarriage={(e) => toggleCarriage(e)}
-  //   //                   activeCarriage={activeCarriage.coach._id}
-  //   //                 />
-  //   //               ))
-  // };
-
   const anotherTrain = (data) => {
     if ((data = "outbound")) {
       dispatch(appStateResetTrainOutbound());
