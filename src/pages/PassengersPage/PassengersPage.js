@@ -15,7 +15,7 @@ import PassengersDetails from "../../components/PassengersDetails/PassengersDeta
 import PassengerCollapse from "./../../components/PassengerCollapse/PassengerCollapse";
 import ButtonNext from "./../../components/Buttons/ButtonNext";
 
-import { appStateSetProgress } from "../../store/appState";
+import appState, { appStateSetProgress } from "../../store/appState";
 
 const PassengersPage = memo(() => {
   const dispatch = useDispatch();
@@ -23,6 +23,7 @@ const PassengersPage = memo(() => {
 
   const counter = useSelector((state) => state.passengersData.counter);
   const passengers = useSelector((state) => state.passengersData.items);
+  const totalPrice = useSelector((state) => state.appState.totalPrice);
 
   const toPayPage = () => {
     dispatch(appStateSetProgress(2));
@@ -47,7 +48,7 @@ const PassengersPage = memo(() => {
             <PassengersDetails />
           </div>
           <div className="passengersPage__sidebarResult">
-            Итог <span>7 760</span> <img src={rub} alt="rub" />
+            Итог <span>{totalPrice}</span> <img src={rub} alt="rub" />
           </div>
         </div>
 

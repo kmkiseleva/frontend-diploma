@@ -9,6 +9,7 @@ import { sec2hhmm, secToDateTime } from "./../../../../utils/timing";
 import {
   appStateResetTrainOutbound,
   appStateResetTrainReturn,
+  appStateSetTotalPrice,
 } from "../../../../store/appState";
 import { trainSeatsReset } from "../../../../store/fetchSeats";
 
@@ -156,6 +157,7 @@ const SeatsCard = memo(({ type, data }) => {
       0
     );
     setTotalPrice(seatsSummaryPrice);
+    dispatch(appStateSetTotalPrice(seatsSummaryPrice));
   }, [selectedSeats, selectedServices]);
 
   return (

@@ -3,7 +3,7 @@ import "./ticketsCount.css";
 
 const TicketsCount = memo(({ getTicketsCount }) => {
   const maxAdultTicketsCount = 5;
-  const [adultCount, setAdultCount] = useState(0);
+  const [adultCount, setAdultCount] = useState(1);
   const [childrenCount, setChildrenCount] = useState(0);
   const [childrenMax, setChildrenMax] = useState(0);
   const [toddlerCount, setToddlerCount] = useState(0);
