@@ -1,4 +1,4 @@
-import { memo, useRef, useEffect, useState } from "react";
+import { memo, useRef } from "react";
 import { useSelector } from "react-redux";
 import "./passengersDetails.css";
 import { Collapse } from "antd";
@@ -6,7 +6,6 @@ import { Collapse } from "antd";
 import { ReactComponent as Plus } from "./img/plus.svg";
 import { ReactComponent as Minus } from "./img/minus.svg";
 import passeng_av from "../../img/passeng_av.svg";
-import rub from "../../img/rub.png";
 
 const { Panel } = Collapse;
 
@@ -40,18 +39,18 @@ const PassengersDetails = memo(() => {
                 <span>{adultPassengers}</span>{" "}
                 {adultPassengers === 1 ? "Взрослый" : "Взрослых"}
               </div>
-              <div className="passengDetails__price">
+              {/* <div className="passengDetails__price">
                 <span>5 840</span> <img src={rub} alt="rub" />
-              </div>
+              </div> */}
             </div>
             <div className="passengDetails__row">
               <div className="passengDetails__age">
                 <span>{childPassengers}</span>{" "}
                 {childPassengers === 1 ? "Детский" : "Детских"}
               </div>
-              <div className="passengDetails__price">
+              {/* <div className="passengDetails__price">
                 <span>1 920</span> <img src={rub} alt="rub" />
-              </div>
+              </div> */}
             </div>
           </div>
         </Panel>
