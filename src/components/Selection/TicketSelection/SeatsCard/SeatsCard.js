@@ -83,9 +83,8 @@ const SeatsCard = memo(({ type, data }) => {
     history.push("./selection");
   };
 
-  const chooseCarriageType = (val) => {
-    console.log(val);
-    setCarriageType(val);
+  const chooseCarriageType = (value) => {
+    setCarriageType(value);
   };
 
   const toggleCarriage = (number) => {
@@ -205,7 +204,7 @@ const SeatsCard = memo(({ type, data }) => {
       {carriageType !== undefined && (
         <div className="informationBlock__carriageBlock">
           <div className="carriageBlock__header">
-            <div className="carriageBlock__carriages">
+            {/* <div className="carriageBlock__carriages">
               Вагоны{" "}
               <span className="active-carriage">
                 {trainSeats
@@ -219,7 +218,7 @@ const SeatsCard = memo(({ type, data }) => {
                     />
                   ))}
               </span>
-            </div>
+            </div> */}
             <div className="carriageBlock__subtitle">
               Нумерация вагонов начинается с головы поезда
             </div>
@@ -313,14 +312,17 @@ const SeatsCard = memo(({ type, data }) => {
               />
             </div>
           </div>
+
           <div className="carriage__popup">
             <span>11</span> человек выбирают места в этом поезде
           </div>
+
           <CarriageImg
             activeCarriage={activeCarriage}
             selectedSeats={selectedSeats}
             selectSeats={selectSeats}
           />
+
           {totalPrice !== 0 && (
             <>
               <div className="totalPrice__container">

@@ -20,6 +20,8 @@
 
 .type__block {
   text-align: center;
+  background: transparent;
+  border: none;
 }
 
 .type__block .active {
@@ -30,12 +32,8 @@
   margin-bottom: 18px;
 }
 
-.type__block button {
-  background: transparent;
-  border: none;
-}
-
-.type__block button:hover {
+.type__block:hover,
+.type__block:focus {
   color: #ffa800;
   width: 130px;
   height: 130px;
@@ -44,10 +42,11 @@
   border-radius: 30px;
 }
 
-.type__block button:disabled {
+.type__block:disabled:hover {
   color: #c4c4c4;
   border: 0;
   cursor: not-allowed;
+  background-color: transparent;
 }
 
 .type__name {

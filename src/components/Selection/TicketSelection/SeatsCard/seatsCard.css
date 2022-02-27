@@ -105,12 +105,6 @@
   margin-bottom: 5px;
 }
 
-.seatsInfo__services {
-  display: flex;
-  justify-content: space-between;
-  padding-right: 59px;
-}
-
 .carriageBlock__insideImg {
   padding-left: 21px;
 }

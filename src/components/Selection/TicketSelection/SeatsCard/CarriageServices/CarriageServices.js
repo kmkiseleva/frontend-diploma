@@ -3,8 +3,10 @@ import { message, Tooltip } from "antd";
 
 import ac_icon from "../../../../../img/service_ac.svg";
 import wifi_icon from "../../../../../img/service_wifi.svg";
-import firstClass from "../../../../../img/service_first-class.svg";
+import linen from "../../../../../img/service_linen_bordered.svg";
 import rub from "../../../../../img/rub.png";
+
+import "./carriageServices.css";
 
 const CarriageServices = memo(
   ({ data, selectedServices, setSelectedServices, selectedSeats }) => {
@@ -149,7 +151,7 @@ const CarriageServices = memo(
                 mouseLeaveDelay={0.3}
                 trigger="hover"
                 getPopupContainer={() => wifiElement.current}
-                overlayClassName="tooltip"
+                overlayClassName="seatsInfo__services-tooltip"
                 destroyTooltipOnHide
               >
                 <button
@@ -166,7 +168,7 @@ const CarriageServices = memo(
           <div className="seatsInfo__icon">
             {linensInc ? (
               <button type="button" disabled>
-                <img src={firstClass} alt="icon" />
+                <img src={linen} alt="icon" />
               </button>
             ) : (
               <Tooltip
@@ -176,7 +178,7 @@ const CarriageServices = memo(
                 mouseLeaveDelay={0.3}
                 trigger="hover"
                 getPopupContainer={() => linenElement.current}
-                overlayClassName="tooltip"
+                overlayClassName="seatsInfo__services-tooltip"
                 destroyTooltipOnHide
               >
                 <button
@@ -185,7 +187,7 @@ const CarriageServices = memo(
                   ref={linenElement}
                   onClick={() => toggleService("linen")}
                 >
-                  <img src={firstClass} alt="icon" />
+                  <img src={linen} alt="icon" />
                 </button>
               </Tooltip>
             )}

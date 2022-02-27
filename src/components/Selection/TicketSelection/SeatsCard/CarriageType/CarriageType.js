@@ -14,13 +14,13 @@ const carriageTypes = {
 };
 
 const CarriageType = memo(({ carriageType, toggleType, available, active }) => {
-  console.log(toggleType);
-
   return (
-    <div
-      className={active === carriageType ? "type__block active" : "type__block"}
-    >
-      <button onClick={() => toggleType(carriageType)} disabled={!available}>
+    <>
+      <button
+        className="type__block"
+        onClick={() => toggleType(carriageType)}
+        disabled={!available}
+      >
         <img
           src={carriageTypes[carriageType].element}
           alt={carriageTypes[carriageType].title}
@@ -33,7 +33,7 @@ const CarriageType = memo(({ carriageType, toggleType, available, active }) => {
           {carriageTypes[carriageType].title}
         </div>
       </button>
-    </div>
+    </>
   );
 });
 
