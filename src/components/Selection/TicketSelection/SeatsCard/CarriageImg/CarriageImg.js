@@ -18,6 +18,8 @@ const CarriageImg = memo(({ activeCarriage, selectSeats, selectedSeats }) => {
   const coachId = coach._id;
   const carriageType = coach.class_type;
 
+  console.log(seats);
+
   const selected = selectedSeats
     .filter((el) => el.coachId === coachId)
     .map((el) => el.seatId);
@@ -25,10 +27,10 @@ const CarriageImg = memo(({ activeCarriage, selectSeats, selectedSeats }) => {
   const onSeatSelect = (idx) => {
     let price;
     if (carriageType === "first") {
-      price = activeCarriage.coach.price; // данные в запросах по разным ручкам различаются
+      price = activeCarriage.coach.price;
     }
     if (carriageType === "fourth") {
-      price = activeCarriage.coach.top_price; // сервер отдаёт top_price, не price
+      price = activeCarriage.coach.top_price;
     }
     if (carriageType === "second") {
       price =
@@ -52,7 +54,7 @@ const CarriageImg = memo(({ activeCarriage, selectSeats, selectedSeats }) => {
 
   return (
     <div className="carriageBlock__root">
-      <img src={second} alt="inside" />
+      <img src={scheme[carriageType]} className="schemeImg" alt="inside" />
       <div className="schemeLayout">
         <div className="carriageNumber">{coachId}</div>
         <div className="scheme">
@@ -62,9 +64,9 @@ const CarriageImg = memo(({ activeCarriage, selectSeats, selectedSeats }) => {
                 type="button"
                 key={seat.index}
                 className={
-                  ("seat",
-                  `seat${seat.index}`,
-                  selected.some((el) => el === seat.index) ? "selected" : "")
+                  selected.some((el) => el === seat.index)
+                    ? `seat seat${seat.index} selected`
+                    : `seat seat${seat.index}`
                 }
                 disabled={!seat.available}
                 onClick={() => onSeatSelect(seat.index)}
