@@ -142,9 +142,6 @@ const SeatsCard = memo(({ type, data }) => {
       tempArr.length = canGetSeats;
       setSelectedSeats(tempArr);
     }
-    
-    console.log(selectedSeats);
-
   }, [selectedSeats, ticketsCount]);
 
   useEffect(() => {

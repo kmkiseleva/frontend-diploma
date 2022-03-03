@@ -18,8 +18,6 @@ const CarriageImg = memo(({ activeCarriage, selectSeats, selectedSeats }) => {
   const coachId = coach._id;
   const carriageType = coach.class_type;
 
-  console.log(seats);
-
   const selected = selectedSeats
     .filter((el) => el.coachId === coachId)
     .map((el) => el.seatId);

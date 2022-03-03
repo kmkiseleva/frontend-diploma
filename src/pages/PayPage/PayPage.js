@@ -23,6 +23,10 @@ const PayPage = memo(() => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const selectedTrainOut = useSelector((state) => state.appState.trainOutbound);
+  const selectedTrainRet = useSelector((state) => state.appState.trainReturn);
+  const totalPrice = useSelector((state) => state.appState.totalPrice);
+
   const personalData = useSelector((state) => state.personalData);
 
   const [payOnline, setPayOnline] = useState(personalData.payOnline);
@@ -49,14 +53,20 @@ const PayPage = memo(() => {
             <TripDetails
               icon={forward}
               title="Туда"
-              date="30.08.2018"
+              data={selectedTrainOut}
               direction="forward"
             />
-            <TripDetails icon={back} title="Обратно" date="09.09.2018" />
+            {selectedTrainRet && (
+              <TripDetails
+                icon={back}
+                title="Обратно"
+                data={selectedTrainRet}
+              />
+            )}
             <PassengersDetails />
           </div>
           <div className="payPage__sidebarResult">
-            Итог <span>7 760</span> <img src={rub} alt="rub" />
+            Итог <span>{totalPrice}</span> <img src={rub} alt="rub" />
           </div>
         </div>
 

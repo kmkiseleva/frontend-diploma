@@ -39,18 +39,12 @@ const PassengersDetails = memo(() => {
                 <span>{adultPassengers}</span>{" "}
                 {adultPassengers === 1 ? "Взрослый" : "Взрослых"}
               </div>
-              {/* <div className="passengDetails__price">
-                <span>5 840</span> <img src={rub} alt="rub" />
-              </div> */}
             </div>
             <div className="passengDetails__row">
               <div className="passengDetails__age">
                 <span>{childPassengers}</span>{" "}
                 {childPassengers === 1 ? "Детский" : "Детских"}
               </div>
-              {/* <div className="passengDetails__price">
-                <span>1 920</span> <img src={rub} alt="rub" />
-              </div> */}
             </div>
           </div>
         </Panel>
