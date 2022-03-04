@@ -46,7 +46,7 @@ const PayPage = memo(() => {
       personalData.email
     ) {
       dispatch(appStateSetProgress(3));
-      history.push("./check");
+      history.push("./confirm");
     }
   };
 

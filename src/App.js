@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/seats" component={SelectSeatsPage} />
         <Route exact path="/passengers" component={PassengersPage} />
         <Route exact path="/pay" component={PayPage} />
-        <Route exact path="/check" component={ConfirmPage} />
+        <Route exact path="/confirm" component={ConfirmPage} />
         <Route exact path="/success" component={SuccessfulPage} />
       </Switch>
       <Footer />
