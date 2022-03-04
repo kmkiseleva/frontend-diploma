@@ -8,6 +8,7 @@ const initialState = {
   adultCount: 0,
   childrenCount: 0,
   toddlerCount: 0,
+  selectedSeats: [],
 };
 
 export const appState = createSlice({
@@ -41,6 +42,9 @@ export const appState = createSlice({
     appStateSetToddlerCount: (state, action) => {
       state.toddlerCount = action.payload;
     },
+    appStateSetSelectedSeats: (state, action) => {
+      state.selectedSeats = [...action.payload];
+    },
   },
 });
 
@@ -54,5 +58,6 @@ export const {
   appStateSetAdultCount,
   appStateSetChildrenCount,
   appStateSetToddlerCount,
+  appStateSetSelectedSeats,
 } = appState.actions;
 export default appState.reducer;

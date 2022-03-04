@@ -10,6 +10,7 @@ import {
   appStateResetTrainOutbound,
   appStateResetTrainReturn,
   appStateSetTotalPrice,
+  appStateSetSelectedSeats,
 } from "../../../../store/appState";
 import { trainSeatsReset } from "../../../../store/fetchSeats";
 
@@ -158,6 +159,7 @@ const SeatsCard = memo(({ type, data }) => {
     );
     setTotalPrice(seatsSummaryPrice);
     dispatch(appStateSetTotalPrice(seatsSummaryPrice));
+    dispatch(appStateSetSelectedSeats(selectedSeats));
   }, [dispatch, selectedSeats, selectedServices]);
 
   return (

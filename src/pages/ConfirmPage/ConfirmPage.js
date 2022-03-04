@@ -20,9 +20,56 @@ const ConfirmPage = memo(() => {
   const selectedTrainOut = useSelector((state) => state.appState.trainOutbound);
   const selectedTrainRet = useSelector((state) => state.appState.trainReturn);
   const totalPrice = useSelector((state) => state.appState.totalPrice);
+  const childrenCount = useSelector((state) => state.appState.childrenCount);
+  const toddlerCount = useSelector((state) => state.appState.toddlerCount);
+  const selectedSeats = useSelector((state) => state.appState.selectedSeats);
+
   const trainsPair = [selectedTrainOut, selectedTrainRet];
 
+  const surname = useSelector((state) => state.personalData.surname);
+  const name = useSelector((state) => state.personalData.name);
+  const patr = useSelector((state) => state.personalData.patr);
+  const phone = useSelector((state) => state.personalData.phone);
+  const email = useSelector((state) => state.personalData.email);
+  const payCash = useSelector((state) => state.personalData.payCash);
+  const passengers = useSelector((state) => state.passengersData.items);
+
   const toSuccessPage = () => {
+    fetch("https://fe-diplom.herokuapp.com/order", {
+      method: "POST",
+      body: JSON.stringify({
+        user: {
+          first_name: name,
+          last_name: surname,
+          patronymic: patr,
+          phone: phone,
+          email: email,
+          payment_method: payCash ? "cash" : "online",
+        },
+        departure: {
+          route_direction_id: selectedTrainOut.departure._id,
+          seats: [
+            {
+              coach_id: selectedSeats[0].coachId,
+              person_info: {
+                is_adult: passengers[0].age === "Взрослый" ? true : false,
+                first_name: passengers[0].name,
+                last_name: passengers[0].surname,
+                patronymic: passengers[0].patr,
+                gender: true,
+                birthday: passengers[0].bd,
+                document_type: passengers[0].document,
+                document_data: `${passengers[0].passport.seria} ${passengers[0].passport.number}`,
+              },
+              seat_number: selectedSeats[0].seatId,
+              is_child: childrenCount > 0 ? true : false,
+              include_children_seat: toddlerCount > 0 ? true : false,
+            },
+          ],
+        },
+      }),
+    }).then((response) => response.json());
+
     history.push("./success");
   };
 

@@ -38,8 +38,16 @@ const PayPage = memo(() => {
   }, [dispatch, payOnline, payCash]);
 
   const buyTickets = () => {
-    dispatch(appStateSetProgress(3));
-    history.push("./check");
+    if (
+      personalData.surname &&
+      personalData.name &&
+      personalData.patr &&
+      personalData.phone &&
+      personalData.email
+    ) {
+      dispatch(appStateSetProgress(3));
+      history.push("./check");
+    }
   };
 
   return (
