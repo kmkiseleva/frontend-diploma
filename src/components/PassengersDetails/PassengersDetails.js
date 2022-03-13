@@ -2,7 +2,6 @@ import { memo, useRef } from "react";
 import { useSelector } from "react-redux";
 import "./passengersDetails.css";
 import { Collapse } from "antd";
-
 import { ReactComponent as Plus } from "./img/plus.svg";
 import { ReactComponent as Minus } from "./img/minus.svg";
 import passeng_av from "../../img/passeng_av.svg";

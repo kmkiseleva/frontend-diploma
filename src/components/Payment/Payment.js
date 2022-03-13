@@ -2,7 +2,6 @@ import "./payment.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { memo } from "react";
-
 import { appStateSetProgress } from "../../store/appState";
 
 const Payment = memo(() => {

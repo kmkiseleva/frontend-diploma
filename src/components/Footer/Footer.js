@@ -1,6 +1,6 @@
+import "./footer.scss";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./footer.css";
 import { Input, message, Modal } from "antd";
 import PopupInfo from "../Popups/PopupInfo";
 import Contact from "./Contact/Contact";
@@ -15,7 +15,6 @@ import linkedIn from "./svg/linkedIn.svg";
 import gPlus from "./svg/gPlus.svg";
 import fb from "./svg/fb.svg";
 import twitter from "./svg/twitter.svg";
-
 import { fetchSubscribe, setStatusIdle } from "../../store/fetchSubscribe";
 
 export default function Footer() {
@@ -57,7 +56,7 @@ export default function Footer() {
 
   return (
     <footer className="footer" id="contacts">
-      <div className="footer__top">
+      <div className="top">
         <section>
           <div className="footer__title">Свяжитесь с нами</div>
           <ul className="footer__contacts">
@@ -117,10 +116,10 @@ export default function Footer() {
         </section>
       </div>
       <div className="footer__bottom">
-        <div className="footer__logo">Лого</div>
+        <div className="logo">Лого</div>
         <button
           shape="circle"
-          className="footer__btnUp"
+          className="btnUp"
           onClick={() =>
             window.scrollTo({
               top: 0,
@@ -132,6 +131,7 @@ export default function Footer() {
         </button>
         <span>2018 Web</span>
       </div>
+
       {popupActive && (
         <Modal
           closable={false}

@@ -1,6 +1,6 @@
 import { HashLink as NavLink } from "react-router-hash-link";
 import smoothscroll from "smoothscroll-polyfill";
-import "./navBar.css";
+import "./navBar.scss";
 
 smoothscroll.polyfill();
 

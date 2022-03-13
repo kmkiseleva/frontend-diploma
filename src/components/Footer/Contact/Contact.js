@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import "./contact.css";
+import "./contact.scss";
 
 export default function Contact({ contactIcon, contactAlt, contactText }) {
   return (
     <li>
       <Link to="/">
         <div className="contact__container">
-          <div className="contact__img">
+          <div className="img">
             <img src={contactIcon} alt={contactAlt} className="icon__image" />
           </div>
-          <div className="contact__text">
+          <div className="text">
             <span>{contactText}</span>
           </div>
         </div>

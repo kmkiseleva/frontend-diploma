@@ -1,10 +1,9 @@
-import "./findTicketsBlock.css";
+import "./findTicketsBlock.scss";
 import React, { memo } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import DestinationPicker from "../../Pickers/DestinationPicker/DestinationPicker";
 import CustomDatePicker from "../../Pickers/DatePicker/CustomDatePicker";
-
 import { fetchRoutes } from "../../../store/fetchRoutes";
 
 const FindTicketsBlock = memo(() => {
@@ -21,13 +20,13 @@ const FindTicketsBlock = memo(() => {
 
   return (
     <div className="block__container">
-      <div className="block__destination">
+      <div className="destination">
         <DestinationPicker />
       </div>
-      <div className="block__date">
+      <div className="date">
         <CustomDatePicker pickerPlace="headerPicker" />
       </div>
-      <div className="block__button">
+      <div className="click">
         <button onClick={findTickets}>Найти билеты</button>
       </div>
     </div>

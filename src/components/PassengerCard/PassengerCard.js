@@ -1,5 +1,5 @@
 import { memo } from "react";
-import "./passengerCard.css";
+import "./passengerCard.scss";
 import ava from "../../img/avatar.png";
 
 const PassengerCard = memo(
@@ -25,7 +25,7 @@ const PassengerCard = memo(
           <span>{age}</span>
         </div>
         <div className="card__details">
-          <div className="details__initials">
+          <div className="initials">
             {surname} {name} {patr}
           </div>
           <div className="details__sex">{sex}</div>

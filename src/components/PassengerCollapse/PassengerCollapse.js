@@ -3,14 +3,11 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import "./passengerCollapse.css";
 import { Collapse, Select, Input, Checkbox } from "antd";
-
 import { ReactComponent as Plus } from "../../img/add_plus_bordered.svg";
 import { ReactComponent as Minus } from "../../img/add_minus.svg";
 import { ReactComponent as Close } from "../../img/add_close.svg";
-
 import done from "../../img/done.png";
 import error from "../../img/error.png";
-
 import {
   addPassenger,
   incCounter,

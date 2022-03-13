@@ -14,29 +14,29 @@
   text-align: center;
   color: #292929;
   width: 100px;
-}
 
-.card__img span {
-  padding-top: 17px;
+  span {
+    padding-top: 17px;
+  }
 }
 
 .card__details {
   margin-left: 45px;
-}
 
-.details__initials {
-  font-size: 18px;
-  line-height: 21px;
-  color: #292929;
-  margin-bottom: 7px;
-}
+  .initials {
+    font-size: 18px;
+    line-height: 21px;
+    color: #292929;
+    margin-bottom: 7px;
+  }
 
-.details__sex,
-.details__birthday,
-.details__passport,
-.details__dysmobility {
-  font-size: 18px;
-  line-height: 21px;
-  color: #928f94;
-  margin-bottom: 5px;
+  .details__sex,
+  .details__birthday,
+  .details__passport,
+  .details__dysmobility {
+    font-size: 18px;
+    line-height: 21px;
+    color: #928f94;
+    margin-bottom: 5px;
+  }
 }

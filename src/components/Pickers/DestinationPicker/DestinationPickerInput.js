@@ -1,10 +1,8 @@
 import "./destinationPicker.css";
 import { AutoComplete, Input } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-
 import React, { memo, useMemo, useState } from "react";
 import { BehaviorSubject, of } from "rxjs";
-
 import { ReactComponent as GeoIcon } from "../../../img/geoIcon.svg";
 import { autocomplete, fetch$ } from "../../../utils/streaming";
 

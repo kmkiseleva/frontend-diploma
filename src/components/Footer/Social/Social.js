@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./social.css";
+import "./social.scss";
 
 export default function Social({ socialIcon, socialAlt }) {
   return (

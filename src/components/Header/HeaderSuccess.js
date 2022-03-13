@@ -1,5 +1,5 @@
 import { memo } from "react";
-import "./header.css";
+import "./header.scss";
 import NavBar from "./NavBar/NavBar";
 import Logo from "./Logo/Logo";
 
@@ -7,7 +7,7 @@ const HeaderSuccess = memo(() => {
   return (
     <div className="wrapper__success">
       <header className="header">
-        <div className="header__top">
+        <div className="top">
           <Logo />
           <NavBar />
         </div>

@@ -1,4 +1,4 @@
-import "./header.css";
+import "./header.scss";
 import { memo } from "react";
 import NavBar from "./NavBar/NavBar";
 import Logo from "./Logo/Logo";
@@ -8,7 +8,7 @@ const HeaderMain = memo(() => {
   return (
     <div className="wrapper__main">
       <header className="header">
-        <div className="header__top">
+        <div className="top">
           <Logo />
           <NavBar />
         </div>

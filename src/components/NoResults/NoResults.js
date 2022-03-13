@@ -1,4 +1,4 @@
-import "./noResults.css";
+import "./noResults.scss";
 
 export default function NoResults() {
   return (

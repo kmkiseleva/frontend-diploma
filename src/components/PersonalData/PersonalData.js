@@ -2,7 +2,7 @@ import { memo } from "react";
 import { Input } from "antd";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./personalData.css";
+import "./personalData.scss";
 
 import {
   setPersonalSurname,

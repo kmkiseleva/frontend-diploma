@@ -1,6 +1,5 @@
 import "./lastTickets.css";
 import LastTicketsCard from "./LastTicketsCard/LastTicketsCard";
-
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchLastTickets } from "../../../store/fetchLastTickets";

@@ -1,5 +1,5 @@
-import { memo } from "react";
 import "./progressBar.css";
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 

@@ -1,13 +1,13 @@
 import React from "react";
-import "./about.css";
+import "./about.scss";
 
 export default function About() {
   return (
     <section className="about" id="about">
-      <h2 className="about__title">О нас</h2>
-      <div className="about__content">
-        <div className="about__line"></div>
-        <div className="about__text">
+      <h2 className="title">О нас</h2>
+      <div className="content">
+        <div className="line"></div>
+        <div className="text">
           <p>
             Мы рады видеть вас! Мы работаем для Вас с 2003 года. 14 лет мы
             наблюдаем, как с каждым днем все больше людей заказывают жд билеты

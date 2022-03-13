@@ -1,6 +1,4 @@
-import "./header.css";
 import { memo } from "react";
-
 import HeaderMain from "./HeaderMain";
 import HeaderSelect from "./HeaderSelect";
 import HeaderSuccess from "./HeaderSuccess";

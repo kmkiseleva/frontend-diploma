@@ -20,10 +20,10 @@
   line-height: 28px;
   color: #292929;
   border: 1px solid #928f94;
-}
 
-.passengerInitials__input:hover,
-.passengerInitials__input:focus,
-.passengerInitials__input:active {
-  border: 1px solid #ffa800;
+  &:hover,
+  &:focus,
+  &:active {
+    border: 1px solid #ffa800;
+  }
 }

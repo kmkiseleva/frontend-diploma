@@ -1,12 +1,12 @@
+import { memo } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./passengers.css";
 import rub from "../../img/rub.png";
 import PassengerCard from "./../PassengerCard/PassengerCard";
-
 import { appStateSetProgress } from "../../store/appState";
 
-export default function Passengers() {
+const Passengers = memo(() => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -49,4 +49,6 @@ export default function Passengers() {
       </div>
     </div>
   );
-}
+});
+
+export default Passengers;

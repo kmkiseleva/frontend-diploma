@@ -1,11 +1,10 @@
-import "./header.css";
+import "./header.scss";
 import React, { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NavBar from "./NavBar/NavBar";
 import Logo from "./Logo/Logo";
 import DestinationPicker from "../Pickers/DestinationPicker/DestinationPicker";
 import CustomDatePicker from "../Pickers/DatePicker/CustomDatePicker";
-
 import { fetchRoutes } from "../../store/fetchRoutes";
 
 const HeaderSelect = memo(() => {
@@ -21,13 +20,13 @@ const HeaderSelect = memo(() => {
   return (
     <div className="wrapper__select">
       <header className="header">
-        <div className="header__top">
+        <div className="top">
           <Logo />
           <NavBar />
         </div>
         <div className="headerSelect__content">
-          <div className="headerSelect__pickersBlock">
-            <div className="headerSelect__pickers">
+          <div className="pickersBlock">
+            <div className="pickers">
               <DestinationPicker />
               <CustomDatePicker pickerPlace="headerPicker" />
             </div>

@@ -1,13 +1,10 @@
 import { memo, useRef } from "react";
 import "./tripDetails.css";
 import { Collapse } from "antd";
-
 import { ReactComponent as Plus } from "./img/plus.svg";
 import { ReactComponent as Minus } from "./img/minus.svg";
-
 import arrowTo from "../../img/arrow_to.png";
 import arrowBack from "../../img/arrow_back.png";
-
 import { sec2hhmm, secToDateTime } from "./../../utils/timing";
 import { capitalize } from "./../../utils/capitalize";
 

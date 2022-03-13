@@ -1,11 +1,13 @@
-import "./buttonNext.css";
+import "./buttonNext.scss";
 
-export default function ButtonNext({ text, onClick }) {
+const ButtonNext = ({ text, onClick }) => {
   return (
     <div className="button__next-block">
-      <button className="button__next-button" onClick={onClick}>
+      <button className="next__button" onClick={onClick}>
         {text}
       </button>
     </div>
   );
-}
+};
+
+export default ButtonNext;

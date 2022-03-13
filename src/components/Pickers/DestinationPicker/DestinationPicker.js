@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button } from "antd";
 import DestinationPickerInput from "./DestinationPickerInput";
 import { ReactComponent as SwapBtn } from "../../../img/swapBtn.svg";
-
 import {
   searchParamsCityDepartureSet,
   searchParamsCityArrivalSet,
