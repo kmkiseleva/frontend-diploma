@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import SelectionPage from "./pages/SelectionPage/SelectionPage";
@@ -11,7 +11,7 @@ import PayPage from "./pages/PayPage/PayPage";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/selection" component={SelectionPage} />
@@ -22,7 +22,7 @@ function App() {
         <Route exact path="/success" component={SuccessfulPage} />
       </Switch>
       <Footer />
-    </Router>
+    </BrowserRouter>
   );
 }
 
